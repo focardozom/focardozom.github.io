@@ -1,0 +1,28 @@
+---
+title: ""
+---
+
+## Hi there!
+
+<img class="avatar" src="img/yo.JPEG" alt="avatar">
+
+Thank you for visiting my webpage. I hope you find it informative. If you have any further questions or would like to learn more about my work, please do not hesitate to contact me.
+
+## About me
+
+My primary goal is to evaluate the real-life impact of interventions. I strive to combine my expertise in measurement and research design to obtain rigorous and meaningful results. I am committed to translating complex research findings into useful insights that can inform decision-making. I believe in the power of research to effect change and I am dedicated to making that change tangible and understandable for everyone.
+
+-   📰 [CV](https://github.com/focardozom/cv/blob/main/cv/cv.pdf)
+-   🧑 [Teaching](https://github.com/focardozom/Advanced-Research-Methods)
+-   📝 [Publications](https://orcid.org/0000-0002-1925-4954)
+-   [![](img/github.svg) GitHub](https://github.com/focardozom)
+
+## Web Projects
+
+- [Bussiness that Care Toolkit](https://test-toolkit.netlify.app/)
+- [Thrusworthy](https://francisco-cardozo.shinyapps.io/thrusworthy/)
+
+## R Packages
+
+- [DocumentData](https://github.com/focardozom/DocumentData)
+- [ChessOlympiad](https://github.com/focardozom/ChessOlympiad22)
