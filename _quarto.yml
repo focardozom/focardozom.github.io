@@ -1,0 +1,39 @@
+project:
+  type: website
+
+website:
+  title: Francisco Cardozo
+  back-to-top-navigation: true
+  page-footer: 
+    left: "© 2023 Francisco Cardozo" 
+    border: false
+    right: 
+      - icon: github
+        href: https://github.com/focardozom
+      - icon: twitter 
+        href: https://twitter.com/focardozom09 
+  navbar:
+    left:
+      - text: "Home"
+        file: index.qmd
+      - posts.qmd
+    tools:
+      - icon: twitter
+        href: https://twitter.com/focardozom09
+      - icon: github
+        href: https://github.com/focardozom
+      - icon: mastodon
+        aria-label: Mastodon
+        href: https://mastodon.social/@yourhandle
+        rel: "me"
+
+
+format:
+  html:
+    theme:
+     - cosmo
+     - styles.scss
+    toc: true
+
+
+

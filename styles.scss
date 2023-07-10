@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Anaheim&display=swap');
+
+/*-- scss:defaults --*/
+
+
+/* SCSS HEX */
+$cool-gray: #808DB9ff;
+$smoky-black: #140F0Eff;
+$hunter-green: #495D38ff;
+$viridian: #40785Fff;
+$black-olive: #3A372Dff;
+
+$font-family-sans-serif : 'Anaheim', sans-serif;
+$h2-font-size: 1.2rem;
+$link-color: $viridian;
+$body-color: $smoky-black;
+$navbar-bg: $cool-gray;
+$toc-active-border: $hunter-green;
+
+.tags li {
+  display: inline;
+}
+
+  .avatar {
+  height: 120px;
+  width: 120px;
+  position: relative;
+  margin: -10px 0 0 15px;
+  float: right;
+  border-radius: 50%;
+  transform: rotate(90deg);
+  object-fit: cover;
+  transition: background-color 0.5s ease;
+}
+
+.avatar:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
