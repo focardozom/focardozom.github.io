@@ -10,8 +10,6 @@ website:
     right: 
       - icon: github
         href: https://github.com/focardozom
-      - icon: twitter 
-        href: https://twitter.com/focardozom09 
   navbar:
     left:
       - text: "Home"
@@ -19,13 +17,16 @@ website:
       - posts.qmd
     tools:
       - icon: twitter
-        href: https://twitter.com/focardozom09
+        href: https://twitter.com/focardozom09?lang=en
       - icon: github
         href: https://github.com/focardozom
       - icon: mastodon
         aria-label: Mastodon
-        href: https://mastodon.social/@yourhandle
+        href: https://mastodon.social/@focardozom@nerdculture.de
         rel: "me"
+      - icon: linkedin
+        text: LinkedIn
+        href: https://www.linkedin.com/in/francisco-cardozo-757050264/
 
 
 format:
