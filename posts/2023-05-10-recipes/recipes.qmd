@@ -1,0 +1,42 @@
+---
+title: "An Introduction to the Recipes Package for Data Preprocessing"
+output: html_document
+date: "2023-05-10"
+categories: ["Tidymodels"]
+tags: ["Packages"]
+---
+I liked this presentation done by Max Kuhn.
+
+<iframe width="853" height="480" src="https://www.youtube.com/embed/GdR_S8bYaag" title="Cooking Your Data with Recipes in R with Max Kuhn" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**Here are some notes:**
+
+The `recipes` package provides a framework for preprocessing data prior to modeling or visualization. With its pipeable sequence of steps and syntax similar to `dplyr`, the package simplifies a wide range of preprocessing tasks, from data normalization and missing data imputation, to categorical variable encoding and data transformation. 
+
+It's important to remember when using the `recipes` package, the type of model you're fitting can determine the necessary preprocessing steps for your data.
+
+In addition to model-driven preprocessing steps, the `recipes` package also provides functions for feature engineering. This involves representing your data in ways most effective for your particular problem. For instance, you might create interaction terms, polynomial terms, or spline terms to capture non-linear relationships between predictors and the outcome.
+
+Here are some useful preprocessing steps:
+
+1. **Data normalization**: The `step_normalize()` function normalizes your data by centering and scaling the variables. This is useful when working with models that require predictors to be on the same scale, such as k-nearest neighbors or neural networks.
+
+2. **Missing data imputation**: The `step_impute_*()` functions impute missing data using various methods, like mean imputation, median imputation, or k-nearest neighbors imputation.
+
+3. **Categorical variable encoding**: The `step_dummy()` function creates dummy variables for categorical predictors. This is handy when working with models that can't handle categorical predictors directly, like linear regression or logistic regression.
+
+4. **Data transformation**: The `step_*()` functions transform your data in various ways, such as applying the logarithm, square root, or Box-Cox transformation to a variable. This is useful when working with data that isn't normally distributed or when trying to improve the linearity of the relationship between predictors and the outcome.
+
+5. **Feature engineering**: The `step_*()` functions are also used for feature engineering, such as creating interaction terms, polynomial terms, or spline terms. This is beneficial when trying to capture non-linear relationships between predictors and the outcome.
+
+[Link to the package documentation](https://www.tidymodels.org/start/recipes/)
+
+**Things to think:**
+
+A point of confusion might be whether preprocessing is considered part of data cleaning or data transformation for modeling. It appears that there's an overlap between data cleaning and data transformation, and it can sometimes be difficult to distinguish between these stages. It would be helpful to clarify the difference between these concepts and data preprocessing.
+
+When I try to imagine where recipes fits into these models, it's not completely clear to me.
+
+![The data science process. From R for Data Science](https://www.tmwr.org/premade/data-science-model.svg)
+
+![Modeling Process. From Tidymodels book](https://www.tmwr.org/premade/modeling-process.svg)
