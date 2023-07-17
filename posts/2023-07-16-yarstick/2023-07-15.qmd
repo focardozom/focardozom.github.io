@@ -21,8 +21,8 @@ library(gtsummary)  # Load gtsummary package
 
 # Create a tibble with the confusion matrix data
 confusion_matrix_long <- tibble(
-  'True Class' = c('True 1', 'True 0', 'True 1', 'True 0'),
   'Predicted Class' = c('1', '1', '0', '0'),
+  'True Class' = c('True 1', 'True 0', 'True 1', 'True 0'),
   'Count' = c(40, 15, 10, 35)
 )
 
