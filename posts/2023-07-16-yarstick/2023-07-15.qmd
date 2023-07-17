@@ -1,6 +1,8 @@
 ---
 title: "Computing Sensitivity and Specificity using tidymodels"
-author: "Francisco Cardozo"
+author: 
+  - "Francisco Cardozo"
+  - "Kyle Grealis"
 date: 2023-07-16
 categories: ["Sensitivity", "Tidymodels", "Specificity"]
 tags: ["Sensitivity", "Tidymodels", "Specificity"]
@@ -28,13 +30,13 @@ confusion_matrix_long  |> gt()
 
 ```
 
-Function `tbl_cross()` offers a handy feature for obtaining percentages, which is useful when computing sensitivity and specificity.
+Function <a href='https://www.danieldsjoberg.com/gtsummary/reference/tbl_cross.html' target='_blank'>`tbl_cross()`</a> offers a handy feature for obtaining percentages, which is useful when computing sensitivity and specificity.
 
 ```{r tbl_cross, warning=FALSE, message=FALSE}
 
 # Duplicate each row of the tibble based on the value in the Count column
-confusion_matrix_long %>%
-  uncount(Count) %>%
+confusion_matrix_long |>
+  uncount(Count) |>
   tbl_cross(percent = "col")  
 
 ```
@@ -73,8 +75,8 @@ Let's now assume that we have a dataset comprising Y and X values, and we aim to
 
 ```{r simulate-data-2, warning=FALSE, message=FALSE} 
 df <- confusion_matrix_long |> 
-uncount(Count)  |> 
-rename(y = `True Class`, x = `Predicted Class`) # Rename the columns to shorter names
+  uncount(Count)  |> 
+  rename(y = `True Class`, x = `Predicted Class`) # Rename the columns to shorter names
 ```
 
 First, we'll load the tidymodels library and specify our model.
@@ -86,13 +88,13 @@ First, we'll load the tidymodels library and specify our model.
 library(tidymodels)
 
 # Define a logistic regression model specification
-model_spec <- logistic_reg() %>%
-  set_engine("glm") %>% 
+model_spec <- logistic_reg() |>
+  set_engine("glm") |> 
   set_mode("classification")
 
 # Define a recipe for preprocessing the data
 recipe_glm <- 
-  recipe(y ~ x, data = df) %>% 
+  recipe(y ~ x, data = df) |> 
   # Convert all nominal variables to dummy variables
   step_dummy(all_nominal(), -all_outcomes()) 
 
@@ -103,10 +105,10 @@ Let's examine the dataset we've created.
 ```{r examine-data, message=FALSE}
 # Preprocess the data using the recipe
 # This includes converting nominal variables to dummy variables
-recipe_glm %>%
-  prep() %>%
+recipe_glm |>
+  prep() |>
   # Apply the recipe to new data
-  bake(new_data = df) %>%
+  bake(new_data = df) |>
   # View the first few rows of the preprocessed data
   skimr::skim()
 
@@ -119,8 +121,8 @@ Next, we can create a workflow that combines our recipe and the model specificat
 ```{r fit-model, message=FALSE}
 
 # Define a workflow for fitting the logistic regression model
-wr_glm <- workflow() %>% 
-  add_recipe(recipe_glm) %>% 
+wr_glm <- workflow() |> 
+  add_recipe(recipe_glm) |> 
   add_model(model_spec)  
 
 # Fit the logistic regression model to the preprocessed data
@@ -136,21 +138,21 @@ model |>
 
 So, we've established that the model predicts the Y values based on the X values. *But how do we calculate the sensitivity and specificity using the model results?*
 
-First, we need to generate predictions. The `augment()` function from the `dplyr` package is an excellent choice for this task.
+First, we need to generate predictions. The <a href='https://broom.tidymodels.org/reference/augment.lm.html' target='_blank'>`augment()`</a> function from the <a href='https://dplyr.tidyverse.org/' target='_blank'>`dplyr`</a> package is an excellent choice for this task.
 
 ```{r}
 # Load the reactable package
 library(reactable)
 
 # Use the augment() function to add predicted values to the data frame
-the_predictions <- model %>%
+the_predictions <- model |>
   augment(df)  |> 
   # Rename the "y" column to "Observed"
   rename("Observed" = "y")
 
 
 # Create an interactive table using the reactable::reactable() function
-the_predictions %>%
+the_predictions |>
   reactable::reactable(
     groupBy = "Observed",
     columns = list(
@@ -163,36 +165,36 @@ the_predictions %>%
 ```
 
 
-At this point, we have both the predicted class and the observed class. We could use the same method we employed in the earlier demonstration (`tbl_cross`), or we can make use of the `sensitivity()` and `specificity() `functions from the `yardstick` package. Let's look at how this works.
+At this point, we have both the predicted class and the observed class. We could use the same method we employed in the earlier demonstration (<a href='https://www.danieldsjoberg.com/gtsummary/reference/tbl_cross.html' target='_blank'>`tbl_cross()`</a>), or we can make use of the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> package. Let's look at how this works.
 
-### computing sensitivity and specificity using a cross table
+### Computing sensitivity and specificity using a cross table
 ```{r}  
 the_predictions  |> 
-tbl_cross(.pred_class, Observed, percent = "col")
+    tbl_cross(.pred_class, Observed, percent = "col")
 ```
 
 This yields the same results as before.
 
 ### Computing sensitivity and specificity using the yardstick package
 
-Finally! we can use the `sensitivity()` and `specificity()` functions from the `yardstick` package to calculate the sensitivity and specificity of our model.
+Finally! we can use the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> package to calculate the sensitivity and specificity of our model.
 
 ```{r}
 sens <- the_predictions  |> 
-mutate(Observed = as.factor(Observed))  |>
-sensitivity(Observed, .pred_class)
+  mutate(Observed = as.factor(Observed))  |>
+  sensitivity(Observed, .pred_class)
 
 spec <- the_predictions  |> 
-mutate(Observed = as.factor(Observed))  |>
-specificity(Observed, .pred_class)
+  mutate(Observed = as.factor(Observed))  |>
+  specificity(Observed, .pred_class)
 
 bind_rows(sens, spec)  |> 
-gt()
+  gt()
 ```
 
 Oops! That doesn't look right. Why is that?
 
-In the context of logistic regression, R's default behavior is to take the first level of a factor as the reference category when using the glm function. This behavior becomes particularly important when we're dealing with binary outcomes, often coded as 0 (absence of the event) and 1 (presence of the event). By default, R will take 0 as the reference level and compare it against 1, due to 0 coming before 1 in numerical order.
+In the context of logistic regression, R's default behavior is to take the first level of a factor as the reference category when using the <a href='https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm' target='_blank'>`glm`</a> function. This behavior becomes particularly important when we're dealing with binary outcomes, often coded as 0 (absence of the event) and 1 (presence of the event). By default, R will take 0 as the reference level and compare it against 1, due to 0 coming before 1 in numerical order.
 
 However, when we're working with factors, the order in which they're arranged is somewhat arbitrary and it doesn't necessarily make sense to always treat 0 as the absence of an event and 1 as the presence of an event [@KuhnS2022]. 
 
@@ -205,19 +207,19 @@ This is from [here](https://www.tmwr.org/performance.html) or page 116 in the ti
 
 **The `yardstick` package interprets this setup a bit differently**. It views the first factor as the most important, leading it to switch the factor levels in the process. This change in order may affect our sensitivity and specificity measures.
 
-To maintain consistency with our earlier computations, it's necessary to explicitly set the reference level in the `sensitivity()` and `specificity()` functions, using the `event_level` = "second" argument. This ensures that the factor levels are interpreted in a way that aligns with our initial demonstration.
+To maintain consistency with our earlier computations, it's necessary to explicitly set the reference level in the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> functions, using the `event_level` = "second" argument. This ensures that the factor levels are interpreted in a way that aligns with our initial demonstration.
 
 ```{r}
 sens_y  <- the_predictions  |>
-mutate(Observed = as.factor(Observed))  |>
-sensitivity(Observed, .pred_class, event_level = "second")
+  mutate(Observed = as.factor(Observed))  |>
+  sensitivity(Observed, .pred_class, event_level = "second")
 
 spec_y  <- the_predictions  |>
-mutate(Observed = as.factor(Observed))  |>
-specificity(Observed, .pred_class, event_level = "second")
+  mutate(Observed = as.factor(Observed))  |>
+  specificity(Observed, .pred_class, event_level = "second")
 
 bind_rows(sens_y, spec_y)  |> 
-gt()
+  gt()
 ```
 
 Now we've restored our original results. 😎
@@ -225,10 +227,9 @@ Now we've restored our original results. 😎
 ::: {.callout-caution}
 
 ## Caution
-This 'switching' behavior in yardstick is also apparent in the` collect_metrics()` function, making it essential to check the event level. Failure to do so may result in inadvertently switching the event level.
+This 'switching' behavior in yardstick is also apparent in the <a href='https://tune.tidymodels.org/reference/collect_predictions.html' target='_blank'>`collect_metrics()`</a> function, making it essential to check the event level. Failure to do so may result in inadvertently switching the event level.
 :::
 
 # Summary 
 
 In this blog post, we've walked through the process of computing sensitivity and specificity using the tidymodels package in R, demonstrating it with a simulated dataset. These metrics are indispensable for evaluating the performance of binary classification models. Don't forget: for the most accurate and realistic results, always evaluate your models using separate test data.
-
