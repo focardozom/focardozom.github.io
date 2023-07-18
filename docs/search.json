@@ -53,14 +53,14 @@
     "href": "index.html",
     "title": "Francisco Cardozo",
     "section": "",
-    "text": "Your text is almost perfect, with just a minor correction needed. The word “that” in “Business that Care Toolkit” should be “That” for title case consistency. Here’s the corrected text:\ntitle: “”"
+    "text": "Thank you for visiting my webpage. I hope you find it informative. If you have any further questions or would like to learn more about my work, please do not hesitate to contact me."
   },
   {
     "objectID": "index.html#hi-there",
     "href": "index.html#hi-there",
     "title": "Francisco Cardozo",
-    "section": "Hi there!",
-    "text": "Hi there!\n\nThank you for visiting my webpage. I hope you find it informative. If you have any further questions or would like to learn more about my work, please do not hesitate to contact me."
+    "section": "",
+    "text": "Thank you for visiting my webpage. I hope you find it informative. If you have any further questions or would like to learn more about my work, please do not hesitate to contact me."
   },
   {
     "objectID": "index.html#about-me",
@@ -74,7 +74,7 @@
     "href": "index.html#web-projects",
     "title": "Francisco Cardozo",
     "section": "Web Projects",
-    "text": "Web Projects\n\nBusiness That Care Toolkit\nTrustworthy"
+    "text": "Web Projects\n\nBusiness That Care Toolkit\nThrustworthy"
   },
   {
     "objectID": "index.html#r-packages",

@@ -1,7 +1,4 @@
-Your text is almost perfect, with just a minor correction needed. The word "that" in "Business that Care Toolkit" should be "That" for title case consistency. Here's the corrected text:
-
 ---
-
 title: ""
 ---
 
@@ -23,7 +20,7 @@ My primary goal is to evaluate the real-life impact of interventions. I strive t
 ## Web Projects
 
 - [Business That Care Toolkit](https://test-toolkit.netlify.app/)
-- [Trustworthy](https://francisco-cardozo.shinyapps.io/thrusworthy/)
+- [Thrustworthy](https://francisco-cardozo.shinyapps.io/thrusworthy/)
 
 ## R Packages
 
