@@ -1,6 +1,7 @@
 project:
-  type: website
   output-dir: docs
+  type: website
+
 
 website:
   title: Francisco Cardozo
@@ -28,6 +29,12 @@ website:
       - icon: linkedin
         text: LinkedIn
         href: https://www.linkedin.com/in/francisco-cardozo-757050264/
+    cookie-consent:
+      type: express
+      style: headline
+      palette: dark
+    google-analytics:
+      tracking-id: "G-xxxxxxx"
 
 
 format:
