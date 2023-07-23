@@ -1,0 +1,203 @@
+---
+title: "Computing Sensitivity and Specificity Using collect_metrics"
+author: 
+  - "Francisco Cardozo"
+  - ""
+date: 2023-07-22
+categories: ["Sensitivity", "Tidymodels", "Specificity"]
+tags: ["Sensitivity", "Tidymodels", "Specificity"]
+---
+
+(in progress)
+
+In the last [post](https://focardozom.github.io/posts/2023-07-16-yarstick/2023-07-15.html), we discussed computing sensitivity and specificity using the `sensitivity()` and `specificity()` functions from the `yardstick` package. In this post, we'll demonstrate how to compute these metrics using the `collect_metrics` function from the `tidymodels` package.
+
+### Dataset
+
+First, let's recreate the confusion matrix from the previous post.
+
+```{r recreate-confusion-matrix, warning=FALSE, message=FALSE}
+library(tidyverse)  # Load tidyverse package
+library(gt)         # Load gt package
+library(gtsummary)  # Load gtsummary package
+
+# Create a tibble with the confusion matrix data
+confusion_matrix_long <- tibble(
+  'Predicted Class' = c('1', '1', '0', '0'),
+  'True Class' = c('True 1', 'True 0', 'True 1', 'True 0'),
+  'Count' = c(40, 15, 10, 35)
+)
+
+confusion_matrix_long |> gt()
+```
+
+The `tbl_cross()` function is useful for computing these metrics after a bit of data wrangling.
+
+```{r tbl_cross, warning=FALSE, message=FALSE}
+
+# Duplicate each row of the tibble based on the value in the Count column
+confusion_matrix_long |>
+  uncount(Count) |>
+  tbl_cross(percent = "col")  
+
+```
+
+The sensitivity of our model is 80%, and the specificity is 70% - pretty good values!
+
+### Computing Sensitivity and Specificity Using collect_metrics
+
+In machine learning, sensitivity and specificity are important metrics used to evaluate and improve model performance. When we tune model parameters across different datasets, it's useful to compute these metrics for each one. This gives us useful data to make decisions on enhancing model performance. We can calculate these metrics efficiently using the collect_metrics function from the tidymodels package.
+
+We'll use fit_resamples() from tidymodels to estimate the model many times. This uses different samples from our training data. Then, collect_metrics will give us the sensitivity and specificity for each dataset.
+
+### Cross-Validation Folds
+
+We'll start by using vfold_cv() from tidymodels to create 10 folds of data. To get a better estimate of the sensitivity and specificity, we'll use the repeats argument to repeat the process 10 times. This gives us 100 folds of data in total.
+
+(add here a link to the post on cross-validation)
+
+```{r vfold_cv, warning=FALSE, message=FALSE}
+# Load packages
+library(tidymodels) # Load tidymodels package
+tidymodels::tidymodels_prefer() # Set tidymodels as the default modeling framework
+
+# Create a tibble with the data
+df <- confusion_matrix_long |>
+  uncount(Count)  |> 
+  rename(
+    x = `Predicted Class`, 
+    y = `True Class`
+  )
+
+# Create 10 folds of the data
+folds <- vfold_cv(df, v = 10, repeats = 10)
+```
+
+### Model Specification
+
+Having the folds ready, we can now specify the model. 
+
+```{r fit_resamples, warning=FALSE, message=FALSE}
+
+# Define a logistic regression model specification
+model_spec <- logistic_reg() |>
+  set_engine("glm") |>
+  set_mode("classification")
+
+# Create a recipe for preprocessing the data
+recipe_glm <- recipe(y ~ x, data = df) |>
+  # Convert all nominal variables to dummy variables
+  step_dummy(all_nominal(), -all_outcomes()) 
+
+# Define a workflow for fitting the logistic regression model
+wr_glm <- workflow() |>
+  # Add the recipe to the workflow
+  add_recipe(recipe_glm) |>
+  # Add the model specification to the workflow
+  add_model(model_spec)
+```
+
+Perfect! Now we are ready to estimate the model.
+
+### Estimating the Model
+
+```{r fit_resamples2, warning=FALSE, message=FALSE}
+
+# Estimate the model 100 times
+model_resamples <- fit_resamples(
+  wr_glm, 
+  folds, 
+  control = control_resamples(save_pred = TRUE)
+)
+```
+
+Notice that we used the `save_pred` argument in `control_resample` because we want to save the predictions of the model for each fold. This allows us to compute the sensitivity and specificity for each fold, which is the goal of this post.
+
+Let's take a look at one of the results to see how the predictions are saved.
+
+```{r model_resamples, warning=FALSE, message=FALSE}
+
+# Extract the metrics for the first resample
+model_resamples |>
+  # Select the first resample
+  slice(1) |>
+  # Unnest the metrics data
+  unnest(.metrics)  |> 
+  select(.metric, .estimate) |>
+  gt()
+```
+
+By default, we obtain `accuracy` and `roc_auc` metrics for classification models. However, we want a specific metric set (`sensitivy` and `specificity`). To achieve this, we can use `metric_set()` function from the `yardstick` package.
+
+Alert!
+Be mindful of the event level used by yardstick. As we demonstrated in the previous post, `yardstick` uses the first level as the event of interest. To change this behavior, we need to specify the `event_level` argument when using the `fit_resamples()` function.
+
+### Computing Sensitivity and Specificity
+
+```{r}  
+
+my_metrics <- metric_set(sens, spec)
+
+model_resamples <- fit_resamples(
+  wr_glm, 
+  folds, 
+  metrics = my_metrics,
+  control = control_resamples(
+    save_pred = TRUE,
+    event_level = "second"
+  )
+)
+
+```
+
+Tip!
+You can find all available metrics in yardstick [here](https://yardstick.tidymodels.org/reference/index.html).
+
+Now, let's take a look at the results.
+
+```{r}  
+model_resamples |>
+    slice(1) |> 
+    unnest(.metrics)  |> 
+    select(.metric, .estimate) |>
+    gt()
+
+```
+
+Good, we've got the sensitivity and specificity for each fold. Next, we can get a summary of these values. We can even compute metrics like mean, median, and standard deviation from these values. We'll cover this in the next post. For now, let's find the mean of our metrics.
+
+```{r}  
+model_resamples |>
+    collect_metrics(summarise = TRUE)  |> 
+    gt()
+```
+
+Well done! the estimated sensivility of our model is 79.9% and the specificity 70.6%, pretty close to our true values. 
+
+Now that we have all of this information, we can't resist plotting the observed distribution of the sensitivity and specificity values. 
+
+```{r}  
+
+model_resamples  |> 
+  unnest(.metrics)  |> 
+  ggplot(aes(x = .estimate, fill = .metric)) +
+  geom_density() +
+  facet_wrap(~.metric) +
+  theme_minimal() +
+  scale_fill_manual(values = c("#00AFBB", "#E7B800"))
+   
+```
+
+Next time, we'll look more closely at these values. We'll work out which ones are bigger than 0.5 and see how spread out they are. But, we need to be careful because these numbers are connected; they all come from the same data. Don't miss it!
+
+## Summary 
+
+In this blog post, we discussed the use of the `tidymodels` package to compute the sensitivity and specificity of a model - two important measures for evaluating model performance. We started with the recreation of a confusion matrix, then used the `tbl_cross()` function to perform some data wrangling.
+
+Next, we leveraged `fit_resamples()` from the `tidymodels` package to estimate our model multiple times, using cross-validation with 10 repeated folds to create 100 datasets in total.
+
+We set up a logistic regression model, fit it to our data, and estimated the model multiple times using the created folds. The saved predictions allowed us to compute sensitivity and specificity for each fold.
+
+We defined a custom set of metrics - roc_auc, sensitivity, and specificity - using the `metric_set()` function from the `yardstick` package. Finally, we used `collect_metrics()` to compute the average of these metrics for all the folds, and visualized the distribution of the sensitivity and specificity values.
+
+Future posts will delve into calculating confidence intervals and evaluating the variability of these values across resamples.

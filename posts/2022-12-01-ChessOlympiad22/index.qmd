@@ -47,8 +47,8 @@ It is important to filter out players with an ELO rating of zero from the analys
 
 
 ```{r plots-with-palyers}
-players %>% 
-  filter(rtg!=0) %>% 
+players |> 
+  filter(rtg!=0) |> 
   ggplot(aes(rtg)) + 
   geom_histogram(bins = 50, fill="gray20") +
   scale_x_continuous(breaks = seq(1000,2900,100))+
@@ -67,8 +67,8 @@ players %>%
 It may be interesting to plot the ELO ratings of players by federation, as the Chess Olympiad is played by national teams. By examining the ELO ratings of players within each federation, we can get a sense of the overall strength of the teams participating in the event. This analysis could potentially provide insight into the results of the Chess Olympiad and help predict the outcomes of matches. 
 
 ```{r elo-by-federation}
-players %>% 
-  filter(rtg>2600) %>% 
+players |> 
+  filter(rtg>2600) |> 
   ggplot(aes(reorder(fed, rtg),rtg)) + 
   theme_minimal() +
   geom_boxplot() +
@@ -93,10 +93,10 @@ A visual representation of the differences in ELO by round are presented in the 
 
 ```{r plot-data-diff}
 
-results %>% 
+results |> 
   filter(elo_difference>=-1000, 
          elo_difference<=1000, 
-         !is.na(elo_white), !is.na(elo_black), elo_white!=0,elo_black!=0) %>% 
+         !is.na(elo_white), !is.na(elo_black), elo_white!=0,elo_black!=0) |> 
   ggplot(aes(as.numeric(elo_white),elo_difference, 
              fill=factor(result_white), 
              color=factor(result_white))) + 
@@ -122,8 +122,8 @@ Now, we can identify the best split of the differences in ELO ratings to classif
 
 ```{r engine}
 cart_spec <-
-   decision_tree() %>% 
-   set_engine("rpart") %>%
+   decision_tree() |> 
+   set_engine("rpart") |>
    set_mode("classification")
 
 ```
@@ -133,12 +133,12 @@ cart_spec <-
 I will add two steps in the recipe. One to filter the data set by round, and the other to convert results in a factor variable.  I also will limit my analysis to players with more than 1600 in ELO. 
 
 ```{r recipie}
-results <- results %>% 
-  filter(as.numeric(elo_white)>1600) %>% 
+results <- results |> 
+  filter(as.numeric(elo_white)>1600) |> 
   filter(as.numeric(elo_black)>1600) 
 
 recipe <- recipe(
-  result_white ~ elo_difference + round_number, data = results) %>% 
+  result_white ~ elo_difference + round_number, data = results) |> 
     step_filter(round_number==round)
   
 ```
@@ -146,8 +146,8 @@ recipe <- recipe(
 ### Create a workflow
 
 ```{r set-workflow}
-wrkfl <- workflow() %>% 
-  add_model(cart_spec) %>% 
+wrkfl <- workflow() |> 
+  add_model(cart_spec) |> 
   add_recipe(recipe)
 
 ```
@@ -160,8 +160,8 @@ I will estimate the model for the round 1.
 
 round <- 1
 
-cart_fit <- wrkfl %>% 
-  fit(data=results) %>% 
+cart_fit <- wrkfl |> 
+  fit(data=results) |> 
   extract_fit_parsnip()
 
 ```
@@ -192,12 +192,12 @@ I will add a the `tree_depth` parameter to my model. The depth of the tree refer
 
 ```{r}
 cart_spec <-
-   decision_tree(tree_depth = 4) %>% 
-   set_engine("rpart") %>%
+   decision_tree(tree_depth = 4) |> 
+   set_engine("rpart") |>
    set_mode("classification")
 
-wrkfl <- workflow() %>% 
-  add_model(cart_spec) %>% 
+wrkfl <- workflow() |> 
+  add_model(cart_spec) |> 
   add_recipe(recipe)
 
 ```
@@ -205,11 +205,11 @@ wrkfl <- workflow() %>%
 ```{r round2}
 round <- 11
 
-cart_fit <- wrkfl %>% 
+cart_fit <- wrkfl |> 
   fit(data=results)
 
-cart_fit <- wrkfl %>% 
-  fit(data=results) %>% 
+cart_fit <- wrkfl |> 
+  fit(data=results) |> 
   extract_fit_parsnip()
 
 cart_fit <- repair_call(cart_fit, data = round)
