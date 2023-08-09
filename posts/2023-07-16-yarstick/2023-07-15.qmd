@@ -140,9 +140,10 @@ So, we've established that the model predicts the Y values based on the X values
 
 First, we need to generate predictions. The <a href='https://broom.tidymodels.org/reference/augment.lm.html' target='_blank'>`augment()`</a> function from the <a href='https://dplyr.tidyverse.org/' target='_blank'>`dplyr`</a> package is an excellent choice for this task.
 
-```{r}
+```{r generate-predictions}
 # Load the reactable package
 library(reactable)
+library(knitr)
 
 # Use the augment() function to add predicted values to the data frame
 the_predictions <- model |>
@@ -153,7 +154,7 @@ the_predictions <- model |>
 
 # Create an interactive table using the reactable::reactable() function
 the_predictions |>
-  reactable::reactable(
+  reactable(
     groupBy = "Observed",
     columns = list(
       x = colDef(aggregate = "unique"),
@@ -168,7 +169,7 @@ the_predictions |>
 At this point, we have both the predicted class and the observed class. We could use the same method we employed in the earlier demonstration (<a href='https://www.danieldsjoberg.com/gtsummary/reference/tbl_cross.html' target='_blank'>`tbl_cross()`</a>), or we can make use of the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> package. Let's look at how this works.
 
 ### Computing sensitivity and specificity using a cross table
-```{r}  
+```{r cross-tab-predictions}  
 the_predictions  |> 
     tbl_cross(.pred_class, Observed, percent = "col")
 ```
@@ -179,7 +180,7 @@ This yields the same results as before.
 
 Finally! we can use the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> package to calculate the sensitivity and specificity of our model.
 
-```{r}
+```{r sensitivity-specificity}
 sens <- the_predictions  |> 
   mutate(Observed = as.factor(Observed))  |>
   sensitivity(Observed, .pred_class)

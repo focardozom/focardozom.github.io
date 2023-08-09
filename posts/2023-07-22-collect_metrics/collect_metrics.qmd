@@ -2,7 +2,7 @@
 title: "Computing Sensitivity and Specificity Using collect_metrics"
 author: 
   - "Francisco Cardozo"
-  - ""
+  - "Catalina Cañizares"
 date: 2023-07-22
 categories: ["Sensitivity", "Tidymodels", "Specificity"]
 tags: ["Sensitivity", "Tidymodels", "Specificity"]
@@ -42,24 +42,29 @@ confusion_matrix_long |>
 
 ```
 
-The sensitivity of our model is 80%, and the specificity is 70% - pretty good values!
+The **sensitivity** of our model is 80%, and the **specificity** is 70% - pretty good values!
 
 ### Computing Sensitivity and Specificity Using collect_metrics
 
-In machine learning, sensitivity and specificity are important metrics used to evaluate and improve model performance. When we tune model parameters across different datasets, it's useful to compute these metrics for each one. This gives us useful data to make decisions on enhancing model performance. We can calculate these metrics efficiently using the collect_metrics function from the tidymodels package.
+In machine learning, **sensitivity** and **specificity** are important metrics used to evaluate and improve model performance. When we tune model parameters across different datasets, it's useful to compute these metrics for each dataset. This gives us useful data to make decisions on enhancing model performance. We can calculate these metrics efficiently using the `collect_metrics()` function from the tidymodels package.
 
-We'll use fit_resamples() from tidymodels to estimate the model many times. This uses different samples from our training data. Then, collect_metrics will give us the sensitivity and specificity for each dataset.
+We'll use `fit_resamples()` to estimate the model many times. This uses different samples from our training data. Then, we'll use `collect_metrics()` to compute the **sensitivity** and **specificity** for each dataset.
 
 ### Cross-Validation Folds
 
-We'll start by using vfold_cv() from tidymodels to create 10 folds of data. To get a better estimate of the sensitivity and specificity, we'll use the repeats argument to repeat the process 10 times. This gives us 100 folds of data in total.
+We'll start by using `vfold_cv()` from tidymodels to create 10 folds of data. To get a better estimate of the sensitivity and specificity, we'll use the *repeats* argument to repeat the sampling process 10 times. This gives us 100 folds of data in total.
 
-(add here a link to the post on cross-validation)
+::: {.callout-tip}
+## Cross-Validation 
+You can learn more about cross-validation [here](https://www.tidymodels.org/start/resampling/).
+:::
 
 ```{r vfold_cv, warning=FALSE, message=FALSE}
 # Load packages
 library(tidymodels) # Load tidymodels package
 tidymodels::tidymodels_prefer() # Set tidymodels as the default modeling framework
+
+set.seed(1906) # Set seed for reproducibility
 
 # Create a tibble with the data
 df <- confusion_matrix_long |>
@@ -111,9 +116,9 @@ model_resamples <- fit_resamples(
 )
 ```
 
-Notice that we used the `save_pred` argument in `control_resample` because we want to save the predictions of the model for each fold. This allows us to compute the sensitivity and specificity for each fold, which is the goal of this post.
+Notice that we used the *save_pred* argument in `control_resample()` because we want to save the predictions of the model for each fold. This allows us to compute the sensitivity and specificity for each fold, which is the goal of this post.
 
-Let's take a look at one of the results to see how the predictions are saved.
+Let's take a look at one of the results.
 
 ```{r model_resamples, warning=FALSE, message=FALSE}
 
@@ -124,59 +129,82 @@ model_resamples |>
   # Unnest the metrics data
   unnest(.metrics)  |> 
   select(.metric, .estimate) |>
-  gt()
+  gt()  |> 
+  fmt_number(decimals = 3)
 ```
 
-By default, we obtain `accuracy` and `roc_auc` metrics for classification models. However, we want a specific metric set (`sensitivy` and `specificity`). To achieve this, we can use `metric_set()` function from the `yardstick` package.
+By default, we obtain **accuracy** and **roc_auc** metrics for classification models. However, we want a specific metric set (**sensitivy** and **specificity**). To achieve this, we can use `metric_set()` function from the `yardstick` package.
 
-Alert!
-Be mindful of the event level used by yardstick. As we demonstrated in the previous post, `yardstick` uses the first level as the event of interest. To change this behavior, we need to specify the `event_level` argument when using the `fit_resamples()` function.
+::: {.callout-caution}
+## event_level = ?
+
+Be mindful of the event level used by yardstick. As we demonstrated in the [previous post](https://focardozom.github.io/posts/2023-07-16-yarstick/2023-07-15.html), `yardstick` uses the first level as the event of interest. To change this behavior, we need to specify the *event_level* argument when using the `fit_resamples()` function.
+
+:::
+
 
 ### Computing Sensitivity and Specificity
 
-```{r}  
+```{r warning=FALSE, message=FALSE}  
 
+# Define the metrics to use
 my_metrics <- metric_set(sens, spec)
 
+# Fit the logistic regression model using resampling
 model_resamples <- fit_resamples(
   wr_glm, 
   folds, 
   metrics = my_metrics,
   control = control_resamples(
+    # Save the predicted values for each resample
     save_pred = TRUE,
+    # Set the event level to "second"
     event_level = "second"
   )
 )
 
 ```
 
-Tip!
+::: {.callout-tip}
 You can find all available metrics in yardstick [here](https://yardstick.tidymodels.org/reference/index.html).
+:::
 
-Now, let's take a look at the results.
+Now, let's dive into the results. For a start, we'll focus on the first resample. Although this may provide an imperfect estimation of our "true" values, theory assures us that as we increase the number of resamples, the average of the metrics will move closer to these "true" values. Let's see this in action!
 
 ```{r}  
-model_resamples |>
-    slice(1) |> 
-    unnest(.metrics)  |> 
-    select(.metric, .estimate) |>
-    gt()
+# Extract the metrics for the first resample
+model_resamples %>%
+  # Select the first resample
+  slice(1) %>%
+  # Unnest the metrics data
+  unnest(.metrics) %>%
+  # Select the metric and estimate columns
+  select(.metric, .estimate) %>%
+  # Create a gt table
+  gt() %>%
+  # Format the estimate column to 3 decimal places
+  fmt_number(decimals = 3)
 
 ```
 
-Good, we've got the sensitivity and specificity for each fold. Next, we can get a summary of these values. We can even compute metrics like mean, median, and standard deviation from these values. We'll cover this in the next post. For now, let's find the mean of our metrics.
+Good, we have achieved a **sensitivity** of 100% and **specificity** of 57.1%, which, frankly, isn't an ideal representation of our true values. But, let's keep in mind, this is just a single estimate out of our 100 trials. Now, let's take it to the next level and summarize these values across all our estimates.
 
 ```{r}  
-model_resamples |>
-    collect_metrics(summarise = TRUE)  |> 
-    gt()
+# Collect and summarise the metrics for all resamples
+model_resamples %>%
+  # Collect the metrics and summarise them
+  collect_metrics(summarise = TRUE) %>%
+  # Create a gt table
+  gt() %>%
+  # Format the table to 3 decimal places
+  fmt_number(decimals = 3)
 ```
 
-Well done! the estimated sensivility of our model is 79.9% and the specificity 70.6%, pretty close to our true values. 
+Great job! Our model's estimated **sensitivity** is at 81.0% and **specificity** stands at 70.3%, quite near to our actual values.
 
-Now that we have all of this information, we can't resist plotting the observed distribution of the sensitivity and specificity values. 
+With all this valuable data at hand, it's tempting to visualize it. So, let's move on to plotting the observed distribution for both sensitivity and specificity values to get a better understanding of our model's performance. 
 
-```{r}  
+```{r warning=FALSE, message=FALSE}  
 
 model_resamples  |> 
   unnest(.metrics)  |> 

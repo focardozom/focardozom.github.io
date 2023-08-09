@@ -1,66 +1,67 @@
 ---
-title: "Chess Olympiad 2022"
+title: "Can ELO Predict the Outcome of Chess Games?"
 author: "Francisco Cardozo"
 date: 2022-12-01
-categories: ["R"]
+categories: ["Chess", "Trees", "Machine Learning"]
 tags: ["Chess", "Trees", "Machine Learning"]
+format:
+  html:
+    code-fold: true
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-
-```
-
-```{r setup}
-library(ChessOlympiad22)
-```
-
-
-# Does ELO predict the wining move?
-
-The ELO rating system is a method for calculating the relative skill levels of chess players. The rating is based on the results of games played, and is used to compare the strength of one player to another. The higher a player's ELO rating, the more skilled they are considered to be.
-
-In this document, the ELO difference between two players is used to evaluate the probability of one player winning the match.
-
-### Libraries
 
 ```{r libraries, message=FALSE}
-
+library(ChessOlympiad22)
 library(rpart.plot)
 library(tidymodels)
 ```
 
-### Load the players data
+
+The [ELO rating system](https://en.wikipedia.org/wiki/Elo_rating_system){target="_blank"} is a method used to calculate the relative skill levels of chess players, based on their game results. A higher ELO rating indicates a higher perceived skill level.
+
+In this document, the ELO difference between two players is used to evaluate the probability of one player winning the match.
+
+I will use the The [ChessOlympiad](https://github.com/focardozom/ChessOlympiad22){target="_blank"} package. It contains two datasets: `players` and `results`. The `players` dataset contains the ELO ratings of all players participating in the 44th Chess Olympiad, which took place in Chennai, India, in 2022. The `results` dataset contains the results of all matches played in the tournament.
+
+
+### Distribution of ELO 
 
 ```{r data-palyers}
 data("players")
 ```
 
-### Distribution of ELO 
-
 First, let's visualize the ELO distribution of the players. 
 
 It is important to filter out players with an ELO rating of zero from the analysis, as these players have not yet been rated and do not have a known skill level. 
-
 
 ```{r plots-with-palyers}
 players |> 
   filter(rtg!=0) |> 
   ggplot(aes(rtg)) + 
-  geom_histogram(bins = 50, fill="gray20") +
-  scale_x_continuous(breaks = seq(1000,2900,100))+
+  geom_histogram(bins=90,fill="gray90", alpha=0.85, color="gray95") +
+  scale_x_continuous(breaks = seq(1000,2900,150))+
   theme_minimal() +
-  coord_flip() +
-  theme(axis.text = element_text("")) +
-  labs(x="Elo Rating System (player strength)",
-       y="Number of players",
-       title = "Elo Rating System of players in Chess Olympiad, 2022. 
-       Chennai, India ",
-       caption = "Magnus Carlsen has the highest Elo rating in the tournoment:2864")
-
+  theme(axis.text.y = element_blank(),
+        panel.grid = element_blank()) +
+  labs(x="Elo Rating System (Higher values indicate greater player strength)",
+       y="",
+       title = "Elo Rating System of players in Chess Olympiad, 2022. Chennai, India ",
+       caption = "Magnus Carlsen has the highest Elo rating in the tournament: 2864") +
+  geom_text(data = players %>% 
+    filter(rtg > 2800),
+            aes(x = 2550, 
+            y = 4.5, 
+            label = "Magnus Carlsen"),
+            size = 3,
+            color = "black") +
+  geom_curve(data = players %>% filter(rtg > 2800),
+               aes(x = 2700, 
+               y = 4.4, xend = 2864.8, 
+               yend = 1),
+               arrow = arrow(length = unit(0.3, "cm")),
+               color = "red",
+               linewidth = 0.5,
+               curvature = -0.5)
 
 ```
 
@@ -73,21 +74,20 @@ players |>
   theme_minimal() +
   geom_boxplot() +
   coord_flip() +
+  theme(panel.grid = element_blank()) +
   labs(x="", y="ELO")
 ```
 
-The United States have the strongest team in the tournament. 
+According to ELO ratings, the United States fielded the strongest team in the tournament.
 
-### Load results data
-
-```{r data-diff}
+```{r load-results}
 data("results")
 ```
 
 
 ### Differences in ELO by round
 
-The Chess Olympiad was a Swiss-style tournament, which means that players are paired against opponents with similar scores in each round. In the first round, the highest-ranked player is matched against the player in the middle of the ELO rating distribution. The second highest-ranked player is then matched against the player just below the player in the middle of the ELO rating distribution, and so on. This implies that ELO differences are maximized in the first round. Then, the pairings for each subsequent round are determined based on the results of the previous rounds, with the goal of ensuring that players face opponents with similar scores. 
+The Chess Olympiad followed a Swiss-style tournament, meaning that players are paired with opponents with similar scores in each round. Specifically, in the first round, the highest-ranked player is matched against the median-ranked player, followed by the second-highest ranked player against the next below median, and so forth.
 
 A visual representation of the differences in ELO by round are presented in the following graph. 
 
@@ -114,11 +114,9 @@ results |>
 
 ```
 
-# Model the winning chances for players with the white pieces based on ELO difference. 
+# Model the winning chances for players with the white pieces based on ELO difference 
 
-Now, we can identify the best split of the differences in ELO ratings to classify the results of chess games. I will use `tidymodels` to estimate a CART model.  
-
-### Set the engine
+Now, let's try to identify the optimal divisions in ELO rating differences that could potentially classify the outcomes of chess games. For this, I will be using the `tidymodels` package to estimate a Classification and Regression Trees (CART) model. 
 
 ```{r engine}
 cart_spec <-
@@ -127,8 +125,6 @@ cart_spec <-
    set_mode("classification")
 
 ```
-
-### Create a recipie 
 
 I will add two steps in the recipe. One to filter the data set by round, and the other to convert results in a factor variable.  I also will limit my analysis to players with more than 1600 in ELO. 
 
@@ -143,8 +139,6 @@ recipe <- recipe(
   
 ```
 
-### Create a workflow
-
 ```{r set-workflow}
 wrkfl <- workflow() |> 
   add_model(cart_spec) |> 
@@ -152,9 +146,7 @@ wrkfl <- workflow() |>
 
 ```
 
-### Estimate the model
-
-I will estimate the model for the round 1. 
+Let's estimate the model for the round 1. 
 
 ```{r estimate-round1}
 
@@ -170,15 +162,14 @@ cart_fit <- wrkfl |>
 
 Finally, I will create a tree showing the splits
 
-```{r draw-tree}
+```{r draw-tree, warning=FALSE, message=FALSE}
 
 cart_fit <- repair_call(cart_fit, data = round)
 
 cart_tree_fit <- cart_fit$fit
 
-
 rpart.plot::rpart.plot(cart_tree_fit, roundint = FALSE)
-rpart.rules(cart_tree_fit, cover = TRUE)
+
 ```
 
 According to the model, a difference of 12 in the ELO is sufficient to accurately predict the winner in 95% of cases and the loser in 91% of cases.
@@ -186,7 +177,7 @@ According to the model, a difference of 12 in the ELO is sufficient to accuratel
 
 # Model the last round 
 
-Let's test the model for the final round, where the matches happened between the strongest opponents.
+Now, let's apply the model to the final round, which featured matches between the most formidable opponents.
 
 I will add a the `tree_depth` parameter to my model. The depth of the tree refers to the number of levels the tree has.
 
@@ -202,7 +193,7 @@ wrkfl <- workflow() |>
 
 ```
 
-```{r round2}
+```{r last-round}
 round <- 11
 
 cart_fit <- wrkfl |> 
@@ -217,13 +208,16 @@ cart_fit <- repair_call(cart_fit, data = round)
 cart_tree_fit <- cart_fit$fit
 
 rpart.plot::rpart.plot(cart_tree_fit, roundint = FALSE)
-rpart.rules(cart_tree_fit, cover = TRUE)
 
 ```
 
-The colors of the leaves in the decision tree suggest that ELO differences continue to be an important factor in the final round of the chess tournament. The model appears to be more accurate at predicting the outcomes of games with large ELO differences. For example, if you have more than 333 points in ELO, the model predicts 63% wining chances for you. However, if the ELO difference is less than 333 (but more than 115), the model predicts  55% of draw.
+```{r results-table, warning=FALSE, message=FALSE} 
+
+rpart.rules(cart_tree_fit, cover = TRUE)
+```
+
+The color-coding of the decision tree leaves suggests that differences in ELO ratings remain a critical factor, even in the final round of the chess tournament. It seems that the model is particularly adept at predicting outcomes when the ELO differences are substantial. For example, if you have more than 333 points in ELO, the model predicts 63% wining chances for you. However, if the ELO difference is less than 333 (but more than 115), the model predicts  55% of draw.
 
 When the ELO difference is less than 115, the model's predictions become more interesting. If a player has 176 points less than their opponent, the model is more likely to classify them as a loser (61%). However, if the ELO difference is less than 85 points, the player still has a good chance of winning the game. This could be seen as an indicator of the performance of some players with lower ELO ratings who are having a strong tournament. On the other hand, if the ELO difference is greater than 85 points, most of the chances are for a draw.
 
-This was a quick example of how to use ChessOlympiad package. 
-
+This serves as a quick demonstration of how the ChessOlympiad package can be utilized in predictive modeling.
