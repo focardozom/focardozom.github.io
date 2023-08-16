@@ -172,8 +172,8 @@ cookieconsent.run({
    
   <ul>
   <li><a href="#the-story" id="toc-the-story" class="nav-link active" data-scroll-target="#the-story">The Story</a></li>
-  <li><a href="#mathematical-explanation" id="toc-mathematical-explanation" class="nav-link" data-scroll-target="#mathematical-explanation">Mathematical Explanation</a></li>
   <li><a href="#python-code-to-compute-the-total-number-of-grains" id="toc-python-code-to-compute-the-total-number-of-grains" class="nav-link" data-scroll-target="#python-code-to-compute-the-total-number-of-grains">Python Code to Compute the Total Number of Grains</a></li>
+  <li><a href="#while-loop-in-python" id="toc-while-loop-in-python" class="nav-link" data-scroll-target="#while-loop-in-python">While Loop in python</a></li>
   </ul>
 </nav>
     </div>
@@ -186,6 +186,8 @@ cookieconsent.run({
   <div class="quarto-categories">
     <div class="quarto-category">Chess</div>
     <div class="quarto-category">Python</div>
+    <div class="quarto-category">loops</div>
+    <div class="quarto-category">exponential growth</div>
   </div>
   </div>
 
@@ -215,16 +217,73 @@ cookieconsent.run({
 
 <section id="the-story" class="level1">
 <h1>The Story</h1>
-<p>Once upon a time in ancient India, a wise courtier presented a challenge to his king. He placed a single grain of rice on the first square of a chessboard and then asked the king to double the number of grains on each subsequent square until all 64 squares were filled. In the beginning, the king thought that it was a meaningless amount of rice, but then he realized the astronomical sum this would amount to.</p>
-<p>This story illustrates the power of exponential growth. But in this case, I just want to focus on this tale, one of the most common stories related to the origin of chess. To make this more entertaining, let’s compute the actual number using Python.</p>
-</section>
-<section id="mathematical-explanation" class="level1">
-<h1>Mathematical Explanation</h1>
-<p>The number of grains on the chessboard follows exponential growth, where each term is double the previous one. The total number of grains can be computed using the formula for the sum of a geometric progression, but don’t worry, we don’t need to use this formula. We now have computers that can actually compute the number of grains by adding one by one! Crazy, isn’t it?</p>
+<p>Once upon a time in ancient India, a wise courtier presented a challenge to his king using a chessboard and some grains of rice. He placed a single grain of rice on the first square of the chessboard, then asked the king to double the number of grains on each subsequent square until all 64 squares were filled. Initially, the king thought that the result would be a meaningless amount of rice, but he soon realized the astronomical sum this would amount to.</p>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/img.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">“Generated with Midjourney”</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:5%;">
+
+</div><div class="column" style="width:55%;">
+<p>This story illustrates the power of exponential growth, a mathematical concept that can describe certain patterns in nature and society. Exponential growth occurs when the rate of growth is proportional to the current value, leading to increasingly rapid growth over time. This type of growth can be found in many real-world phenomena, including the spread of disease, and the adoption of new technologies.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Pandemics</strong>: In the early stages of a pandemic, such as COVID-19, the number of infections may double within a fixed time period, leading to an exponential increase.</p>
+<p><strong>Social Media and Viral Content</strong>: Posts or videos that “go viral” on social media platforms can exhibit exponential growth. A piece of content might be shared by a few people initially, but if each person who sees it shares it with others, the total number of views can grow exponentially.</p>
+<p><strong>Environmental Concerns</strong>: Exponential growth can also have negative consequences, such as in the spread of invasive species or the consumption of non-renewable resources, leading to potential environmental damage.</p>
+</div>
+</div>
+<p>I will use the story of chess to demonstrate how quickly the number of grains grows when it doubles over the course of only 64 steps. I will also provide <code>Python</code> code to calculate the total number of grains on the chessboard.</p>
 </section>
 <section id="python-code-to-compute-the-total-number-of-grains" class="level1">
 <h1>Python Code to Compute the Total Number of Grains</h1>
-<p>We can compute the total number of grains using a <code>while</code> loop in Python:</p>
+<p>Imagine you have a bag of grains, and you want to fill a chessboard with them. You start with one grain on the first square, then double the number of grains on each subsequent square until you reach the 64th square. You can think of this process like a snowball rolling down a hill, getting bigger and bigger as it goes.</p>
+<p>In Python, we can use something called a <code>while loop</code> to replicate this process. It’s like having a robot that puts the grains on the squares for you, following your exact instructions: <em>“Start with one grain, then double the number, and keep going until you fill all 64 squares.”</em></p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+While Loop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A while loop continues to execute the block of code as long as a specified condition is true. It checks the condition before each iteration, and if the condition is false, it exits the loop.</p>
+</div>
+</div>
+<p>Now, let’s think about a different way to approach the task using what’s called a <code>for loop</code>. Imagine instead that you have 64 small containers, each representing a square on the chessboard, and you know exactly how many grains should go in each one. Starting with the first container, you fill it with one grain, then move to the next one and fill it with double the grains of the previous container, and so on, until you reach the 64th container.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For Loop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <code>for loop</code> works like this staircase-building process. You tell the computer exactly how many times to repeat something, and it follows your instructions step by step. Unlike the snowball rolling down the hill, which might take an unpredictable path, building the staircase (or using a “for loop”) is more controlled and precise.</p>
+</div>
+</div>
+</section>
+<section id="while-loop-in-python" class="level1">
+<h1>While Loop in python</h1>
+<p>Lets to compute that number of grains using the <code>while</code> loop.</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize variables</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>square_number <span class="op">=</span> <span class="dv">1</span>  <span class="co"># The number of the current square</span></span>
@@ -247,11 +306,23 @@ cookieconsent.run({
 </div>
 </div>
 <p>So, it’s a big number. Here are some interesting facts about this number:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ul>
 <li>This number in words is <em>eighteen quintillion, four hundred forty-six quadrillion, seven hundred forty-four trillion, seventy-three billion, seven hundred nine million, five hundred fifty-one thousand, six hundred fifteen</em>, or approximately 18 quintillion, or 18 billion billion.</li>
 <li>In seconds, it is equal to 293,274,701,009 years, 3 weeks, 3 days, 15 hours, 30 minutes, 7 seconds.</li>
 <li>If each grain of rice were 0.05 grams in weight, then the total weight of rice would be 922337203685.48 tons.</li>
 </ul>
+</div>
+</div>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Total number of grains as computed earlier</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>total_grains <span class="op">=</span> <span class="dv">18446744073709551615</span></span>
@@ -277,12 +348,61 @@ The total weight of the rice in kilograms is 922337203685477.62 kilograms
 The total weight of the rice in metric tons is 922337203685.48 metric tons</code></pre>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Tip with Title">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip with Title
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Find more facts here:</p>
 <p><a href="&quot;https://numbermatics.com/n/18446744073709551615/?utm_source=shared&quot;" target="_blank">“18446744073709551615 - Facts”</a></p>
+<p>This is a callout with a title.</p>
+</div>
+</div>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 48%">
+<col style="width: 39%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspect</th>
+<th>While Loop</th>
+<th>For Loop</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Condition vs Sequence</td>
+<td>Uses a condition that can be any logical expression, continues iterating as long as the condition is true.</td>
+<td>Iterates over a sequence of values, executing the code block once for each value.</td>
+</tr>
+<tr class="even">
+<td>Control Over Iteration</td>
+<td>You have full control over how many times the loop iterates by manipulating the condition.</td>
+<td>The number of iterations is defined by the length of the sequence.</td>
+</tr>
+<tr class="odd">
+<td>Potential for Infinite Loop</td>
+<td>There’s a risk of creating an infinite loop if the condition never becomes false.</td>
+<td>Generally not at risk for infinite loops, as it iterates over a finite sequence.</td>
+</tr>
+<tr class="even">
+<td>Use Cases</td>
+<td>Often used when you don’t know how many times you’ll need to iterate.</td>
+<td>Used when you want to iterate a known number of times or over a specific sequence.</td>
+</tr>
+</tbody>
+</table>
 <section id="conclusion" class="level4">
 <h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
-<p>The chessboard problem illustrates how quickly numbers can grow when they double with each step.</p>
-<p>This is a good example of how to use Python to solve a problem that would be difficult to solve by hand.</p>
+<p>The chessboard problem illustrates how quickly numbers can grow when they double with each step. By using a <code>while</code> loop in Python, we’ve computed this enormous figure, providing insight into the power of exponential growth.</p>
+<p>This example shows how Python can be used to solve problems that would be otherwise challenging to compute manually. Feel free to explore the code further, perhaps by changing the number of squares or the initial number of grains. What other intriguing patterns might you discover?</p>
 
 
 </section>
