@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://focardozom.github.io/posts/2023-08-01-while/while.html</loc>
-    <lastmod>2023-12-03T15:52:21.763Z</lastmod>
+    <loc>https://focardozom.github.io/index.html</loc>
+    <lastmod>2023-12-03T16:41:59.820Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts.html</loc>
-    <lastmod>2023-12-03T15:52:20.782Z</lastmod>
+    <lastmod>2023-12-03T16:41:59.046Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-22-collect_metrics/collect_metrics.html</loc>
-    <lastmod>2023-12-03T15:52:19.385Z</lastmod>
+    <lastmod>2023-12-03T16:41:57.601Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2022-12-01-ChessOlympiad22/index.html</loc>
-    <lastmod>2023-12-03T15:52:18.509Z</lastmod>
+    <lastmod>2023-12-03T16:41:56.785Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-15-yarstick/2023-07-15.html</loc>
-    <lastmod>2023-12-03T15:52:20.436Z</lastmod>
+    <lastmod>2023-12-03T16:41:58.677Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-12-03-most/most.html</loc>
+    <lastmod>2023-12-03T16:42:08.392Z</lastmod>
   </url>
 </urlset>
