@@ -2,14 +2,14 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2023-12-03-MOST/most-post.html",
+      "/posts/2023-12-03-most/most-post.html",
       "/posts/2023-08-01-while/while.html",
       "/posts/2023-07-22-collect_metrics/collect_metrics.html",
       "/posts/2023-07-16-yarstick/2023-07-15.html",
       "/posts/2023-05-10-recipes/recipes.html",
       "/posts/2023-01-10-posit-education/Posit.html",
       "/posts/2022-12-01-ChessOlympiad22/index.html",
-      "/posts/thrusworthy.html"
+      "/posts/2022-11-27-trustworthy/thrusworthy.html"
     ]
   }
 ]
