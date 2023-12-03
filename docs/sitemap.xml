@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://focardozom.github.io/index.html</loc>
-    <lastmod>2023-12-03T16:44:30.108Z</lastmod>
-  </url>
-  <url>
     <loc>https://focardozom.github.io/posts.html</loc>
-    <lastmod>2023-12-03T16:41:59.046Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2023-07-22-collect_metrics/collect_metrics.html</loc>
-    <lastmod>2023-12-03T16:41:57.601Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2022-12-01-ChessOlympiad22/index.html</loc>
-    <lastmod>2023-12-03T16:41:56.785Z</lastmod>
+    <lastmod>2023-12-03T16:49:05.779Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-15-yarstick/2023-07-15.html</loc>
-    <lastmod>2023-12-03T16:41:58.677Z</lastmod>
+    <lastmod>2023-12-03T16:49:05.184Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2022-12-01-ChessOlympiad22/index.html</loc>
+    <lastmod>2023-12-03T16:48:52.582Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-08-01-while/while.html</loc>
+    <lastmod>2023-12-03T16:48:49.138Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-05-10-recipes/recipes.html</loc>
+    <lastmod>2023-12-03T16:48:46.237Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-12-03-most/most.html</loc>
-    <lastmod>2023-12-03T16:42:08.392Z</lastmod>
+    <lastmod>2023-12-03T16:48:45.936Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-01-10-posit-education/Posit.html</loc>
+    <lastmod>2023-12-03T16:48:46.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2022-11-27-trustworthy/trustworthy.html</loc>
+    <lastmod>2023-12-03T16:48:49.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-07-22-collect_metrics/collect_metrics.html</loc>
+    <lastmod>2023-12-03T16:49:01.008Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/index.html</loc>
+    <lastmod>2023-12-03T16:49:05.437Z</lastmod>
   </url>
 </urlset>
