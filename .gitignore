@@ -55,7 +55,7 @@ vignettes/*.pdf
 .Thumbs.db
 Thumbs.db
 
-# R projects 
+# R projects
 *.Rproj
 
 # Directories
@@ -146,9 +146,3 @@ _bookdown_files/
 *.zip
 *.Zip
 *.ZIP
-
-# Quarto
-/.quarto/
-/_site/
-.quarto/
-_site/
