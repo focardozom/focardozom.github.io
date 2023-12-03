@@ -59,7 +59,6 @@ Thumbs.db
 *.Rproj
 
 # Directories
-docs/
 data/
 development/
 macros/
