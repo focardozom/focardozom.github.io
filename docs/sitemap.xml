@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://focardozom.github.io/posts.html</loc>
-    <lastmod>2023-10-04T13:51:01.100Z</lastmod>
+    <lastmod>2023-12-03T12:29:48.834Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-22-collect_metrics/collect_metrics.html</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-08-01-while/while.html</loc>
-    <lastmod>2023-10-04T13:50:12.239Z</lastmod>
+    <lastmod>2023-12-03T12:29:48.430Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-05-10-recipes/recipes.html</loc>
@@ -34,6 +34,10 @@
   </url>
   <url>
     <loc>https://focardozom.github.io/index.html</loc>
-    <lastmod>2023-10-04T13:51:00.461Z</lastmod>
+    <lastmod>2023-12-03T12:29:49.667Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-12-03-MOST/most-post.html</loc>
+    <lastmod>2023-12-03T12:29:47.883Z</lastmod>
   </url>
 </urlset>
