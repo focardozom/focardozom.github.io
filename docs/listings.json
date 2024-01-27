@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2024-01-27-explain/explain.html",
       "/posts/2023-12-03-most/most.html",
       "/posts/2023-08-01-while/while.html",
       "/posts/2023-07-22-collect_metrics/collect_metrics.html",
