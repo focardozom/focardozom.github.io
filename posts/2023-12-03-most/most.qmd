@@ -1,0 +1,20 @@
+---
+title: "Balancing Efficiency and Flexibility: The Challenges of Over-Optimization in the Multiphase Optimization Strategy (MOST)"
+author: Francisco Cardozo
+date: 2023-12-03
+categories: ["MOST", "Prevention", "optimization"]
+tags: ["MOST", "Prevention", "optimization"]
+---
+
+The [Multiphase Optimization Strategy (MOST)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2062525/){target="_blank"} is an approach to intervention development in prevention science. MOST is structured around three phases: the Screening Phase, where intervention components are initially selected or eliminated based on efficacy; the Refining Phase, which is dedicated to 'calibrating' these elements to determine their optimal levels and combinations; and the Confirming Phase, during which the refined intervention is subjected to rigorous evaluation via a conventional randomized controlled trial. Although this strategy is designed to optimize intervention development, it faces a significant challenge: the possibility that excessive optimization could be counterproductive. 
+
+Although it may seem counterintuitive, pursuing efficiency can sometimes lead to inferior outcomes. This paradox is named [Goodhart's Law](https://en.wikipedia.org/wiki/Goodhart%27s_law), which suggests that once a measure becomes a target, it can end up distorting the very outcome it was intended to assess. This happens when individuals or groups start to 'game the system' to meet these targets, thereby neglecting the real improvements these measures are designed to track.
+
+Regarding MOST, the issue does not always stem from intentional misbehavior or manipulation; rather, it arises from an overemphasis on efficiency that can result in an excessive focus on optimization, which may neglect components that benefit achieving the outcomes of the intervention. To illustrate how an excessive focus on optimization can lead to worse outcomes, consider students who are overly prepared to excel at standardized tests, which may cause them to neglect to develop a wider range of skills that are crucial for overall life success. Similarly, overly incentivizing researchers with bonuses can encourage fraudulent activities and undermine the integrity of scientific research.
+
+Therefore, within MOST, over-selecting components may lead to overfitting in interventions, which is counterproductive given the need for interventions suitable for diverse populations. Moreover, there is a risk that prioritizing intervention components based solely on their individual 'effectiveness' can overlook the principle that the total impact may not always equal the sum of its parts. These two aspects represent fundamental challenges inherent in the MOST methodology.
+
+To address this challenge, intervention developers must take into consideration an appropriate balance between the efficiency of components and the variability of their effects under diverse conditions. In addressing this, it is crucial to acknowledge that samples are less diverse than populations, that other factors such as implementation components also contribute to program effectiveness, and, overall, that interventions may not be universally beneficial across all population groups.
+
+In conclusion, while MOST is a promising framework for intervention development, it is vital to recognize that it is not perfect. The applicability of the MOST methodology is not universal across all interventions, and the advantages of efficiency must be carefully weighed against the risks of overfitting.
+

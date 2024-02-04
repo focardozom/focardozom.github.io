@@ -1,0 +1,29 @@
+---
+title: "Health Literacy: A Double-Edged Sword?"
+author: Francisco Cardozo
+format: html
+bibliography: references.bib
+csl: apa.csl
+date: 2024-02-03
+categories: ["Health", "Prevention", "Pandemic"]
+tags: ["Health", "Prevention", "Pandemic"]
+---
+
+
+In prevention science, information is often considered the cornerstone of any public health initiative. For example, the Health Belief Model, one of the most commonly employed frameworks in preventive interventions, posits that well-informed individuals are more likely to engage in preventive health behaviors [@rosenstockHealthBeliefModel2000]. This model suggests that people's perceptions of susceptibility, severity, benefits, and barriers related to a specific health issue can predict their behavior. Consequently, interventions that provide information—such as highlighting the benefits of a particular action—tend to increase people's engagement in expected healthy behaviors. During the pandemic, governments and institutions made significant efforts to raise public awareness about various important concepts related to public health. This widespread dissemination of information led to a general increase in health literacy, something previously unseen in past years. As a result, conversations within families began to include public health concepts like R0, infection rates, and social distancing, among others.
+
+While this mass education was intended to be beneficial, it also presented challenges. For instance, some people developed an overconfidence in their own expertise, leading to misunderstandings among the general population. The abundance of information gave rise to a wave of 'influencers' who negatively impacted pandemic response efforts. One example was the promotion of the medication 'ivermectin' by social media influencers as a preventive measure against COVID-19 complications, despite a lack of evidence supporting its efficacy [@Bryant2021]. Furthermore, governments imposed non-medical interventions based on a flawed understanding of the crisis. Measures such as cleaning the soles of shoes and sanitizing streets and commercial spaces were enforced as precautions. However, these actions were later found to be ineffective, leading the general population to question the assumptions underlying interventions aimed at 'flattening the curve.' Politicians capitalized on these misunderstandings to connect with a broad audience, often promoting agendas not aligned with public health goals. This politicization of the pandemic subsequently affected compliance with other measures, such as mask-wearing and vaccination. The issue became so politicized that people could even identify others' political affiliations based on their mask usage or vaccination status, a phenomenon unprecedented in modern history.
+
+This presents a 'double-edged sword' dilemma, where the dissemination of information can be both beneficial and detrimental. On the positive side, both theory and practice suggest that well-informed populations are more likely to adopt healthier behaviors. Conversely, public health concepts can be weaponized to advance specific political agendas that may conflict with general health goals. As a result, prevention scientists face the challenge of finding the right balance between promoting health literacy and mitigating its potential misuse. These reflections lead me to question the idea that 'more information is always better.' At times, an abundance of information can have unintended consequences, rendering individuals more susceptible to the agendas of specific groups.
+
+In my experience in the field,  I've noticed that people in communities interpret risk assessments about adolescent behavior in one of two ways. Some see the data as validation of their existing views, often negative, about young people. For example, if the data shows high rates of alcohol use among teens, these individuals may push for punitive measures like curfews. Conversely, others use the same data to advocate for more preventive programs in families and schools, aiming to better engage and support adolescents. This divergence prompts a critical question: What is our responsibility as disseminators of this information? Or, how can we strike the "right balance" in promoting health literacy to ensure it benefits the community?
+
+As a prevention scientist, I find hard to ensure the responsible use of data and insights generated from scientific research. Our field faces a significant gap in effective communication tools, leading many of us to navigate the complexities of conveying scientific concepts through trial and error. The COVID-19 pandemic showed us the detrimental impact of information misuse, particularly in the flawed implementation of safety measures that could have saved lives. Meanwhile, data collection systems have evolved to become increasingly omnipresent, obligatory, and comprehensive. Information about our health, activities, and personal history is now routinely gathered during medical consultations and intervention programs. Though stored with the assurance of benefiting us, there are no guarantees.
+
+I'd like to leave some questions open for future discussion. Does expanding a population's health vocabulary not only empower them but also make them more vulnerable to misinformation? Could the introduction of scientific terms into public discourse, such as 'flatten the curve,' potentially give institutions more control over individuals? If so, what strategies should we employ in communicating and disseminating these concepts to prevent institutional abuse? 
+
+# References
+
+
+
+```{r}
