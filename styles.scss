@@ -4,9 +4,9 @@
 
 
 /* SCSS HEX */
-$cool-gray: #808DB9ff;
+$cool-gray: #a085bf;
 $smoky-black: #140F0Eff;
-$hunter-green: #495D38ff;
+$hunter-green: #513551;
 $viridian: black;
 $black-olive: #3A372Dff;
 
@@ -34,7 +34,6 @@ $toc-active-border: $hunter-green;
   margin: -10px 0 0 15px;
   float: right;
   border-radius: 80%;
-  transform: rotate(90deg);
   object-fit: cover;
   transition: background-color 0.5s ease;
 }
