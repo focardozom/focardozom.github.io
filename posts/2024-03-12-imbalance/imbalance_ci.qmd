@@ -1,0 +1,30 @@
+---
+title: "Balancing Data in Machine Learning: When Good Intentions Meet Slippery Slopes"
+author: Francisco Cardozo
+format: html
+bibliography: references.bib
+csl: apa.csl
+date: 2024-03-12
+categories: ["Health", "Prevention", "Pandemic"]
+tags: ["Health", "Prevention", "Pandemic"]
+---
+
+Have you ever attended a party where the host tries so hard to make everyone happy that they end up achieving the exact opposite? That's somewhat like what happens when we overenthusiastically balance data in machine learning. The intention is noble, but the outcome? Not always a hit.
+
+In the debate over whether to balance data or not [@yotam2022; @Goorbergh2022], simulations often act as referees, showcasing results that typically advise against manipulating data to achieve balance. But let's be honest, can we trust everything that comes out of a simulation? Shouldn't we explore different angles to grasp why data balancing might not always be the wisest course of action?
+
+### Rubin to the Rescue... Or Not?
+
+Let's turn the spotlight onto a different perspective. Picture yourself in an examination hall, faced with a challenging test. In a moment of desperation, you decide to copy answers from the student next to you. However, you have no evidence they're the top student. So, you start sizing them up. Glasses? Check. Philosophical expressions? Check. Or maybe they're a math wiz because, obviously, that's the universal sign of genius, right?
+
+As your anxiety mounts, something extraordinary happens: a fairy godmother appears, not with a magic wand, but with important message: she whispers your neighbor's grade. Bingo! With newfound confidence, you embark on your note-transcribing quest.
+
+This little adventure parallels adjusting your data based on observed outcomes. Before the fairy godmother's revelation, you're in the dark, much like when we lack insight into the observed outcomes. You might make assumptions (glasses mean brains, right?), but that's shaky ground and we might just be copying the wrong answers, mistaking luck for wisdom. 
+
+And that's where Rubin's thinking comes in. It's not like the fairy godmother, it is much like venturing into an enchanted forest where paths diverge and outcomes remain uncertain.
+
+The Rubin causal model, also known as the potential outcomes framework, is a way to think about cause and effect in a systematic manner. Imagine every time you make a decision, there are two parallel universes: one where you made one choice and another where you made a different one. The Rubin model compares what happens in these two universes to understand the true impact of that choice. It's like having a twin who makes different decisions, and by looking at both your lives, you can see the effects of those decisions. In practice, since we can't see parallel universes, this model uses statistics to estimate what would have happened in the alternate scenario, helping to isolate the cause of an outcome from all the noise. In this context, balancing data is contrary to observing divergence outcomes across parallel universes; it artificially aligns one universe to resemble the other, potentially obscuring causal relationships rather than revealing them.
+
+But wait, as in fairy tales, there's a twist! Machine learning loves predictions like cats love cardboard boxes. And in this arena, confounders could be seen as those annoying but sometimes helpful pieces of furniture. Sure, they make your model look cluttered, but they might just help it predict better, and we have the tools to deal with the 'cluttering': 'In the force of data, too much bias, the clarity it clouds; too much variance, the truth it obscures.
+
+In essence, while machine learning and causal reasoning might seem like strange bedfellows, they both aim to make sense of our chaotic, data-driven world. Perhaps it's time we invite them both to the party, have them shake hands, and work together. After all, the best parties are those where everyone gets along, right?
