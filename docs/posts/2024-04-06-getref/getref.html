@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Francisco Cardozo">
-<meta name="dcterms.date" content="2023-02-10">
+<meta name="dcterms.date" content="2024-04-06">
 
-<title>Francisco Cardozo - Maximizing the Impact of Your R Teaching: Insights from Garrett Grolemund</title>
+<title>Francisco Cardozo - How to Create a Bash Script to Extract Bibliographic References from DOIs</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -136,16 +170,17 @@ cookieconsent.run({
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a>
+  <li><a href="#step-by-step-guide" id="toc-step-by-step-guide" class="nav-link active" data-scroll-target="#step-by-step-guide">Step-by-Step Guide</a>
   <ul class="collapse">
-  <li><a href="#context" id="toc-context" class="nav-link" data-scroll-target="#context">Context</a></li>
-  <li><a href="#insights" id="toc-insights" class="nav-link" data-scroll-target="#insights">Insights</a>
-  <ul class="collapse">
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
-  <li><a href="#mentors-mates-and-accountability" id="toc-mentors-mates-and-accountability" class="nav-link" data-scroll-target="#mentors-mates-and-accountability">Mentors, Mates and Accountability</a></li>
-  <li><a href="#recomendations" id="toc-recomendations" class="nav-link" data-scroll-target="#recomendations">Recomendations</a></li>
+  <li><a href="#step-1-prepare-your-workspace" id="toc-step-1-prepare-your-workspace" class="nav-link" data-scroll-target="#step-1-prepare-your-workspace">Step 1: Prepare Your Workspace</a></li>
+  <li><a href="#step-2-move-to-the-bin-folder" id="toc-step-2-move-to-the-bin-folder" class="nav-link" data-scroll-target="#step-2-move-to-the-bin-folder">Step 2: Move to the bin Folder</a></li>
+  <li><a href="#step-3-create-the-script-file" id="toc-step-3-create-the-script-file" class="nav-link" data-scroll-target="#step-3-create-the-script-file">Step 3: Create the Script File</a></li>
+  <li><a href="#step-4-add-the-script-code" id="toc-step-4-add-the-script-code" class="nav-link" data-scroll-target="#step-4-add-the-script-code">Step 4: Add the Script Code</a></li>
+  <li><a href="#step-5-make-the-script-executable" id="toc-step-5-make-the-script-executable" class="nav-link" data-scroll-target="#step-5-make-the-script-executable">Step 5: Make the Script Executable</a></li>
+  <li><a href="#step-6-update-your-shell-configuration" id="toc-step-6-update-your-shell-configuration" class="nav-link" data-scroll-target="#step-6-update-your-shell-configuration">Step 6: Update Your Shell Configuration</a></li>
+  <li><a href="#step-7-apply-the-changes" id="toc-step-7-apply-the-changes" class="nav-link" data-scroll-target="#step-7-apply-the-changes">Step 7: Apply the Changes</a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#how-to-use-your-new-script" id="toc-how-to-use-your-new-script" class="nav-link" data-scroll-target="#how-to-use-your-new-script">How to Use Your New Script</a></li>
   </ul>
 </nav>
     </div>
@@ -154,9 +189,11 @@ cookieconsent.run({
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Maximizing the Impact of Your R Teaching: Insights from Garrett Grolemund</h1>
+<h1 class="title">How to Create a Bash Script to Extract Bibliographic References from DOIs</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Teaching</div>
+    <div class="quarto-category">DOI</div>
+    <div class="quarto-category">Bash</div>
+    <div class="quarto-category">References</div>
   </div>
   </div>
 
@@ -174,7 +211,7 @@ cookieconsent.run({
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 10, 2023</p>
+      <p class="date">April 6, 2024</p>
     </div>
   </div>
   
@@ -184,62 +221,143 @@ cookieconsent.run({
 
 </header>
 
-<p>I recently watched a presentation by Garrett Grolemund, the Director of Learning at Rstudio, on the POSIT Enterprise Community Meetup on YouTube. I wanted to share with you some of the interesting thoughts about teaching R that he mentioned.</p>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ElO5gDCG3X8?start=19" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
-</iframe>
-<section id="notes" class="level1">
-<h1>Notes</h1>
-<section id="context" class="level2">
-<h2 class="anchored" data-anchor-id="context">Context</h2>
-<ul>
-<li>Garret believes that the success of the training ultimately depends on how it’s delivered.</li>
-<li>Teachers out there really aren’t that good and online courses are not so great.</li>
-<li>People who become experts in R by years of practice. However, they may not have had the opportunity to devote those years to being a good teacher.</li>
-<li>There is theories in psychology(such as cognitive load theory and multimedia learning theory) that can be applied to make training more successful.</li>
-<li>Research shows that students only retain about 56% of the content from a lecture</li>
-<li>The retention rate decreases over time.</li>
-<li>Studies on procedural instruction show similar results, with only 60% of students able to reproduce the procedure immediately after training.</li>
-<li>Six months later, the number drops to 40%, and a year later it drops to 30%</li>
-<li>Training outcomes are not always great and this is a “dirty secret” of the training industry.</li>
-<li>Trainers are not always trained to be trainers, which is a challenge in the field.</li>
-<li>Education is not simply about transferring information from an educator to a student, and the student then becoming an expert.</li>
-</ul>
+<p>Dealing with references can feel like a real headache. However, recently I came across a fantastic solution by <a href="https://twitter.com/rlmcelreath">Richard Mclearn</a>. This blog post is all about making your life easier with a simple tutorial for Mac users. I’ll show you how to set up a <code>getref</code> function that quickly grabs bibliographic information in BibTeX format from a DOI or a DOI URL.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="x-image.png" class="quarto-discovered-preview-image img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption"><a href="https://twitter.com/rlmcelreath/status/1767812801404223535">source</a></figcaption><p></p>
+</figure>
+</div>
+<section id="step-by-step-guide" class="level1">
+<h1>Step-by-Step Guide</h1>
+<section id="step-1-prepare-your-workspace" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-prepare-your-workspace">Step 1: Prepare Your Workspace</h2>
+<p>First, we need to create a dedicated folder to store your <code>getref</code> function. This not only helps in organizing your scripts but also in managing your PATH environment efficiently.</p>
+<p>You can create the folder following this steps:</p>
+<p>1.1. Open the terminal (cmd+space then type terminal).</p>
+<p>1.2. Create a new folder named bin in your home directory:</p>
+<p>type</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>mkdir <span class="sc">~</span><span class="er">/</span>bin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>and press return in your keyboard.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I created the bin folder in my home directory. It will make it easier to access the script later on.</p>
+</div>
+</div>
 </section>
-<section id="insights" class="level2">
-<h2 class="anchored" data-anchor-id="insights">Insights</h2>
-<section id="practice" class="level3">
-<h3 class="anchored" data-anchor-id="practice">Practice</h3>
-<ul>
-<li>The more the task is practiced, the more the brain will conserve the neural networks and retain the ability to perform the task. This is not likely to occur in a workshop that lasts only half a day or two days.</li>
-<li>To build a robust neural network, it is important to sleep.</li>
-<li>The ability to perform a new skill in six months from now dependent on the amount of practice they receive after initial instruction, rather than the instruction itself.</li>
-</ul>
-<blockquote class="blockquote">
-<p>“Well, the revelation we had at our studio is that data science is a skill, and if you want to learn to do good data science with code or otherwise, you have to practice it and learn it as a skill.”</p>
-</blockquote>
+<section id="step-2-move-to-the-bin-folder" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-move-to-the-bin-folder">Step 2: Move to the bin Folder</h2>
+<p>Navigate to the newly created folder by typing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cd <span class="sc">~</span><span class="er">/</span>bin.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
-<section id="mentors-mates-and-accountability" class="level3">
-<h3 class="anchored" data-anchor-id="mentors-mates-and-accountability">Mentors, Mates and Accountability</h3>
-<ul>
-<li>As a student, it is possible to practice a skill incorrectly without even being aware of it. To practice effectively and efficiently, it is crucial to receive feedback and guidance to make sure the proper techniques are being utilized.</li>
-<li>Individuals do not acquire knowledge in a vacuum, they are driven by social influences and the identity they construct by participating in a community that is studying data science.</li>
-<li>The lacking factor in online courses is motivation, which can be obtained through interaction with a mentor or peers. Talking to them can provide the necessary inspiration.</li>
-<li>Having a mentor or being part of a group provides accountability, as one is expected to show up with something to demonstrate to them.</li>
-</ul>
-<blockquote class="blockquote">
-<p>“So, as you go through the course, not only do you have an expert who has your back who’s coaching you, you also have fellow travelers who you could discuss things with. You could work through problems together and, you might not even realize it, but you can hold each other accountable and motivated as you go through the process.”</p>
-</blockquote>
+<section id="step-3-create-the-script-file" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-create-the-script-file">Step 3: Create the Script File</h2>
+<p>Create a new file named getref by typing</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>touch getref</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This file will be our script.</p>
 </section>
-<section id="recomendations" class="level3">
-<h3 class="anchored" data-anchor-id="recomendations">Recomendations</h3>
-<ul>
-<li><p><em>How Learning Happens</em> by Paul Kirschner and Carl. <a href="Hedentrick.(https://www.amazon.com/How-Learning-Happens-Paul-Kirschner/dp/0367184575)">link to amazon. But also consult with your librarian friend</a></p></li>
-<li><p><a href="https://posit.co/products/enterprise/academy/">Visit Posit Academy</a>. You can learn in detail about the POSIT Academy model in minute 24.</p></li>
-</ul>
+<section id="step-4-add-the-script-code" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-add-the-script-code">Step 4: Add the Script Code</h2>
+<p>Open the <code>getref</code> file in your favorite text editor. For simplicity, you can use <a href="https://www.nano-editor.org">Nano</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>nano getref</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>In the inside of the file, copy and paste the following code snippet. This script checks if a DOI or DOI URL is provided as an argument and then fetches the bibliographic information in BibTeX format.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/bin/bash</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if an argument is provided</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> [ <span class="st">"$#"</span> <span class="sc">-</span>ne <span class="dv">1</span> ]; then</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    echo <span class="st">"Usage: $0 &lt;DOI or DOI URL&gt;"</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    exit <span class="dv">1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fi</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine if the input is a DOI URL or just a DOI number</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> [[ <span class="st">"$1"</span> <span class="ot">=</span><span class="er">~</span> <span class="er">^</span>https<span class="sc">:</span><span class="er">//</span> ]]; then</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract the DOI number from the URL</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    DOI<span class="ot">=</span><span class="er">$</span>(echo <span class="st">"$1"</span> <span class="sc">|</span> sed <span class="st">'s|https://doi.org/||'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Assume the input is just a DOI number</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    DOI<span class="ot">=</span><span class="st">"$1"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>fi</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract and print the reference</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>curl <span class="sc">-</span>LH <span class="st">"Accept: application/x-bibtex"</span> <span class="st">"https://doi.org/$DOI"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-5-make-the-script-executable" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-make-the-script-executable">Step 5: Make the Script Executable</h2>
+<p>Ensure the script can be executed by running in the terminal</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>chmod <span class="sc">+</span>x <span class="sc">~</span><span class="er">/</span>bin<span class="sc">/</span>getref</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice that I used the path to my file, which is located in the bin folder in my home directory.</p>
+</div>
+</div>
+</section>
+<section id="step-6-update-your-shell-configuration" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-update-your-shell-configuration">Step 6: Update Your Shell Configuration</h2>
+<p>Now, Open your shell configuration file (.zshrc for Zsh or .bashrc for Bash) using a text editor, e.g.,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nano <span class="sc">~</span><span class="er">/</span>.zshrc.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You will need to add <strong>~/bin</strong> to your <strong>PATH</strong>. To do this, add the following line at the end of the file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>export PATH<span class="ot">=</span><span class="st">"$HOME/bin:$PATH"</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Save and close the file.</p>
+</section>
+<section id="step-7-apply-the-changes" class="level2">
+<h2 class="anchored" data-anchor-id="step-7-apply-the-changes">Step 7: Apply the Changes</h2>
+<p>Apply the changes to your current session by sourcing your configuration file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>source <span class="sc">~</span><span class="er">/</span>.zshrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>for Zsh</p>
+<p>or</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>source <span class="sc">~</span><span class="er">/</span>.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>for Bash.</p>
+</section>
+</section>
+<section id="how-to-use-your-new-script" class="level1">
+<h1>How to Use Your New Script</h1>
+<p>To use your script, simply type <code>getref</code> in your termina followed by a DOI or a DOI URL. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>getref <span class="fl">10.1080</span><span class="sc">/</span><span class="dv">09687637</span>.<span class="fl">2023.2167649</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>or</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>getref https<span class="sc">:</span><span class="er">//</span>doi.org<span class="sc">/</span><span class="fl">10.1080</span><span class="sc">/</span><span class="dv">09687637</span>.<span class="fl">2023.2167649</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The script will fetch and display the bibliographic information in BibTeX format.</p>
+<p><strong>Done!</strong> This is a handy tool that simplifies the process of fetching bibliographic data. I hope you enjoy it. If you have any questions or suggestions, feel free to leave a comment below.</p>
 
 
-</section>
-</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
