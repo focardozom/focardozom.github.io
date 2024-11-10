@@ -2,62 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://focardozom.github.io/posts.html</loc>
-    <lastmod>2024-07-05T19:48:22.248Z</lastmod>
+    <lastmod>2024-04-06T22:09:45.000Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2024-02-03-health_literacy/health_literacy.html</loc>
-    <lastmod>2024-07-05T19:48:21.160Z</lastmod>
+    <lastmod>2024-02-04T05:06:11.675Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-22-collect_metrics/collect_metrics.html</loc>
-    <lastmod>2024-07-05T19:48:19.691Z</lastmod>
+    <lastmod>2023-07-25T14:41:03.000Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2022-12-01-ChessOlympiad22/index.html</loc>
-    <lastmod>2024-07-05T19:48:18.370Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2024-07-06-shiny-trust/Trust-live.html</loc>
-    <lastmod>2024-07-05T19:48:17.313Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2023-01-10-posit-education/Posit.html</loc>
-    <lastmod>2024-07-05T19:48:13.555Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2024-01-27-explain/explain.html</loc>
-    <lastmod>2024-07-05T19:48:12.877Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2023-12-03-most/most.html</loc>
-    <lastmod>2024-07-05T19:48:11.210Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2024-04-06-getref/getref.html</loc>
-    <lastmod>2024-07-05T19:48:12.529Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2023-05-10-recipes/recipes.html</loc>
-    <lastmod>2024-07-05T19:48:13.200Z</lastmod>
-  </url>
-  <url>
-    <loc>https://focardozom.github.io/posts/2023-08-01-while/while.html</loc>
-    <lastmod>2024-07-05T19:48:14.694Z</lastmod>
+    <lastmod>2023-08-07T19:36:00.000Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2022-11-27-trustworthy/trustworthy.html</loc>
-    <lastmod>2024-07-05T19:48:17.612Z</lastmod>
+    <lastmod>2023-12-03T13:40:28.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-08-01-while/while.html</loc>
+    <lastmod>2023-12-03T12:23:13.328Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-05-10-recipes/recipes.html</loc>
+    <lastmod>2023-05-17T03:38:12.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2024-04-06-getref/getref.html</loc>
+    <lastmod>2024-04-06T21:32:25.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-12-03-most/most.html</loc>
+    <lastmod>2023-12-03T13:39:41.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2024-01-27-explain/explain.html</loc>
+    <lastmod>2024-01-27T23:37:28.396Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2023-01-10-posit-education/Posit.html</loc>
+    <lastmod>2023-02-11T18:05:16.000Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2024-07-06-shiny-trust/Trust-live.html</loc>
+    <lastmod>2024-07-05T19:39:48.117Z</lastmod>
+  </url>
+  <url>
+    <loc>https://focardozom.github.io/posts/2024-11-09-organize-this/organize-this.html</loc>
+    <lastmod>2024-11-10T00:12:57.796Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2024-03-12-imbalance/imbalance_ci.html</loc>
-    <lastmod>2024-07-05T19:48:18.853Z</lastmod>
+    <lastmod>2024-03-13T04:06:30.849Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/posts/2023-07-15-yarstick/2023-07-15.html</loc>
-    <lastmod>2024-07-05T19:48:20.757Z</lastmod>
+    <lastmod>2023-12-03T13:32:37.000Z</lastmod>
   </url>
   <url>
     <loc>https://focardozom.github.io/index.html</loc>
-    <lastmod>2024-07-05T19:48:21.426Z</lastmod>
+    <lastmod>2024-03-13T04:07:40.113Z</lastmod>
   </url>
 </urlset>
