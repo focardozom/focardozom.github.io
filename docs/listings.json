@@ -2,6 +2,7 @@
   {
     "listing": "/posts.html",
     "items": [
+      "/posts/2024-12-28-three-components/three-components.html",
       "/posts/2024-11-17-to-duckdb/to-duckdb.html",
       "/posts/2024-11-09-organize-this/organize-this.html",
       "/posts/2024-07-06-shiny-trust/Trust-live.html",
