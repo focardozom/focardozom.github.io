@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.56">
+<meta name="generator" content="quarto-1.6.42">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-50a53afa670fa107d7c15c123c703507.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -195,10 +195,10 @@ cookieconsent.run({
 
 
 <p>One of the core challenges in prevention science and public health is establishing whether a program causes the outcomes we observe in the field. Are the gains we see (i.e., reduced substance use, improved mental well-being, or lowered dropout rates) directly attributable to the intervention we designed and implemented? Or might they result from unrelated social trends, fluctuating resources, or measurement artifacts?</p>
-<p>To approach these questions, Randomized Controlled Trials (RCTs) have become the gold standard. In an RCT, we randomly assign participants or sites to treatment and control (or comparison) groups, then compare outcomes. If the treatment group shows a significantly better result than the control group, we often conclude that the program “worked.” But such a conclusion can be deceptively straightforward when programs are, in fact, systems—they typically involve an interplay of Theory of Change (T), Implementation (I), and Evaluation (E).</p>
+<p>To approach these questions, Randomized Controlled Trials (RCTs) have become the gold standard. In an RCT, we randomly assign participants or sites to treatment and control (or comparison) groups, then compare outcomes. If the treatment group shows a significantly better result than the control group, we often conclude that the program “worked.” But such a conclusion can be deceptively straightforward when programs are, in fact, systems, they typically involve an interplay of Theory of Change (T), Implementation (I), and Evaluation (E).</p>
 <section id="programs-as-systems" class="level2">
 <h2 class="anchored" data-anchor-id="programs-as-systems">Programs as Systems</h2>
-<p>Consider a program meant to decrease adolescent vaping. The Theory of Change sets out the blueprint of why specific activities (peer mentoring, parental engagement, etc.) are expected to make a difference. Implementation is the process of putting those activities into action—hiring and training staff, ensuring session fidelity, adapting schedules to participants’ needs, and more. Finally, Evaluation measures outcomes, seeking evidence that the program actually achieved its stated goals.</p>
+<p>Consider a program meant to decrease adolescent vaping. The Theory of Change sets out the blueprint of why specific activities (peer mentoring, parental engagement, etc.) are expected to make a difference. Implementation is the process of putting those activities into action (i.e., hiring and training staff, ensuring session fidelity, adapting schedules to participants’ needs, and more). Finally, Evaluation measures outcomes, seeking evidence that the program actually achieved its stated goals.</p>
 <p>When a prevention program is conceptualized as this interconnected system, a typical RCT that simply asks, “Does the program work?” can obscure which part of the system is actually influencing the observed outcomes. This can lead to confusing or contradictory findings, positive results might mask a faulty theory (if staff happened to do something else that helped), and negative or null results might disguise an essentially correct theory that was never implemented well.</p>
 </section>
 <section id="why-typical-rct-frameworks-can-be-limiting" class="level2">
@@ -216,7 +216,7 @@ cookieconsent.run({
 <ol start="2" type="1">
 <li>Confounded by Implementation</li>
 </ol>
-<p>Consider an RCT run across multiple sites. Some sites deliver the program faithfully; others do not. If you average outcomes across all sites, the overall effect could appear modest—even though high-fidelity sites might have shown strong results. Hence, the classical RCT approach can mislead us into dismissing a promising program (or adopting one that only worked under special conditions).</p>
+<p>Consider an RCT run across multiple sites. Some sites deliver the program faithfully; others do not. If you average outcomes across all sites, the overall effect could appear modest, even though high-fidelity sites might have shown strong results. Hence, the classical RCT approach can mislead us into dismissing a promising program (or adopting one that only worked under special conditions).</p>
 </section>
 <section id="strengthening-causal-claims-a-systems-view" class="level2">
 <h2 class="anchored" data-anchor-id="strengthening-causal-claims-a-systems-view">Strengthening Causal Claims: A Systems View</h2>
@@ -320,8 +320,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -432,7 +430,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
