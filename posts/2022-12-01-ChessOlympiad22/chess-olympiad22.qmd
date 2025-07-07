@@ -35,47 +35,59 @@ First, let's visualize the ELO distribution of the players.
 It is important to filter out players with an ELO rating of zero from the analysis, as these players have not yet been rated and do not have a known skill level. 
 
 ```{r plots-with-palyers}
-players |> 
-  filter(rtg!=0) |> 
-  ggplot(aes(rtg)) + 
-  geom_histogram(bins=90,fill="gray90", alpha=0.85, color="gray95") +
-  scale_x_continuous(breaks = seq(1000,2900,150))+
-  theme_minimal() +
-  theme(axis.text.y = element_blank(),
-        panel.grid = element_blank()) +
-  labs(x="Elo Rating System (Higher values indicate greater player strength)",
-       y="",
-       title = "Elo Rating System of players in Chess Olympiad, 2022. Chennai, India ",
-       caption = "Magnus Carlsen has the highest Elo rating in the tournament: 2864") +
-  geom_text(data = players %>% 
-    filter(rtg > 2800),
-            aes(x = 2550, 
-            y = 4.5, 
-            label = "Magnus Carlsen"),
-            size = 3,
-            color = "black") +
-  geom_curve(data = players %>% filter(rtg > 2800),
-               aes(x = 2700, 
-               y = 4.4, xend = 2864.8, 
-               yend = 1),
-               arrow = arrow(length = unit(0.3, "cm")),
-               color = "red",
-               linewidth = 0.5,
-               curvature = -0.5)
+players |>
+    filter(rtg != 0) |>
+    ggplot(aes(rtg)) +
+    geom_histogram(bins = 90, fill = "gray90", alpha = 0.85, color = "gray95") +
+    scale_x_continuous(breaks = seq(1000, 2900, 150)) +
+    theme_minimal() +
+    theme(
+        axis.text.y = element_blank(),
+        panel.grid = element_blank()
+    ) +
+    labs(
+        x = "Elo Rating System (Higher values indicate greater player strength)",
+        y = "",
+        title = "Elo Rating System of players in Chess Olympiad, 2022. Chennai, India ",
+        caption = "Magnus Carlsen has the highest Elo rating in the tournament: 2864"
+    ) +
+    geom_text(
+        data = players %>%
+            filter(rtg > 2800),
+        aes(
+            x = 2550,
+            y = 4.5,
+            label = "Magnus Carlsen"
+        ),
+        size = 3,
+        color = "black"
+    ) +
+    geom_curve(
+        data = players %>% filter(rtg > 2800),
+        aes(
+            x = 2700,
+            y = 4.4, xend = 2864.8,
+            yend = 1
+        ),
+        arrow = arrow(length = unit(0.3, "cm")),
+        color = "red",
+        linewidth = 0.5,
+        curvature = -0.5
+    )
 
 ```
 
 It may be interesting to plot the ELO ratings of players by federation, as the Chess Olympiad is played by national teams. By examining the ELO ratings of players within each federation, we can get a sense of the overall strength of the teams participating in the event. This analysis could potentially provide insight into the results of the Chess Olympiad and help predict the outcomes of matches. 
 
 ```{r elo-by-federation}
-players |> 
-  filter(rtg>2600) |> 
-  ggplot(aes(reorder(fed, rtg),rtg)) + 
-  theme_minimal() +
-  geom_boxplot() +
-  coord_flip() +
-  theme(panel.grid = element_blank()) +
-  labs(x="", y="ELO")
+players |>
+    filter(rtg > 2600) |>
+    ggplot(aes(reorder(fed, rtg), rtg)) +
+    theme_minimal() +
+    geom_boxplot() +
+    coord_flip() +
+    theme(panel.grid = element_blank()) +
+    labs(x = "", y = "ELO")
 ```
 
 According to ELO ratings, the United States fielded the strongest team in the tournament.
@@ -93,24 +105,31 @@ A visual representation of the differences in ELO by round are presented in the 
 
 ```{r plot-data-diff}
 
-results |> 
-  filter(elo_difference>=-1000, 
-         elo_difference<=1000, 
-         !is.na(elo_white), !is.na(elo_black), elo_white!=0,elo_black!=0) |> 
-  ggplot(aes(as.numeric(elo_white),elo_difference, 
-             fill=factor(result_white), 
-             color=factor(result_white))) + 
-  geom_point(shape = 21, alpha=0.85,
-             size = 3, stroke = 0.5) +
-  theme_minimal() +
-  scale_fill_manual(values=c("Lost"="black", "Draw"="gray50","Won"="white")) +
-  scale_color_manual(values=c("Lost"="black", "Draw"="black","Won"="black")) +
-  labs(fill="Result", color="Result", 
-       x="Player Elo", 
-       y="Elo difference",
-       caption = "Difference greater than zero indicates stronger player
-       44th Chess Olympiad. Chennai, 2022 Open") +
-  facet_wrap(~ round)
+results |>
+    filter(
+        elo_difference >= -1000,
+        elo_difference <= 1000,
+        !is.na(elo_white), !is.na(elo_black), elo_white != 0, elo_black != 0
+    ) |>
+    ggplot(aes(as.numeric(elo_white), elo_difference,
+        fill = factor(result_white),
+        color = factor(result_white)
+    )) +
+    geom_point(
+        shape = 21, alpha = 0.85,
+        size = 3, stroke = 0.5
+    ) +
+    theme_minimal() +
+    scale_fill_manual(values = c("Lost" = "black", "Draw" = "gray50", "Won" = "white")) +
+    scale_color_manual(values = c("Lost" = "black", "Draw" = "black", "Won" = "black")) +
+    labs(
+        fill = "Result", color = "Result",
+        x = "Player Elo",
+        y = "Elo difference",
+        caption = "Difference greater than zero indicates stronger player
+       44th Chess Olympiad. Chennai, 2022 Open"
+    ) +
+    facet_wrap(~round)
 
 ```
 
@@ -120,29 +139,31 @@ Now, let's try to identify the optimal divisions in ELO rating differences that 
 
 ```{r engine}
 cart_spec <-
-   decision_tree() |> 
-   set_engine("rpart") |>
-   set_mode("classification")
+    decision_tree() |>
+    set_engine("rpart") |>
+    set_mode("classification")
 
 ```
 
 I will add two steps in the recipe. One to filter the data set by round, and the other to convert results in a factor variable.  I also will limit my analysis to players with more than 1600 in ELO. 
 
 ```{r recipie}
-results <- results |> 
-  filter(as.numeric(elo_white)>1600) |> 
-  filter(as.numeric(elo_black)>1600) 
+results <- results |>
+    filter(as.numeric(elo_white) > 1600) |>
+    filter(as.numeric(elo_black) > 1600)
 
 recipe <- recipe(
-  result_white ~ elo_difference + round_number, data = results) |> 
-    step_filter(round_number==round)
-  
+    result_white ~ elo_difference + round_number,
+    data = results
+) |>
+    step_filter(round_number == round)
+
 ```
 
 ```{r set-workflow}
-wrkfl <- workflow() |> 
-  add_model(cart_spec) |> 
-  add_recipe(recipe)
+wrkfl <- workflow() |>
+    add_model(cart_spec) |>
+    add_recipe(recipe)
 
 ```
 
@@ -152,9 +173,9 @@ Let's estimate the model for the round 1.
 
 round <- 1
 
-cart_fit <- wrkfl |> 
-  fit(data=results) |> 
-  extract_fit_parsnip()
+cart_fit <- wrkfl |>
+    fit(data = results) |>
+    extract_fit_parsnip()
 
 ```
 
@@ -183,25 +204,25 @@ I will add a the `tree_depth` parameter to my model. The depth of the tree refer
 
 ```{r}
 cart_spec <-
-   decision_tree(tree_depth = 4) |> 
-   set_engine("rpart") |>
-   set_mode("classification")
+    decision_tree(tree_depth = 4) |>
+    set_engine("rpart") |>
+    set_mode("classification")
 
-wrkfl <- workflow() |> 
-  add_model(cart_spec) |> 
-  add_recipe(recipe)
+wrkfl <- workflow() |>
+    add_model(cart_spec) |>
+    add_recipe(recipe)
 
 ```
 
 ```{r last-round}
 round <- 11
 
-cart_fit <- wrkfl |> 
-  fit(data=results)
+cart_fit <- wrkfl |>
+    fit(data = results)
 
-cart_fit <- wrkfl |> 
-  fit(data=results) |> 
-  extract_fit_parsnip()
+cart_fit <- wrkfl |>
+    fit(data = results) |>
+    extract_fit_parsnip()
 
 cart_fit <- repair_call(cart_fit, data = round)
 
