@@ -1,0 +1,46 @@
+.blockquote {
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    color: #2d3436;
+    background-color: #ecf0f1;
+    border-left: 5px solid #10a37f; /* OpenAI green */
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0;
+    line-height: 1.6;
+    letter-spacing: 0.3px;
+    font-weight: 400;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.blockquote::before {
+    content: "🤖";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #10a37f;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 0 2px white;
+}
+
+.blockquote p {
+    margin: 0;
+}
+
+body {
+    font-family: "Georgia", serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #111;
+    background-color: #fff;
+    padding: 2rem 1rem;
+  }

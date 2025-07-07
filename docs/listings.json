@@ -2,16 +2,12 @@
   {
     "listing": "/posts.html",
     "items": [
-      "/posts/2025-03-19-sci-fi/predict-efficacy.html",
+      "/posts/2025-03-19-sci-fi/ps-sci-fi.html",
       "/posts/2024-12-28-three-components/three-components.html",
-      "/posts/2024-11-17-to-duckdb/index.html",
       "/posts/2024-11-17-to-duckdb/to-duckdb.html",
-      "/posts/2024-11-09-organize-this/index.html",
       "/posts/2024-11-09-organize-this/organize-this.html",
-      "/posts/2024-07-06-shiny-trust/index.html",
       "/posts/2024-07-06-shiny-trust/Trust-live.html",
       "/posts/2024-04-06-getref/getref.html",
-      "/posts/2024-03-12-imbalance/index.html",
       "/posts/2024-03-12-imbalance/imbalance_ci.html",
       "/posts/2024-02-03-health_literacy/health_literacy.html",
       "/posts/2024-01-27-explain/explain.html",
@@ -21,7 +17,7 @@
       "/posts/2023-07-15-yarstick/2023-07-15.html",
       "/posts/2023-05-10-recipes/recipes.html",
       "/posts/2023-01-10-posit-education/Posit.html",
-      "/posts/2022-12-01-ChessOlympiad22/index.html",
+      "/posts/2022-12-01-ChessOlympiad22/chess-olympiad22.html",
       "/posts/2022-11-27-trustworthy/trustworthy.html"
     ]
   }
