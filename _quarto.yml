@@ -1,15 +1,21 @@
+execute:
+  freeze: auto
+
 project:
-  output-dir: docs
   type: website
 
-
 website:
+  google-analytics: "G-GJFPX0CGRL"
+  cookie-consent: true
   title: Francisco Cardozo
+  site-url: https://focardozom.github.io/
+  description: "Francisco's personal website"
   back-to-top-navigation: true
-  page-footer: 
-    left: "© 2023 Francisco Cardozo" 
+  page-navigation: true
+  page-footer:
+    left: "© 2026 Francisco Cardozo"
     border: false
-    right: 
+    right:
       - icon: github
         href: https://github.com/focardozom
   navbar:
@@ -17,6 +23,7 @@ website:
       - text: "Home"
         file: index.qmd
       - posts.qmd
+      - publications.qmd
     tools:
       - icon: twitter
         href: https://twitter.com/focardozom09?lang=en
@@ -29,13 +36,6 @@ website:
       - icon: linkedin
         text: LinkedIn
         href: https://www.linkedin.com/in/francisco-cardozo-757050264/
-    cookie-consent:
-      type: express
-      style: headline
-      palette: dark
-    google-analytics:
-      tracking-id: "G-xxxxxxx"
-
 
 format:
   html:
