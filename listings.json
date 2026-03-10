@@ -20,5 +20,17 @@
       "/posts/2022-12-01-ChessOlympiad22/chess-olympiad22.html",
       "/posts/2022-11-27-trustworthy/trustworthy.html"
     ]
+  },
+  {
+    "listing": "/packages.html",
+    "items": [
+      "/packages/breaknbuild/index.html",
+      "/packages/documentdata/index.html",
+      "/packages/wandr/index.html",
+      "/packages/chessolympiad/index.html",
+      "/packages/rum/index.html",
+      "/packages/dedooser/index.html",
+      "/packages/ghosted/index.html"
+    ]
   }
 ]

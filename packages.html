@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-11-27">
-<meta name="keywords" content="markdown, code block">
 
-<title>Trustworthy – Francisco Cardozo</title>
+<title>R Packages – Francisco Cardozo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,26 +23,28 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/cookie-consent/cookie-consent.js"></script>
-<link href="../../site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-90f1c7ba4442f4d65b29d9fb9e67c3d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-90f1c7ba4442f4d65b29d9fb9e67c3d0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,6 +72,35 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-pkg-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
+
+    const options = {
+      valueNames: ['listing-image','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-title","listing-author","listing-image","listing-description"],
+    };
+
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-pkg-listing'] = new List('listing-pkg-listing', options);
+
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
+
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-GJFPX0CGRL"></script>
 
 <script type="text/plain" cookie-consent="tracking">
@@ -100,6 +129,35 @@ cookieconsent.run({
 </script> 
   
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -110,7 +168,7 @@ cookieconsent.run({
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Francisco Cardozo</span>
     </a>
   </div>
@@ -121,19 +179,19 @@ cookieconsent.run({
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html"> 
+    <a class="nav-link" href="./posts.html"> 
 <span class="menu-text">Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publications.html"> 
+    <a class="nav-link" href="./publications.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../packages.html"> 
+    <a class="nav-link active" href="./packages.html" aria-current="page"> 
 <span class="menu-text">R Packages</span></a>
   </li>  
 </ul>
@@ -150,81 +208,215 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" id="toc-how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" class="nav-link active" data-scroll-target="#how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs">How much do we trust a students’ response when asked if they have comsumed drugs?</a>
-  <ul class="collapse">
-  <li><a href="#visit-the-app-here" id="toc-visit-the-app-here" class="nav-link" data-scroll-target="#visit-the-app-here">Visit the app here</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trustworthy</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Alcohol</div>
-  </div>
-  </div>
+<h1 class="title">R Packages</h1>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 27, 2022</p>
-    </div>
-  </div>
   
     
   </div>
   
 
-<div>
-  <div class="keywords">
-    <div class="block-title">Keywords</div>
-    <p>markdown, code block</p>
-  </div>
-</div>
 
 </header>
 
 
-<section id="how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" class="level1">
-<h1>How much do we trust a students’ response when asked if they have comsumed drugs?</h1>
-<p><a href="https://github.com/focardozom">Francisco Cardozo</a>, <a href="https://scholar.google.es/citations?user=jw7I6NUAAAAJ&amp;hl=en">Pablo Montero-Zamora</a></p>
-<p>Confidence in students’ survey responses is commonly questioned when performing drug use research. For example, one’s can wonder <strong>how do you know students are telling the truth about their alcohol consumption?</strong> We recognize this as a legitimate question that can be even more complex when considering two types of students: 1) those who say they have not used alcohol but used it (i.e., deniers), and 2) those who say they have used it but never use it (i.e., braggers). It is crucial to understand how this reporting bias affects the validity of our measurements and research findings. Therefore, we propose the following app to know how the proportions of deniers, braggers, and drug use prevalence can influence confidence levels in self-reported measures collected in adolescents.</p>
-<ul>
-<li><strong>True prevalence:</strong> number of students using a drug divided by the population.<br>
-</li>
-<li><strong>Deniers:</strong> students who say they have not used a drug but used it.</li>
-<li><strong>Braggers:</strong> students who say they have used a drug but never used it.</li>
-</ul>
-<p>Given the information above, we can estimate the probability of a student’s drug use behavior if they respond <strong>Yes</strong> or <strong>No</strong> to a drug use question.</p>
-<p>To model this probability, we can use the <strong>Bayes theorem:</strong></p>
-<ul>
-<li><strong>P(A|B)</strong> = Drug use given they say yes in the questionnaire.</li>
-<li><strong>P(B|A)</strong> = Say yes given that they have used drugs.</li>
-<li><strong>P(A)</strong> = Drug use prevalence.</li>
-<li><strong>P(B)</strong> = Say yes in the questionnaire.</li>
-</ul>
-<section id="visit-the-app-here" class="level2">
-<h2 class="anchored" data-anchor-id="visit-the-app-here">Visit the app <a href="https://francisco-cardozo.shinyapps.io/thrusworthy/">here</a></h2>
+<style>
+.listing-image img,
+.quarto-grid-item .thumbnail img,
+.quarto-grid-item img.thumbnail-image,
+.quarto-grid-item .card-img-top {
+  object-fit: contain !important;
+  padding-top: 0.5rem !important;
+  max-height: 100% !important;
+}
+</style>
 
 
-</section>
-</section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+
+<div class="quarto-listing quarto-listing-container-grid" id="listing-pkg-listing">
+<div class="list grid quarto-listing-cols-3">
+<div class="g-col-1" data-index="0" data-categories="bW9kZWxpbmclMkN0aWR5bW9kZWxz" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="BreakNBuild">
+<a href="./packages/breaknbuild/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/breaknbuild.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+BreakNBuild
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bW9kZWxpbmc='); return false;">modeling</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGlkeW1vZGVscw=='); return false;">tidymodels</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Evaluate model performance with progressively sampled data. Helps assess how models behave as training data grows.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="ZG9jdW1lbnRhdGlvbiUyQ3BhY2thZ2Vz" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="DocumentData">
+<a href="./packages/documentdata/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/documentdata.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+DocumentData
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZG9jdW1lbnRhdGlvbg=='); return false;">documentation</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cGFja2FnZXM='); return false;">packages</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Facilitate dataset documentation during R package creation. Generates roxygen2 skeletons for data objects.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="ZWR1Y2F0aW9uJTJDZnVu" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="wandR">
+<a href="./packages/wandr/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/wandr.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+wandR
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZWR1Y2F0aW9u'); return false;">education</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZnVu'); return false;">fun</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Transform R learning into an entertaining journey by weaving the magic of the wizarding world into R programming.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="3" data-categories="ZGF0YSUyQ2NoZXNz" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="ChessOlympiad">
+<a href="./packages/chessolympiad/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/chessolympiad.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+ChessOlympiad
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGF0YQ=='); return false;">data</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hlc3M='); return false;">chess</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Three datasets to analyze the performance of 937 players from 188 countries during the 2022 Chess Olympiad in Chennai, India.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="4" data-categories="dGVtcGxhdGVzJTJDcXVhcnRvJTJDQ1JBTg==" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="rUM">
+<a href="./packages/rum/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/rum.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+rUM
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGVtcGxhdGVz'); return false;">templates</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhcnRv'); return false;">quarto</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q1JBTg=='); return false;">CRAN</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>R Markdown and Quarto templates for academic papers and slide decks from the University of Miami. Also creates research projects with papers as vignettes.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="5" data-categories="cXVhbGl0YXRpdmUlMkNhbmFseXNpcyUyQ0NSQU4=" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="DedooseR">
+<a href="./packages/dedooser/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/dedooser.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+DedooseR
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhbGl0YXRpdmU='); return false;">qualitative</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q1JBTg=='); return false;">CRAN</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>Streamlines analysis of qualitative data exported from Dedoose. Supports thematic saturation monitoring, code frequencies, dynamic codebooks, and code network maps.</p>
+</div>
+</div>
+</div></a>
+</div>
+<div class="g-col-1" data-index="6" data-categories="cXVhbGl0YXRpdmUlMkNkZS1pZGVudGlmaWNhdGlvbg==" data-listing-file-modified-sort="1773154095504" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="ghosted">
+<a href="./packages/ghosted/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img loading="lazy" src="./img/packages/ghosted.png" class="thumbnail-image card-img" style="height: 100px;">
+</p>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+ghosted
+</h5>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cXVhbGl0YXRpdmU='); return false;">qualitative</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGUtaWRlbnRpZmljYXRpb24='); return false;">de-identification</div>
+
+</div>
+<div class="card-text listing-description delink">
+<p>De-identify interview transcripts in VTT, DOCX, and TXT formats. Redacts names and sensitive information with support for batch processing.</p>
+</div>
+</div>
+</div></a>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -625,8 +817,6 @@ cookieconsent.run({
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="focardozom/blog-comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2022-11-27">
-<meta name="keywords" content="markdown, code block">
+<meta name="description" content="Facilitate dataset documentation during R package creation. Generates roxygen2 skeletons for data objects.">
 
-<title>Trustworthy – Francisco Cardozo</title>
+<title>DocumentData – Francisco Cardozo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,79 +149,42 @@ cookieconsent.run({
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" id="toc-how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" class="nav-link active" data-scroll-target="#how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs">How much do we trust a students’ response when asked if they have comsumed drugs?</a>
-  <ul class="collapse">
-  <li><a href="#visit-the-app-here" id="toc-visit-the-app-here" class="nav-link" data-scroll-target="#visit-the-app-here">Visit the app here</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Trustworthy</h1>
+<h1 class="title">DocumentData</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Alcohol</div>
+    <div class="quarto-category">documentation</div>
+    <div class="quarto-category">packages</div>
   </div>
   </div>
 
+<div>
+  <div class="description">
+    Facilitate dataset documentation during R package creation. Generates roxygen2 skeletons for data objects.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">November 27, 2022</p>
-    </div>
-  </div>
   
     
   </div>
   
 
-<div>
-  <div class="keywords">
-    <div class="block-title">Keywords</div>
-    <p>markdown, code block</p>
-  </div>
-</div>
 
 </header>
 
 
-<section id="how-much-do-we-trust-a-students-response-when-asked-if-they-have-comsumed-drugs" class="level1">
-<h1>How much do we trust a students’ response when asked if they have comsumed drugs?</h1>
-<p><a href="https://github.com/focardozom">Francisco Cardozo</a>, <a href="https://scholar.google.es/citations?user=jw7I6NUAAAAJ&amp;hl=en">Pablo Montero-Zamora</a></p>
-<p>Confidence in students’ survey responses is commonly questioned when performing drug use research. For example, one’s can wonder <strong>how do you know students are telling the truth about their alcohol consumption?</strong> We recognize this as a legitimate question that can be even more complex when considering two types of students: 1) those who say they have not used alcohol but used it (i.e., deniers), and 2) those who say they have used it but never use it (i.e., braggers). It is crucial to understand how this reporting bias affects the validity of our measurements and research findings. Therefore, we propose the following app to know how the proportions of deniers, braggers, and drug use prevalence can influence confidence levels in self-reported measures collected in adolescents.</p>
-<ul>
-<li><strong>True prevalence:</strong> number of students using a drug divided by the population.<br>
-</li>
-<li><strong>Deniers:</strong> students who say they have not used a drug but used it.</li>
-<li><strong>Braggers:</strong> students who say they have used a drug but never used it.</li>
-</ul>
-<p>Given the information above, we can estimate the probability of a student’s drug use behavior if they respond <strong>Yes</strong> or <strong>No</strong> to a drug use question.</p>
-<p>To model this probability, we can use the <strong>Bayes theorem:</strong></p>
-<ul>
-<li><strong>P(A|B)</strong> = Drug use given they say yes in the questionnaire.</li>
-<li><strong>P(B|A)</strong> = Say yes given that they have used drugs.</li>
-<li><strong>P(A)</strong> = Drug use prevalence.</li>
-<li><strong>P(B)</strong> = Say yes in the questionnaire.</li>
-</ul>
-<section id="visit-the-app-here" class="level2">
-<h2 class="anchored" data-anchor-id="visit-the-app-here">Visit the app <a href="https://francisco-cardozo.shinyapps.io/thrusworthy/">here</a></h2>
 
 
-</section>
-</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -625,8 +587,6 @@ cookieconsent.run({
     }
   });
   </script>
-<script src="https://utteranc.es/client.js" repo="focardozom/blog-comments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
