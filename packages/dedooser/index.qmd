@@ -1,0 +1,8 @@
+---
+title: "DedooseR"
+description: "Streamlines analysis of qualitative data exported from Dedoose. Supports thematic saturation monitoring, code frequencies, dynamic codebooks, and code network maps."
+image: ../../img/packages/dedooser.png
+order: 6
+categories: [qualitative, analysis, CRAN]
+href: https://abiraahmi.github.io/DedooseR/
+---
