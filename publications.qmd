@@ -1,0 +1,169 @@
+---
+title: "Publications"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(jsonlite)
+library(glue)
+
+zotero_group_id <- "6458407"
+api_url <- glue("https://api.zotero.org/groups/{zotero_group_id}/items?format=json&limit=100&sort=date&direction=desc")
+
+items <- fromJSON(api_url, simplifyVector = FALSE)
+
+pubs <- Filter(function(x) x$data$itemType %in% c("journalArticle", "book", "bookSection", "conferencePaper"), items)
+
+format_authors <- function(creators) {
+    authors <- Filter(function(c) c$creatorType == "author", creators)
+    formatted <- vapply(authors, function(a) {
+        if (!is.null(a$lastName) && !is.null(a$firstName)) {
+            paste0(a$lastName, ", ", substr(a$firstName, 1, 1), ".")
+        } else if (!is.null(a$name)) {
+            a$name
+        } else {
+            ""
+        }
+    }, character(1))
+    paste(formatted, collapse = ", ")
+}
+
+format_pub <- function(item) {
+    d <- item$data
+    authors <- format_authors(d$creators)
+    title <- d$title
+    year <- if (!is.null(d$date) && nchar(d$date) >= 4) substr(d$date, 1, 4) else ""
+    journal <- if (!is.null(d$publicationTitle)) gsub("&amp;", "&", d$publicationTitle) else ""
+    doi <- d$DOI
+    vol <- d$volume
+    issue <- d$issue
+    pages <- d$pages
+    publisher <- d$publisher
+
+    # Title with DOI link if available
+    if (!is.null(doi) && nchar(doi) > 0) {
+        title_html <- glue('<a href="https://doi.org/{doi}" target="_blank">{title}</a>')
+    } else if (!is.null(d$url) && nchar(d$url) > 0) {
+        title_html <- glue('<a href="{d$url}" target="_blank">{title}</a>')
+    } else {
+        title_html <- title
+    }
+
+    # Build source line
+    source_parts <- c()
+    if (nchar(journal) > 0) source_parts <- c(source_parts, glue("*{journal}*"))
+    if (!is.null(vol) && nchar(vol) > 0) {
+        vol_str <- glue("**{vol}**")
+        if (!is.null(issue) && nchar(issue) > 0) vol_str <- glue("{vol_str}({issue})")
+        source_parts <- c(source_parts, vol_str)
+    }
+    if (!is.null(pages) && nchar(pages) > 0) source_parts <- c(source_parts, pages)
+    if (!is.null(publisher) && nchar(publisher) > 0 && nchar(journal) == 0) {
+        source_parts <- c(source_parts, publisher)
+    }
+    source_line <- paste(source_parts, collapse = ", ")
+
+    glue('
+<div class="pub-entry">
+<p class="pub-title">{title_html}</p>
+<p class="pub-authors">{authors} ({year})</p>
+<p class="pub-source">{source_line}</p>
+</div>
+')
+}
+
+# Group by year
+years <- vapply(pubs, function(x) {
+    d <- x$data$date
+    if (!is.null(d) && nchar(d) >= 4) substr(d, 1, 4) else "Other"
+}, character(1))
+
+unique_years <- unique(years)
+
+html_output <- ""
+for (yr in unique_years) {
+    html_output <- paste0(html_output, glue("\n## {yr}\n\n"))
+    yr_pubs <- pubs[years == yr]
+    for (i in seq_along(yr_pubs)) {
+        html_output <- paste0(
+            html_output,
+            glue('<div class="pub-numbered"><span class="pub-number">{i}.</span>'),
+            format_pub(yr_pubs[[i]]),
+            "</div>\n"
+        )
+    }
+}
+```
+
+```{css}
+#| echo: false
+
+.pub-numbered {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.pub-number {
+  color: #aaa;
+  font-size: 0.78rem;
+  min-width: 1.5rem;
+  text-align: right;
+  padding-top: 0.15rem;
+}
+
+.pub-entry {
+  flex: 1;
+  padding-left: 1rem;
+  border-left: 3px solid #e9ecef;
+}
+
+.pub-entry:hover {
+  border-left-color: #6c757d;
+}
+
+.pub-authors {
+  margin-bottom: 0.15rem;
+  color: #777;
+  font-size: 0.82rem;
+}
+
+.pub-title {
+  margin-bottom: 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.pub-title a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.pub-title a:hover {
+  color: #ff0000;
+  text-decoration: underline;
+}
+
+.pub-source {
+  color: #777;
+  font-size: 0.9rem;
+}
+```
+
+```{r}
+#| echo: false
+#| output: asis
+
+cat(html_output)
+```
+
+::: {.text-muted .mt-4 style="font-size: 0.85rem;"}
+Data pulled from [Zotero](https://www.zotero.org/groups/6458407/francisco-cardozo/library). Last updated at render time.
+:::
