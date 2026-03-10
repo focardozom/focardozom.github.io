@@ -14,19 +14,19 @@ Sensitivity and specificity are two crucial metrics used to evaluate the perform
 We begin by simulating a dataset. Assuming we have access to the true value of the phenomenon under consideration, as well as our model's predictions, we can proceed to compute the sensitivity and specificity of our model.
 
 ```{r simulate-data, warning=FALSE, message=FALSE}
-library(tidyverse)  # Load tidyverse package
-library(gt)         # Load gt package
-library(gtsummary)  # Load gtsummary package
+library(tidyverse) # Load tidyverse package
+library(gt) # Load gt package
+library(gtsummary) # Load gtsummary package
 
 
 # Create a tibble with the confusion matrix data
 confusion_matrix_long <- tibble(
-  'Predicted Class' = c('1', '1', '0', '0'),
-  'True Class' = c('True 1', 'True 0', 'True 1', 'True 0'),
-  'Count' = c(40, 15, 10, 35)
+    "Predicted Class" = c("1", "1", "0", "0"),
+    "True Class" = c("True 1", "True 0", "True 1", "True 0"),
+    "Count" = c(40, 15, 10, 35)
 )
 
-confusion_matrix_long  |> gt()
+confusion_matrix_long |> gt()
 
 ```
 
@@ -36,8 +36,8 @@ Function <a href='https://www.danieldsjoberg.com/gtsummary/reference/tbl_cross.h
 
 # Duplicate each row of the tibble based on the value in the Count column
 confusion_matrix_long |>
-  uncount(Count) |>
-  tbl_cross(percent = "col")  
+    uncount(Count) |>
+    tbl_cross(percent = "column")
 
 ```
 
@@ -74,9 +74,9 @@ However, the burning question remains: how do we calculate these in R? Let's exp
 Let's now assume that we have a dataset comprising Y and X values, and we aim to create a model that predicts Y based on X. We'll use the same dataset we created earlier.
 
 ```{r simulate-data-2, warning=FALSE, message=FALSE} 
-df <- confusion_matrix_long |> 
-  uncount(Count)  |> 
-  rename(y = `True Class`, x = `Predicted Class`) # Rename the columns to shorter names
+df <- confusion_matrix_long |>
+    uncount(Count) |>
+    rename(y = `True Class`, x = `Predicted Class`) # Rename the columns to shorter names
 ```
 
 First, we'll load the tidymodels library and specify our model.
@@ -89,14 +89,14 @@ library(tidymodels)
 
 # Define a logistic regression model specification
 model_spec <- logistic_reg() |>
-  set_engine("glm") |> 
-  set_mode("classification")
+    set_engine("glm") |>
+    set_mode("classification")
 
 # Define a recipe for preprocessing the data
-recipe_glm <- 
-  recipe(y ~ x, data = df) |> 
-  # Convert all nominal variables to dummy variables
-  step_dummy(all_nominal(), -all_outcomes()) 
+recipe_glm <-
+    recipe(y ~ x, data = df) |>
+    # Convert all nominal variables to dummy variables
+    step_dummy(all_nominal(), -all_outcomes())
 
 ```
 
@@ -106,11 +106,11 @@ Let's examine the dataset we've created.
 # Preprocess the data using the recipe
 # This includes converting nominal variables to dummy variables
 recipe_glm |>
-  prep() |>
-  # Apply the recipe to new data
-  bake(new_data = df) |>
-  # View the first few rows of the preprocessed data
-  skimr::skim()
+    prep() |>
+    # Apply the recipe to new data
+    bake(new_data = df) |>
+    # View the first few rows of the preprocessed data
+    skimr::skim()
 
 ```
 
@@ -121,18 +121,18 @@ Next, we can create a workflow that combines our recipe and the model specificat
 ```{r fit-model, message=FALSE}
 
 # Define a workflow for fitting the logistic regression model
-wr_glm <- workflow() |> 
-  add_recipe(recipe_glm) |> 
-  add_model(model_spec)  
+wr_glm <- workflow() |>
+    add_recipe(recipe_glm) |>
+    add_model(model_spec)
 
 # Fit the logistic regression model to the preprocessed data
-model <- wr_glm |> 
-  fit(data = df) 
+model <- wr_glm |>
+    fit(data = df)
 
 # Extract the model coefficients and create a summary table
-model |> 
-  extract_fit_parsnip() |> 
-  tbl_regression()
+model |>
+    extract_fit_parsnip() |>
+    tbl_regression()
 
 ```
 
@@ -147,22 +147,22 @@ library(knitr)
 
 # Use the augment() function to add predicted values to the data frame
 the_predictions <- model |>
-  augment(df)  |> 
-  # Rename the "y" column to "Observed"
-  rename("Observed" = "y")
+    augment(df) |>
+    # Rename the "y" column to "Observed"
+    rename("Observed" = "y")
 
 
 # Create an interactive table using the reactable::reactable() function
 the_predictions |>
-  reactable(
-    groupBy = "Observed",
-    columns = list(
-      x = colDef(aggregate = "unique"),
-      .pred_class = colDef(aggregate = "unique"),
-      `.pred_True 0` = colDef(aggregate = "mean", format = colFormat(digits = 2)),
-      `.pred_True 1` = colDef(aggregate = "mean", format = colFormat(digits = 2))
+    reactable(
+        groupBy = "Observed",
+        columns = list(
+            x = colDef(aggregate = "unique"),
+            .pred_class = colDef(aggregate = "unique"),
+            `.pred_True 0` = colDef(aggregate = "mean", format = colFormat(digits = 2)),
+            `.pred_True 1` = colDef(aggregate = "mean", format = colFormat(digits = 2))
+        )
     )
-  )
 ```
 
 
@@ -170,8 +170,8 @@ At this point, we have both the predicted class and the observed class. We could
 
 ### Computing sensitivity and specificity using a cross table
 ```{r cross-tab-predictions}  
-the_predictions  |> 
-    tbl_cross(.pred_class, Observed, percent = "col")
+the_predictions |>
+    tbl_cross(.pred_class, Observed, percent = "column")
 ```
 
 This yields the same results as before.
@@ -181,16 +181,16 @@ This yields the same results as before.
 Finally! we can use the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> package to calculate the sensitivity and specificity of our model.
 
 ```{r sensitivity-specificity}
-sens <- the_predictions  |> 
-  mutate(Observed = as.factor(Observed))  |>
-  sensitivity(Observed, .pred_class)
+sens <- the_predictions |>
+    mutate(Observed = as.factor(Observed)) |>
+    sensitivity(Observed, .pred_class)
 
-spec <- the_predictions  |> 
-  mutate(Observed = as.factor(Observed))  |>
-  specificity(Observed, .pred_class)
+spec <- the_predictions |>
+    mutate(Observed = as.factor(Observed)) |>
+    specificity(Observed, .pred_class)
 
-bind_rows(sens, spec)  |> 
-  gt()
+bind_rows(sens, spec) |>
+    gt()
 ```
 
 Oops! That doesn't look right. Why is that?
@@ -211,16 +211,16 @@ This is from [here](https://www.tmwr.org/performance.html) or page 116 in the ti
 To maintain consistency with our earlier computations, it's necessary to explicitly set the reference level in the <a href='https://yardstick.tidymodels.org/reference/sens.html' target='_blank'>`sensitivity()`</a> and <a href='https://yardstick.tidymodels.org/reference/spec.html' target='_blank'>`specificity()`</a> functions from the <a href='https://yardstick.tidymodels.org/' target='_blank'>`yardstick`</a> functions, using the `event_level` = "second" argument. This ensures that the factor levels are interpreted in a way that aligns with our initial demonstration.
 
 ```{r}
-sens_y  <- the_predictions  |>
-  mutate(Observed = as.factor(Observed))  |>
-  sensitivity(Observed, .pred_class, event_level = "second")
+sens_y <- the_predictions |>
+    mutate(Observed = as.factor(Observed)) |>
+    sensitivity(Observed, .pred_class, event_level = "second")
 
-spec_y  <- the_predictions  |>
-  mutate(Observed = as.factor(Observed))  |>
-  specificity(Observed, .pred_class, event_level = "second")
+spec_y <- the_predictions |>
+    mutate(Observed = as.factor(Observed)) |>
+    specificity(Observed, .pred_class, event_level = "second")
 
-bind_rows(sens_y, spec_y)  |> 
-  gt()
+bind_rows(sens_y, spec_y) |>
+    gt()
 ```
 
 Now we've restored our original results. 😎

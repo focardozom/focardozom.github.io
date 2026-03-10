@@ -3,14 +3,10 @@ title: "Blog"
 listing:
   contents: posts
   sort: "date desc"
-  type: table
-  fields: [date, title, categories, reading-time]
-  image-align: right
-  max-description-length: 175
-  date-format: medium
-  categories: true
-  sort-ui: true
+  type: grid
+  fields: [date, title, categories]
+  date-format: "MMM, YY"
   filter-ui: true
-page-layout: full
-title-block-banner: false
+  max-items: 80
+  field-links: [categories, date, title]
 ---
