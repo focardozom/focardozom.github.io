@@ -1,0 +1,12 @@
+{
+  "hash": "c90e1591d07c805b37a2c9718a8dd9b8",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: \"R Packages\"\nformat:\n  html:\n    toc: true\n    toc-depth: 2\n---\n\n\n![](img/hex_packages.png){fig-align=\"center\" width=\"80%\"}\n\n## BreakNBuild\n\nDesigned to evaluate model performance with progressively sampled data.\n\n::: {.d-flex .gap-2}\n[Documentation](https://focardozom.github.io/BreakNBuild/){.btn .btn-outline-dark .btn-sm target=\"_blank\"}\n[GitHub](https://github.com/focardozom/BreakNBuild){.btn .btn-outline-dark .btn-sm target=\"_blank\"}\n:::\n\n## DocumentData\n\nDesigned to facilitate dataset documentation during package creation.\n\n::: {.d-flex .gap-2}\n[GitHub](https://github.com/focardozom/DocumentData){.btn .btn-outline-dark .btn-sm target=\"_blank\"}\n:::\n\n## wandR\n\nDesigned to transform R learning into an entertaining journey for all, by weaving the magic of the wizarding world into R programming.\n\n::: {.d-flex .gap-2}\n[GitHub](https://github.com/focardozom/wandR){.btn .btn-outline-dark .btn-sm target=\"_blank\"}\n:::\n\n## ChessOlympiad\n\nContains three datasets to analyze the performance of 937 players from 188 countries during the Chess Olympiad in Chennai, India in 2022.\n\n::: {.d-flex .gap-2}\n[GitHub](https://github.com/focardozom/ChessOlympiad22){.btn .btn-outline-dark .btn-sm target=\"_blank\"}\n:::\n\n\n```{css}\n#| echo: false\n\n.btn-outline-dark {\n  font-size: 0.85rem;\n  padding: 0.25rem 0.75rem;\n  border-radius: 4px;\n}\n\n.btn-outline-dark:hover {\n  background-color: #3A372D;\n  color: white;\n}\n```\n\n",
+    "supporting": [
+      "packages_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
