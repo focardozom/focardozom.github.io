@@ -5,3 +5,10 @@
 /_site/
 
 /.luarc.json
+
+# Shinylive/webR runtime (generated at render time)
+posts/2024-07-06-shiny-trust/_freeze/
+_freeze/**/libs/
+
+# Generated site libraries
+_freeze/site_libs/
