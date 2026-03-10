@@ -5,8 +5,8 @@ format: html
 bibliography: references.bib
 csl: apa.csl
 date: 2024-03-12
-categories: ["Health", "Prevention", "Pandemic"]
-tags: ["Health", "Prevention", "Pandemic"]
+categories: ["Machine Learning", "Causal Inference", "Causality"]
+tags: ["Machine Learning", "Causal Inference", "Causality"]
 ---
 
 Have you ever attended a party where the host tries so hard to make everyone happy that they end up achieving the exact opposite? That's somewhat like what happens when we overenthusiastically balance data in machine learning. The intention is noble, but the outcome? Not always a hit.

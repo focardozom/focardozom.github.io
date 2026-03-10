@@ -1,0 +1,30 @@
+---
+title: "Welcome to prevention science meets sci-fi."
+author: Francisco Cardozo
+format: 
+  html:
+    toc: true
+    css: style.css
+    number-sections: true
+    fig-width: 8
+    fig-height: 6
+    fig-align: center
+date: 2025-07-07
+categories: ["Prevention", "Programs", "Efficacy", "Implementation"]
+tags: ["Prevention", "Programs", "Efficacy", "Implementation"]
+---
+
+
+
+> AI is knocking at the door of prevention science, carrying predictions instead of theories and probabilities instead of certainties. It's exciting, slightly unsettling, and entirely unavoidable-welcome to efficacy's existential crisis. *ChatGPT 4.0*
+
+
+Prevention science has long been grounded in a stable architecture of evaluation. For decades, researchers have relied on established [Standards of Evidence](https://preventionresearch.org/advocacy/standards-of-evidence/) to determine whether interventions are efficacious, effective, and ready to be scaled. These criteria, first articulated by Flay and colleagues, emphasized randomized controlled trials (RCTs), replication, and theoretical clarity as the hallmarks of trustworthy interventions. A decade later, the Society for Prevention Research refined and expanded these standards, incorporating dimensions such as *implementation quality*, *adaptation*, *documentation*, and *contextual fit*. These evolving guidelines built a shared language for what counts as evidence in prevention science, offering both clarity and continuity in an otherwise complex and variable field. They were not just methodological requirements-they were epistemological anchors.
+
+But the clarity of that system is now encountering something much harder to categorize. Since the emergence of generative AI systems like ChatGPT, the boundaries of what constitutes an “intervention” have begun to blur. If we can no longer clearly define what a program is, then the standards for determining “what works” also become unclear. AI’s integration into preventive interventions is challenging our foundational assumptions. Unlike traditional programs with predefined modules and structured delivery, AI-driven tools can fully personalize content in response to each participant’s input, often without any direct oversight from a program team. These AI-facilitated interventions may autonomously decide what comes next based solely on general parameters and participant responses. While this may simulate the adaptive judgment of human facilitators, the key difference is that responsibility for content and implementation falls on the AI, an entity that, by nature, cannot assume responsibility in any meaningful sense
+
+What are the standards for evaluating interventions when the treatment shifts with each user? What does fidelity mean when adaptation is the rule, not the exception? The field now faces interventions with the potential to resist standardization. In such a landscape, many of our familiar assumptions about replication, generalizability, even the boundaries of what constitutes an intervention, begin to feel less like scientific necessities and more like historical artifacts. Evaluation, as we’ve known it, is being asked to evaluate something that moves. And in doing so, it is singaling that science must now evolve to accommodate an intelligence that is not only artificial, but creative.
+
+It may be time to imagine a new framework to assess what we call an effective program (maybe a name for what we define as an intervention). This does not mean abandoning rigor, but rather expanding its scope. New standards might require that AI-driven interventions meet performance benchmarks, undergo regular bias audits, and maintain transparent, open-source models. Simulation-based evidence might gain credibility, and real-time fidelity tracking could become the norm. In this context, evaluation itself becomes adaptive, built to monitor programs that do not repeat but respond.
+
+What began as a stable, organized system is now moving into fluid territory. But the movement is not a collapse, *it is a transformation*. Prevention science remains anchored in its commitment to improving lives. That commitment just now has to stretch across a more dynamic, less predictable, and potentially more powerful set of tools. If the early decades of prevention science were about constructing a solid foundation, this moment is about learning to build on terrain that shifts beneath us. The questions we ask may stay the same, but the answers and the ways we find them are changing fast.

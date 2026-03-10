@@ -1,0 +1,226 @@
+---
+title: "How to Create a Bash Script to Automatically Organize Your Files"
+author: Francisco Cardozo
+format: html
+date: 2024-11-09
+categories: ["Bash", "Organization", "Files"]
+tags: ["Bash", "File Management", "Organization"]
+---
+
+Ever found yourself drowning in a sea of unorganized files? Try this simple but powerful Bash function that automatically organizes files into appropriate folders based on their extensions. This blog post will guide you through setting up an `organize_files` function that will help keep your directories neat and tidy.
+
+# Step-by-Step Guide
+
+## Step 1: Prepare Your Workspace
+
+Just like in our previous scripts [here](https://focardozom.github.io/posts/2024-04-06-getref/getref.html), we'll store this function in your bin directory. If you haven't created one yet:
+
+1.1. Open the terminal (cmd+space then type terminal).
+
+1.2. Create a new folder named bin in your home directory:
+
+```bash
+mkdir ~/bin
+```
+
+:::{.callout-note}
+If you already have a bin folder from previous scripts, you can skip this step.
+:::
+
+## Step 2: Create the Script File
+
+Navigate to your bin directory and create a new file named `organize`:
+
+```bash
+cd ~/bin
+touch organize
+```
+
+## Step 3: Add the Script Code
+
+Open the file in your preferred text editor. You can use Nano for simplicity:
+
+```bash
+nano organize
+```
+
+Copy and paste the following code into the file:
+
+```bash
+#!/bin/bash
+
+# Enable nullglob to avoid errors when no files match a pattern
+shopt -s nullglob
+
+# Check if directory exists
+if [ ! -d "$1" ]; then
+    echo "Error: Directory '$1' does not exist"
+    exit 1
+fi
+
+target_dir="$1"
+echo "Organizing files in: $target_dir"
+
+# Create directories if they don't exist
+mkdir -p "$target_dir"/{Images,Videos,Pdf,PowerPoint,Text,Archives,Excel,Others}
+
+# Change to target directory
+cd "$target_dir" || exit 1
+
+# Function to move files and handle duplicates
+move_file() {
+    local file="$1"
+    local target_folder="$2"
+    local filename=$(basename "$file")
+    
+    if [ -e "$target_folder/$filename" ]; then
+        # If file with the same name exists, add "-duplicate" before the extension
+        local name="${filename%.*}"
+        local extension="${filename##*.}"
+        local duplicate_name="${name}-duplicate.${extension}"
+        
+        # Check again in case a duplicate already exists
+        while [ -e "$target_folder/$duplicate_name" ]; do
+            name="${name}-duplicate"
+            duplicate_name="${name}.${extension}"
+        done
+        
+        mv -v "$file" "$target_folder/$duplicate_name"
+    else
+        mv -v "$file" "$target_folder/"
+    fi
+}
+
+# Move files based on their extensions
+
+# Images
+for file in *.{jpg,jpeg,png,gif,HEIC}; do
+    [ -e "$file" ] && move_file "$file" "Images"
+done
+
+# Videos
+for file in *.{mp4,avi,mov}; do
+    [ -e "$file" ] && move_file "$file" "Videos"
+done
+
+# PDF
+for file in *.pdf; do
+    [ -e "$file" ] && move_file "$file" "Pdf"
+done
+
+# PowerPoint
+for file in *.pptx; do
+    [ -e "$file" ] && move_file "$file" "PowerPoint"
+done
+
+# Text
+for file in *.{docx,txt}; do
+    [ -e "$file" ] && move_file "$file" "Text"
+done
+
+# Archives
+for file in *.{zip,rar}; do
+    [ -e "$file" ] && move_file "$file" "Archives"
+done
+
+# Excel
+for file in *.{xlsx,csv}; do
+    [ -e "$file" ] && move_file "$file" "Excel"
+done
+
+# Others (any remaining files)
+for file in *; do
+    [ -f "$file" ] && move_file "$file" "Others"
+done
+
+echo "File organization complete in $target_dir!"
+```
+
+Save and close (`cmd+x` then `Y` then `return`) the file.
+
+:::{.callout-tip}
+This script creates separate folders for different file types and moves files accordingly. It handles various common file formats including images, videos, documents, and more.
+:::
+
+## Step 4: Make the Script Executable
+
+Make your script executable by running:
+
+```bash
+chmod +x ~/bin/organize
+```
+
+## Step 5: Update Your Shell Configuration
+
+If you haven't already added your bin directory to your PATH (from previous [scripts](https://focardozom.github.io/posts/2024-04-06-getref/getref.html)), you'll need to do so. Open your shell configuration file:
+
+For Zsh users:
+```bash
+nano ~/.zshrc
+```
+
+For Bash users:
+```bash
+nano ~/.bashrc
+```
+
+Add this line if it's not already there:
+```bash
+export PATH="$HOME/bin:$PATH"
+```
+
+## Step 6: Apply the Changes
+
+Source your configuration file to apply the changes:
+
+For Zsh:
+```bash
+source ~/.zshrc
+```
+
+For Bash:
+```bash
+source ~/.bashrc
+```
+
+# How to Use Your New Script
+
+:::{.callout-warning}
+## With Great Power Comes Great Responsibility
+This script moves files automatically, which can be very powerful but also potentially dangerous if used incorrectly. Always:
+- Test it first in a non-critical directory
+- Make backups of important files before organizing them
+- Double-check the directory path you're providing
+:::
+
+Using the script is straightforward. Simply type `organize` followed by the path to the directory you want to organize. For example:
+
+```bash
+organize ~/Downloads
+```
+
+This will:
+1. Create organized folders in your specified directory
+2. Move files to their appropriate folders based on their extensions
+3. Show you what files are being moved
+
+The script will create the following folders:
+- Images (for jpg, jpeg, png, gif, HEIC files)
+- Videos (for mp4, avi, mov files)
+- Pdf (for pdf files)
+- PowerPoint (for pptx files)
+- Documents (for docx, txt files)
+- Archives (for zip, rar files)
+- Excel (for xlsx, csv files)
+
+
+# Customization
+
+You can easily customize this script by:
+- Adding new folders for different file types
+- Including additional file extensions
+- Modifying the folder names to match your preferences
+
+Simply edit the script and add or modify the relevant lines in the code.
+
+That's it! You now have a powerful tool to keep your directories organized. No more messy folders! If you have any questions or suggestions for improvements, feel free to leave a comment below.

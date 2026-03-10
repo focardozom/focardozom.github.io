@@ -193,7 +193,7 @@ bind_rows(sens, spec) |>
     gt()
 ```
 
-Oops! That doesn't look right. Why is that?
+Oops! That doesn't look right. Why is that? 
 
 In the context of logistic regression, R's default behavior is to take the first level of a factor as the reference category when using the <a href='https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/glm' target='_blank'>`glm`</a> function. This behavior becomes particularly important when we're dealing with binary outcomes, often coded as 0 (absence of the event) and 1 (presence of the event). By default, R will take 0 as the reference level and compare it against 1, due to 0 coming before 1 in numerical order.
 

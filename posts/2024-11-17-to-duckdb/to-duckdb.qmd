@@ -1,0 +1,191 @@
+---
+title: "How to Create a Bash Script for Easy File Conversion Using DuckDB"
+author: Francisco Cardozo
+format: html
+date: 2024-11-17
+categories: ["Bash", "DuckDB", "Data"]
+tags: ["Bash", "DuckDB", "File Conversion", "Data Engineering"]
+---
+
+Working with different file formats can be challenging, especially when dealing with large datasets. Here's a simple but powerful Bash script that leverages DuckDB to convert files between different formats (like CSV and Parquet) directly from your terminal.
+
+I took the script from [here](https://gist.github.com/mehd-io/31f74387f03e3589a6875d7e0572b9f0). 
+
+Please visit the [Duckdb website](https://duckdb.org/2024/03/19/convert-files.html). They are doing some of the most amazing work in the data space.
+
+Also, visite the [Youtube channel](https://www.youtube.com/@motherduckdb) for some amazing content. And [Motherduck](https://motherduck.com) for some more amazing things.
+
+
+# Step-by-Step Guide
+
+## Step 1: Install DuckDB
+
+Before we begin, make sure you have DuckDB installed. You can install it using Homebrew:
+
+```bash
+brew install duckdb
+```
+
+:::{.callout-note}
+If you don't have Homebrew installed, you can get it from [brew.sh](https://brew.sh/).
+:::
+
+## Step 2: Prepare Your Workspace
+
+Just like in our previous scripts ([getref](https://focardozom.github.io/posts/2024-04-06-getref/getref.html) and [organize](https://focardozom.github.io/posts/2024-11-09-organize-this/organize-this.html)), we'll store this function in your bin directory. If you haven't created one yet:
+
+```bash
+mkdir ~/bin
+```
+
+## Step 3: Create the Script File
+
+Navigate to your bin directory and create a new file named `toduck`:
+
+```bash
+cd ~/bin
+touch toduck
+```
+
+## Step 4: Add the Script Code
+
+Open the file in your preferred text editor:
+
+```bash
+nano toduck
+```
+
+Copy and paste the following code:
+
+```bash
+#!/bin/bash
+
+convert_file() {
+    local input_file="$1"
+    local output_extension="$2"
+
+    # Extracting the filename without extension
+    local base_name=$(basename -- "$input_file")
+    local name="${base_name%.*}"
+
+    # Constructing the output filename
+    local output_file="${name}.${output_extension}"
+
+    # Performing the conversion
+    duckdb -c "copy (select * from '${input_file}') to '${output_file}'"
+
+    echo "Conversion complete: ${output_file}"
+}
+
+# Check if the number of arguments is less than 2
+if [ "$#" -lt 2 ]; then
+    echo "Usage: $0 <input_file> <output_extension>"
+    echo "Example: $0 example.parquet csv"
+    exit 1
+fi
+
+# Call the conversion function with the provided arguments
+convert_file "$1" "$2"
+```
+
+Exit the editor and save the file.
+
+:::{.callout-tip}
+This script uses DuckDB's SQL capabilities to read and write files in different formats. DuckDB automatically detects the input format and handles the conversion seamlessly.
+:::
+
+
+## Step 5: Make the Script Executable
+
+Make your script executable by running:
+
+```bash
+chmod +x ~/bin/toduck
+```
+
+## Step 6: Update Your Shell Configuration
+
+If you haven't already added your bin directory to your PATH (from previous scripts), you'll need to do so. Open your shell configuration file:
+
+For Zsh users:
+```bash
+nano ~/.zshrc
+```
+
+For Bash users:
+```bash
+nano ~/.bashrc
+```
+
+Add this line if it's not already there:
+```bash
+export PATH="$HOME/bin:$PATH"
+```
+
+## Step 7: Apply the Changes
+
+Source your configuration file to apply the changes:
+
+For Zsh:
+```bash
+source ~/.zshrc
+```
+
+For Bash:
+```bash
+source ~/.bashrc
+```
+
+# How to Use Your New Script
+
+:::{.callout-warning}
+## Data Safety First
+Always make sure you have backups of your important data files before performing any conversions. While DuckDB is reliable, it's always good practice to protect your data.
+:::
+
+Using the script is straightforward. 
+
+Navigate to the directory containing the file you want to convert and run the script with the desired output format. The syntax is:
+
+```bash
+toduck <input_file> <output_extension>
+```
+
+Examples:
+
+1. Convert a Parquet file to CSV:
+```bash
+toduck data.parquet csv
+```
+
+2. Convert a CSV file to Parquet:
+```bash
+toduck data.csv parquet
+```
+
+The script will:
+1. Take your input file
+2. Create a new file with the same name but different extension
+3. Convert the data using DuckDB
+4. Show you the path to the converted file
+
+# Supported Formats
+
+DuckDB supports various file formats including:
+- CSV
+- Parquet
+- JSON
+- Excel (xlsx)
+
+:::{.callout-note}
+The exact formats available may depend on your DuckDB version and configuration.
+:::
+
+# Common Use Cases
+
+This script is particularly useful when you need to:
+- Convert large CSV files to Parquet for better compression and performance
+- Make Parquet files readable in spreadsheet software by converting to CSV
+- Quickly convert between different data formats for various tools and applications
+
+That's it! You now have a powerful tool for converting data files right from your terminal. If you have any questions or suggestions for improvements, feel free to leave a comment below.

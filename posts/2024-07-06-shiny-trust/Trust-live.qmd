@@ -1,0 +1,353 @@
+---
+title: "How much do we trust a student’s answer about drug use?"
+format: html
+author: 
+  - Francisco Cardozo
+  - Pablo Montero-Zamora
+filters:
+  - shinylive
+date: 2024-07-06
+categories: ["Shiny", "Drug Use", "Bayes"]
+tags: ["Shiny", "Drug Use", "Bayes"]
+---
+
+Confidence in students' survey responses is often questioned when researching drug use, as it can be difficult to determine whether students are being truthful about their alcohol and other drug consumption. This concern is valid because self-reported drug use data can be influenced by various reporting biases. For instance, some students may underreport their drug use (i.e., deniers), while others may overreport (i.e., braggers). It is crucial to understand how these biases can impact the validity of research findings and to take steps to minimize their influence.
+
+To examine this issue, we created a simulation-based app. This app can analyze the potential effects of deniers and braggers at different prevalence levels. It aims to improve understanding of how these biases affect research validity and to develop strategies to minimize their influence. By simulating different scenarios and analyzing the results, researchers can better understand the impact of deniers and braggers on research findings and take appropriate steps to mitigate these biases.
+
+Let's define some key concepts:
+
+* **True prevalence:** The true number of students using a drug divided by the total population.  
+* **Deniers**: Students who lie about not using drugs when they actually do.
+* **Braggers**: Students who lie about using drugs when they actually don’t.
+
+We can use a student's response to a drug use question to estimate the probability of their actual drug use behavior given hypothetical values of deniers, braggers, and true prevalence.
+
+To model this probability, we can use **Bayes' theorem:**
+
+$$
+P(A | B) = P(A) \frac{P(B | A)}{P(B)}
+$$ 
+
+By replacing:
+
+* \(P(A|B)\): The probability of drug use, given that the student says "yes" in the questionnaire.
+* \(P(B|A)\): The probability of saying "yes" in the questionnaire, given that the student has used drugs.
+* \(P(A)\): The probability of drug use (drug use prevalence).
+* \(P(B)\): The probability of saying "yes" in the questionnaire.
+
+We present simulated scenarios to understand how the trustworthiness of student responses changes based on the proportions of braggers, deniers, and the prevalence of alcohol use. 
+
+::: {.callout-note}
+Definition of trust:
+
+$$
+\text{trust} = P(\text{Actual Drug Use} | \text{Reports Drug Use})
+$$
+The definition of **trust** we use is the conditional probability that a student who reports drug use in the survey is actually telling the truth, and it represents how much confidence we can have in the validity of a *yes* response from the students regarding their drug use.
+
+:::
+
+::: {.panel-tabset}
+
+# Three Possible Scenarios
+
+### Three Possible Scenarios
+
+We explore three different scenarios to understand how varying levels of dishonesty impact the trustworthiness of self-reported data on drug use among students. By adjusting the proportions of deniers (those who falsely deny drug use) and braggers (those who falsely claim drug use), we can observe the effects on data reliability in each scenario.
+
+1. **Minimal Dishonesty**: This scenario simulates a situation where almost nobody lies (5%) about their drug use, resulting in very low proportions of both deniers and braggers.
+
+2. **High Dishonesty**: This scenario represents an extreme where there are high proportions of both deniers and braggers (95%). 
+
+3. **Mixed Dishonesty**: In this scenario, we simulate a situation with mixed levels of dishonesty, specifically with 20% deniers and 10% braggers.
+
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+library(shiny)
+library(ggplot2)
+library(purrr)
+library(tibble)
+library(scales)
+library(bslib)
+
+ui <- page_fixed(
+    card(
+        card_header("Low Dishonesty"),
+        card_body(
+            class = "lead container",
+            plotOutput("plot_low")
+        )
+    ),
+    card(
+        card_header("High Dishonesty"),
+        card_body(
+            class = "lead container",
+            plotOutput("plot_high")
+        )
+    ),
+    card(
+        card_header("Mixed Dishonesty"),
+        card_body(
+            class = "lead container",
+            plotOutput("plot_mixed")
+        )
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    conf <- function(prevalence, deniers, braggers) {
+        tibble(
+            trust = (prevalence * (1 - deniers)) /
+                (
+                    (prevalence * (1 - deniers)) + (braggers * (1 - prevalence))
+                ),
+            prevalence = prevalence,
+            braggers = braggers,
+            deniers = deniers,
+            group = c(1)
+        )
+    }
+
+
+    generate_df <- function(deniers, braggers) {
+        l <- list(
+            prevalence = seq(0.01, 0.99, 0.01),
+            deniers = rep(deniers, 99),
+            braggers = rep(braggers, 99)
+        )
+        pmap_dfr(l, conf)
+    }
+
+    df_low <- reactive({
+        generate_df(0.05, 0.05)
+    })
+
+    df_high <- reactive({
+        generate_df(0.95, 0.95)
+    })
+
+    df_mixed <- reactive({
+        generate_df(0.2, 0.1)
+    })
+
+    output$plot_low <- renderPlot({
+        ggplot(df_low(), aes(prevalence, trust, group = group)) +
+            geom_line(size = 1.2, color = "#9966cc") +
+            scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1)) +
+            scale_x_continuous(labels = scales::percent, breaks = seq(0, 1, 0.15)) +
+            labs(
+                x = "Drug prevalence",
+                y = "Trust"
+            ) +
+            theme_minimal()
+    })
+
+    output$plot_high <- renderPlot({
+        ggplot(df_high(), aes(prevalence, trust, group = group)) +
+            geom_line(size = 1.2, color = "#9966cc") +
+            scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1)) +
+            scale_x_continuous(labels = scales::percent, breaks = seq(0, 1, 0.15)) +
+            labs(
+                x = "Drug prevalence",
+                y = "Trust"
+            ) +
+            theme_minimal()
+    })
+
+    output$plot_mixed <- renderPlot({
+        ggplot(df_mixed(), aes(prevalence, trust, group = group)) +
+            geom_line(size = 1.2, color = "#9966cc") +
+            scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1)) +
+            scale_x_continuous(labels = scales::percent, breaks = seq(0, 1, 0.15)) +
+            labs(
+                x = "Drug prevalence",
+                y = "Trust"
+            ) +
+            theme_minimal()
+    })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+
+# Simulation Playground
+
+You can explore different scenarios to understand the impact of dishonesty on self-reported data about drug use. Use the sliders to adjust the proportions of deniers and braggers, and observe how these changes affect the trustworthiness of the data across various scenarios.
+
+```{shinylive-r}
+#| standalone: true
+#| viewerHeight: 600
+library(shiny)
+library(ggplot2)
+library(purrr)
+library(tibble)
+library(scales)
+library(bslib)
+
+ui <- page_fixed(
+    layout_columns(
+        card(sliderInput("deniers",
+            "Deniers: say no, but yes",
+            min = 0.001,
+            max = 0.999,
+            value = 0.001
+        )),
+        card(sliderInput("braggers",
+            "Braggers: say yes, but no",
+            min = 0.001,
+            max = 0.999,
+            value = 0.001
+        ))
+    ),
+    card(
+        plotOutput("plot_sim")
+    )
+)
+
+# Define server logic required to draw a histogram
+server <- function(input, output) {
+    conf <- function(prevalence, deniers, braggers) {
+        tibble(
+            trust = (prevalence * (1 - deniers)) /
+                ((prevalence * (1 - deniers)) + (braggers * (1 - prevalence))),
+            prevalence = prevalence,
+            braggers = braggers,
+            deniers = deniers,
+            group = c(1)
+        )
+    }
+
+    df <- reactive({
+        l <- list(
+            prevalence = seq(0.01, 0.99, 0.01),
+            deniers = rep(input$deniers, 99),
+            braggers = rep(input$braggers, 99)
+        )
+        pmap_dfr(l, conf)
+    })
+
+
+    output$plot_sim <- renderPlot({
+        ggplot(df(), aes(prevalence, trust, group = group)) +
+            geom_line(size = 1.2, color = "#9966cc") +
+            scale_y_continuous(breaks = seq(0, 1, 0.1), limits = c(0, 1)) +
+            scale_x_continuous(labels = scales::percent, breaks = seq(0, 1, 0.15)) +
+            labs(
+                x = "Drug prevalence",
+                y = "Trust"
+            ) +
+            theme_minimal()
+    })
+}
+
+# Run the application
+shinyApp(ui = ui, server = server)
+```
+
+
+#  Example Scenario
+
+Imagine a school with 100 students. Here's how we can calculate the trust with different levels of deniers and braggers.
+
+1. **True Prevalence of Drug Use**: Let's say the actual prevalence of drug use is 50%. So, 50 students actually use drugs.
+2. **No Dishonesty**: All students report honestly.
+3. **Deniers (50%)**: 50% of actual drug users deny using drugs.
+4. **Braggers (5%)**: 5% of non-drug users falsely claim to use drugs.
+
+#### No Dishonesty
+
+```{r}
+# Actual Drug Users: 50
+# Reported Drug Users: 50 (all 50 actual users report truthfully)
+
+prevalence <- 50 / 100
+deniers <- 0
+braggers <- 0
+
+numerator <- prevalence * (1 - deniers) * 100
+denominator <- (prevalence * (1 - deniers) + braggers * (1 - prevalence)) * 100
+
+trust <- numerator / denominator
+paste(trust, "confidence")
+```
+
+
+#### With 50% Deniers
+
+```{r}
+# Actual Drug Users: 50
+# Deniers (50%): 25 students who use drugs falsely report not using them.
+# Truthful Reports from Drug Users: 25
+
+prevalence <- 50 / 100
+deniers <- 0.5
+braggers <- 0
+
+numerator <- prevalence * (1 - deniers) * 100
+denominator <- (prevalence * (1 - deniers) + braggers * (1 - prevalence)) * 100
+
+trust <- numerator / denominator
+paste(trust, "confidence")
+
+```
+
+In this scenario, where there are 50% deniers and no braggers, the trust in a "yes" response is 100%. This means that if a student reports "yes" to using drugs, we can be completely confident that the student is indeed telling the truth, at a prevalence of 50%. This confidence arises because the 25 students who reported "yes" are all actual drug users, as there are no false positives. The presence of deniers, who are students that use drugs but falsely report "no," does not affect the trust in a "yes" response. This is because these deniers simply reduce the number of "yes" responses from actual drug users, but the "yes" responses that do exist are entirely truthful.
+
+
+#### 5% of Braggers 
+
+```{r}
+
+# Actual Drug Users: 50
+# Truthful Reports from Drug Users: 50
+# Braggers (5%): 5% of 50 non-drug users falsely report using drugs: 5
+
+prevalence <- 50 / 100
+deniers <- 0
+braggers <- 0.05
+
+numerator <- prevalence * (1 - deniers) * 100
+denominator <- (prevalence * (1 - deniers) + braggers * (1 - prevalence)) * 100
+
+trust <- numerator / denominator
+paste(trust, "confidence")
+```
+
+
+
+:::
+
+# Conclusion 
+
+This simulation app shows how varying levels of dishonesty among students impact the reliability of self-reported data on drug use. Whether dishonesty is minimal, high, or mixed, the accuracy of survey results is affected, underscoring the importance of addressing reporting biases in adolescent drug use research. By understanding the potential effects of underreporting and overreporting, researchers can develop more accurate data collection methods and analytical strategies, leading to more reliable findings. These insights are crucial for informing  interventions aimed at addressing drug use among adolescents.
+
+# Some Recommendations for Measuring Drug Use
+
+1. **Include a Fictitious Drug in the Report**: Adding a fictitious drug to the questionnaire can help identify and exclude responses from students who overreport (braggers).
+
+2. **Guarantee Anonymity**: Ensure students' anonymity to encourage honest reporting. For example, do not collect data in the presence of familiar adults, which can create pressure and lead to dishonest answers.
+
+3. **Educate on the Importance of Honesty**: Explain the benefits of honest reporting to students. Emphasize how accurate data can help create better policies and interventions that benefit their community.
+
+4. **Compare with Other Reports**: Cross-check your prevalence data with other studies and reports. This can help identify discrepancies and validate the accuracy of your findings.
+
+5. **Conduct Consistency Analysis**: Analyze the consistency of responses to ensure coherence. For example, lifetime prevalence should be consistent with last month’s prevalence; it is illogical for someone to report drug use in the past month but not in their lifetime.
+
+6. **Randomized Response Techniques**: Use randomized response techniques to increase the likelihood of truthful responses. This method allows respondents to answer sensitive questions while maintaining privacy, reducing the fear of disclosure.
+
+7. **Use Validated Questionnaires**: Employ well-validated and standardized questionnaires that have been proven to minimize bias and elicit more accurate responses.
+
+8. **Provide Confidential Environments**: Create a confidential and comfortable environment for survey administration. Ensure that students feel safe and that their responses will not be traced back to them.
+
+9. **Implement Follow-Up Questions**: Include follow-up questions that cross-validate initial responses. Inconsistencies in follow-up responses can highlight potential dishonesty.
+
+10. **Train Data Collectors**: Train those administering the surveys to build rapport with students and encourage honesty. Skilled data collectors can significantly impact the quality of the data collected.
+
+11. **Pilot Testing**: Conduct pilot testing of the survey to identify potential issues and biases before the full-scale implementation. This allows for adjustments to improve accuracy.
+
+12. **Longitudinal Studies**: Where possible, use longitudinal studies to track changes over time, which can help validate self-reported data through consistency checks over multiple points in time.

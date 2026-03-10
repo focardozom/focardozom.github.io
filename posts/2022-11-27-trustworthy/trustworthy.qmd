@@ -13,7 +13,7 @@ tags:
 title: Trustworthy
 ---
 
-# How much do we trust a students' response when asked if they have comsumed drugs?
+# How much do we trust a students' response when asked if they have comsumed drugs? 
 
 [Francisco Cardozo](https://github.com/focardozom), [Pablo Montero-Zamora](https://scholar.google.es/citations?user=jw7I6NUAAAAJ&hl=en)
 
