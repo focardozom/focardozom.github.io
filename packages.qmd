@@ -7,7 +7,7 @@ listing:
   type: grid
   grid-columns: 3
   fields: [image, title, description, categories]
-  field-links: [title]
+  field-links: [title, image]
   image-height: "100px"
 ---
 
@@ -19,5 +19,20 @@ listing:
   object-fit: contain !important;
   padding-top: 0.5rem !important;
   max-height: 100% !important;
+}
+
+.pkg-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.pkg-link:hover {
+  color: #ff0000;
+  text-decoration: underline;
 }
 </style>

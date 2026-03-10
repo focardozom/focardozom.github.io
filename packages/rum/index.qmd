@@ -6,3 +6,5 @@ order: 5
 categories: [templates, quarto, CRAN]
 href: https://raymondbalise.github.io/rUM/
 ---
+
+[Visit website →](https://raymondbalise.github.io/rUM/){.pkg-link target="_blank"}

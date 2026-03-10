@@ -6,3 +6,5 @@ order: 7
 categories: [qualitative, de-identification]
 href: https://abiraahmi.github.io/ghosted/
 ---
+
+[Visit website →](https://abiraahmi.github.io/ghosted/){.pkg-link target="_blank"}

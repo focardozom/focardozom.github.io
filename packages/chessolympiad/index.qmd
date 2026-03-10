@@ -4,5 +4,7 @@ description: "Three datasets to analyze the performance of 937 players from 188 
 image: ../../img/packages/chessolympiad.png
 order: 4
 categories: [data, chess]
-href: https://github.com/focardozom/ChessOlympiad22
+href: https://focardozom.github.io/ChessOlympiad22/
 ---
+
+[Visit website →](https://focardozom.github.io/ChessOlympiad22/){.pkg-link target="_blank"}

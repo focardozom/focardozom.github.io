@@ -6,3 +6,5 @@ order: 1
 categories: [modeling, tidymodels]
 href: https://focardozom.github.io/BreakNBuild/
 ---
+
+[Visit website →](https://focardozom.github.io/BreakNBuild/){.pkg-link target="_blank"}

@@ -6,3 +6,5 @@ order: 6
 categories: [qualitative, analysis, CRAN]
 href: https://abiraahmi.github.io/DedooseR/
 ---
+
+[Visit website →](https://abiraahmi.github.io/DedooseR/){.pkg-link target="_blank"}

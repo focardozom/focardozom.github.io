@@ -4,5 +4,7 @@ description: "Facilitate dataset documentation during R package creation. Genera
 image: ../../img/packages/documentdata.png
 order: 2
 categories: [documentation, packages]
-href: https://github.com/focardozom/DocumentData
+href: https://focardozom.github.io/DocumentData/
 ---
+
+[Visit website →](https://focardozom.github.io/DocumentData/){.pkg-link target="_blank"}

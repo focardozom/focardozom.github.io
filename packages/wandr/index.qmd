@@ -4,5 +4,7 @@ description: "Transform R learning into an entertaining journey by weaving the m
 image: ../../img/packages/wandr.png
 order: 3
 categories: [education, fun]
-href: https://github.com/focardozom/wandR
+href: https://focardozom.github.io/wandR/
 ---
+
+[Visit website →](https://focardozom.github.io/wandR/){.pkg-link target="_blank"}
