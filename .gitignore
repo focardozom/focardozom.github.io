@@ -6,9 +6,9 @@
 
 /.luarc.json
 
-# Shinylive/webR runtime (generated at render time)
+# Shinylive post: re-executed in CI (too large for freeze)
 posts/2024-07-06-shiny-trust/_freeze/
-_freeze/**/libs/
+_freeze/posts/2024-07-06-shiny-trust/
 
 # Generated site libraries
 _freeze/site_libs/
