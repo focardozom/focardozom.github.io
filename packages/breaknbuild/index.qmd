@@ -1,0 +1,8 @@
+---
+title: "BreakNBuild"
+description: "Evaluate model performance with progressively sampled data. Helps assess how models behave as training data grows."
+image: ../../img/packages/breaknbuild.png
+order: 1
+categories: [modeling, tidymodels]
+href: https://focardozom.github.io/BreakNBuild/
+---

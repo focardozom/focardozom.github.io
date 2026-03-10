@@ -1,0 +1,8 @@
+---
+title: "rUM"
+description: "R Markdown and Quarto templates for academic papers and slide decks from the University of Miami. Also creates research projects with papers as vignettes."
+image: ../../img/packages/rum.png
+order: 5
+categories: [templates, quarto, CRAN]
+href: https://raymondbalise.github.io/rUM/
+---

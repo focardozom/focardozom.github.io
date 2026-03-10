@@ -1,0 +1,8 @@
+---
+title: "ghosted"
+description: "De-identify interview transcripts in VTT, DOCX, and TXT formats. Redacts names and sensitive information with support for batch processing."
+image: ../../img/packages/ghosted.png
+order: 7
+categories: [qualitative, de-identification]
+href: https://abiraahmi.github.io/ghosted/
+---

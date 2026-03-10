@@ -1,0 +1,8 @@
+---
+title: "ChessOlympiad"
+description: "Three datasets to analyze the performance of 937 players from 188 countries during the 2022 Chess Olympiad in Chennai, India."
+image: ../../img/packages/chessolympiad.png
+order: 4
+categories: [data, chess]
+href: https://github.com/focardozom/ChessOlympiad22
+---

@@ -1,0 +1,23 @@
+---
+title: "R Packages"
+listing:
+  id: pkg-listing
+  contents: packages
+  sort: "order"
+  type: grid
+  grid-columns: 3
+  fields: [image, title, description, categories]
+  field-links: [title]
+  image-height: "100px"
+---
+
+<style>
+.listing-image img,
+.quarto-grid-item .thumbnail img,
+.quarto-grid-item img.thumbnail-image,
+.quarto-grid-item .card-img-top {
+  object-fit: contain !important;
+  padding-top: 0.5rem !important;
+  max-height: 100% !important;
+}
+</style>

@@ -24,9 +24,8 @@ website:
         file: index.qmd
       - posts.qmd
       - publications.qmd
+      - packages.qmd
     tools:
-      - icon: twitter
-        href: https://twitter.com/focardozom09?lang=en
       - icon: github
         href: https://github.com/focardozom
       - icon: mastodon

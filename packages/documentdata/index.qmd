@@ -1,0 +1,8 @@
+---
+title: "DocumentData"
+description: "Facilitate dataset documentation during R package creation. Generates roxygen2 skeletons for data objects."
+image: ../../img/packages/documentdata.png
+order: 2
+categories: [documentation, packages]
+href: https://github.com/focardozom/DocumentData
+---
