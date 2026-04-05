@@ -102,8 +102,8 @@ for (yr in unique_years) {
 }
 ```
 
-```{css}
-#| echo: false
+```{css echo=FALSE}
+
 
 .pub-numbered {
   display: flex;
