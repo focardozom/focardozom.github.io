@@ -1,6 +1,7 @@
 on:
   push:
     branches: main
+  workflow_dispatch:
 
 name: Quarto Publish
 
@@ -26,6 +27,8 @@ jobs:
             any::shinylive
             any::knitr
             any::rmarkdown
+            any::jsonlite
+            any::glue
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2

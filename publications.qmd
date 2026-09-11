@@ -1,5 +1,7 @@
 ---
 title: "Publications"
+execute:
+  freeze: false
 format:
   html:
     toc: true
