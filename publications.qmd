@@ -1,5 +1,6 @@
 ---
 title: "Publications"
+description-meta: "Peer-reviewed publications by Francisco Cardozo (Cardozo-Macías) on prevention science, substance use, and machine learning."
 execute:
   freeze: false
 format:

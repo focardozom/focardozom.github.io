@@ -2,7 +2,7 @@
 title: "Balancing Efficiency and Flexibility: The Challenges of Over-Optimization in the Multiphase Optimization Strategy (MOST)"
 author: Francisco Cardozo
 date: 2023-12-03
-categories: ["MOST", "Prevention", "optimization"]
+categories: ["Prevention Science"]
 tags: ["MOST", "Prevention", "optimization"]
 ---
 

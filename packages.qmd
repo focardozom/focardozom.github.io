@@ -1,5 +1,6 @@
 ---
 title: "R Packages"
+description-meta: "Open-source R packages developed or co-developed by Francisco Cardozo, from model evaluation to qualitative data analysis."
 listing:
   id: pkg-listing
   contents: packages

@@ -4,7 +4,7 @@ author:
   - "Francisco Cardozo"
   - "Kyle Grealis"
 date: 2023-07-16
-categories: ["Sensitivity", "Tidymodels", "Specificity"]
+categories: ["R", "Machine Learning"]
 tags: ["Sensitivity", "Tidymodels", "Specificity"]
 bibliography: ref.bib
 ---

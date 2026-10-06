@@ -3,7 +3,7 @@ title: "How to Create a Bash Script to Extract Bibliographic References from DOI
 author: Francisco Cardozo
 format: html
 date: 2024-04-06
-categories: ["DOI", "Bash", "References"]
+categories: ["Bash"]
 tags: ["DOI", "Bash", "References"]
 ---
 

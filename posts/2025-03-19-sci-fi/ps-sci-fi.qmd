@@ -10,7 +10,7 @@ format:
     fig-height: 6
     fig-align: center
 date: 2025-07-07
-categories: ["Prevention", "Programs", "Efficacy", "Implementation"]
+categories: ["Prevention Science", "Machine Learning"]
 tags: ["Prevention", "Programs", "Efficacy", "Implementation"]
 ---
 

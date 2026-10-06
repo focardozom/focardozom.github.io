@@ -9,7 +9,11 @@ website:
   cookie-consent: true
   title: Francisco Cardozo
   site-url: https://focardozom.github.io/
-  description: "Francisco's personal website"
+  description: "Francisco Cardozo is a prevention scientist at the University of Miami working on AI for program implementation, machine learning, and open-source R tools."
+  image: https://focardozom.github.io/img/yo.JPEG
+  favicon: img/favicon.png
+  open-graph: true
+  twitter-card: true
   back-to-top-navigation: true
   page-navigation: true
   page-footer:
@@ -17,6 +21,7 @@ website:
     border: false
     right:
       - icon: github
+        aria-label: GitHub
         href: https://github.com/focardozom
   navbar:
     left:
@@ -27,14 +32,17 @@ website:
       - packages.qmd
     tools:
       - icon: github
+        aria-label: GitHub
         href: https://github.com/focardozom
-      - icon: mastodon
-        aria-label: Mastodon
-        href: https://mastodon.social/@focardozom@nerdculture.de
-        rel: "me"
+      - icon: mortarboard-fill
+        aria-label: Google Scholar
+        href: https://scholar.google.com/citations?user=X5BtC3wAAAAJ
       - icon: linkedin
         text: LinkedIn
-        href: https://www.linkedin.com/in/francisco-cardozo-757050264/
+        href: https://www.linkedin.com/in/fcardozom/
+      - icon: rss
+        aria-label: RSS feed
+        href: posts.xml
 
 format:
   html:

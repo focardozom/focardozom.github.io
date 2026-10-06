@@ -3,7 +3,7 @@ title: "How to Create a Bash Script to Automatically Organize Your Files"
 author: Francisco Cardozo
 format: html
 date: 2024-11-09
-categories: ["Bash", "Organization", "Files"]
+categories: ["Bash"]
 tags: ["Bash", "File Management", "Organization"]
 ---
 

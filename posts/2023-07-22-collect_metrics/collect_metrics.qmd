@@ -4,13 +4,13 @@ author:
   - "Francisco Cardozo"
   - "Catalina Cañizares"
 date: 2023-07-22
-categories: ["Sensitivity", "Tidymodels", "Specificity"]
+categories: ["R", "Machine Learning"]
 tags: ["Sensitivity", "Tidymodels", "Specificity"]
 ---
 
 (in progress)
 
-In the last [post](https://focardozom.github.io/posts/2023-07-16-yarstick/2023-07-15.html), we discussed computing sensitivity and specificity using the `sensitivity()` and `specificity()` functions from the `yardstick` package. In this post, we'll demonstrate how to compute these metrics using the `collect_metrics` function from the `tidymodels` package.
+In the last [post](https://focardozom.github.io/posts/2023-07-15-yarstick/2023-07-15.html), we discussed computing sensitivity and specificity using the `sensitivity()` and `specificity()` functions from the `yardstick` package. In this post, we'll demonstrate how to compute these metrics using the `collect_metrics` function from the `tidymodels` package.
 
 ### Dataset
 
@@ -138,7 +138,7 @@ By default, we obtain **accuracy** and **roc_auc** metrics for classification mo
 ::: {.callout-caution}
 ## event_level = ?
 
-Be mindful of the event level used by yardstick. As we demonstrated in the [previous post](https://focardozom.github.io/posts/2023-07-16-yarstick/2023-07-15.html), `yardstick` uses the first level as the event of interest. To change this behavior, we need to specify the *event_level* argument when using the `fit_resamples()` function.
+Be mindful of the event level used by yardstick. As we demonstrated in the [previous post](https://focardozom.github.io/posts/2023-07-15-yarstick/2023-07-15.html), `yardstick` uses the first level as the event of interest. To change this behavior, we need to specify the *event_level* argument when using the `fit_resamples()` function.
 
 :::
 

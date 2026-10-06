@@ -2,7 +2,7 @@
 title: "Can ELO Predict the Outcome of Chess Games?"
 author: "Francisco Cardozo"
 date: 2022-12-01
-categories: ["Chess", "Trees", "Machine Learning"]
+categories: ["R", "Machine Learning", "Chess"]
 tags: ["Chess", "Trees", "Machine Learning"]
 format:
   html:

@@ -1,15 +1,47 @@
 ---
-title: "About me"
+title: "Francisco Cardozo"
+subtitle: "Postdoctoral Research Associate · University of Miami Miller School of Medicine"
+description-meta: "Francisco Cardozo, postdoctoral research associate at the University of Miami Miller School of Medicine. Prevention science, AI, machine learning, and R."
+include-in-header:
+  - text: |
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Francisco Cardozo",
+        "alternateName": ["Francisco Cardozo-Macías", "Francisco Cardozo Macías"],
+        "jobTitle": "Postdoctoral Research Associate",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "University of Miami Miller School of Medicine",
+          "url": "https://med.miami.edu/"
+        },
+        "url": "https://focardozom.github.io/",
+        "image": "https://focardozom.github.io/img/yo.JPEG",
+        "email": "mailto:foc9@miami.edu",
+        "knowsAbout": ["Prevention science", "Substance use prevention", "Artificial intelligence", "Machine learning", "R programming"],
+        "sameAs": [
+          "https://orcid.org/0000-0002-1925-4954",
+          "https://scholar.google.com/citations?user=X5BtC3wAAAAJ",
+          "https://www.researchgate.net/profile/Francisco-Cardozo-3",
+          "https://github.com/focardozom",
+          "https://www.linkedin.com/in/fcardozom/"
+        ]
+      }
+      </script>
 ---
 
 
-<img class="avatar" src="img/yo.JPEG" alt="avatar">
+<img class="avatar" src="img/yo.JPEG" alt="Francisco Cardozo">
 
-Hi, I’m Francisco Cardozo! I’m a researcher passionate about using data and technology to make a difference in prevention science. My work is all about developing and evaluating programs that prevent health challenges, and I’m especially excited about how AI can improve the way these interventions are implemented. I’m also a big believer in open-source software and love contributing tools and resources to make research more accessible and transparent. At the end of the day, my goal is to bring innovation into public health to create meaningful, lasting change.
+Hi, I’m Francisco Cardozo! I’m a researcher passionate about using data and technology to make a difference in prevention science. My work is all about developing and evaluating programs that prevent health challenges, and I’m especially excited about how AI can improve the way these interventions are implemented. I’m also a big believer in open-source software and love contributing tools and resources to make research more accessible and transparent. At the end of the day, my goal is to bring innovation into public health to create meaningful, lasting change. I have also published as Francisco Cardozo-Macías.
 
 -   [CV](https://github.com/focardozom/cv/blob/main/cv.pdf){target="_blank"} 
 -   [Teaching](https://github.com/focardozom/Advanced-Research-Methods){target="_blank"} 
--   [Publications](https://orcid.org/0000-0002-1925-4954){target="_blank"} 
+-   [Publications](publications.qmd)
+-   [Google Scholar](https://scholar.google.com/citations?user=X5BtC3wAAAAJ){target="_blank"} 
+-   [ORCID](https://orcid.org/0000-0002-1925-4954){target="_blank"} 
+-   [ResearchGate](https://www.researchgate.net/profile/Francisco-Cardozo-3){target="_blank"} 
 -   [GitHub](https://github.com/focardozom){target="_blank"} 
 
 ## Workshops
@@ -19,7 +51,7 @@ Hi, I’m Francisco Cardozo! I’m a researcher passionate about using data and 
 ## Web Projects
 
 - [Business That Care Toolkit](https://test-toolkit.netlify.app/){target="_blank"} 
-- [Thrustworthy](https://francisco-cardozo.shinyapps.io/thrusworthy/){target="_blank"} 
+- [Trustworthy](https://francisco-cardozo.shinyapps.io/thrusworthy/){target="_blank"} 
 
 ## R Packages
 

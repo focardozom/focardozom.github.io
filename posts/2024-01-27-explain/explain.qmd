@@ -2,7 +2,7 @@
 title: "To Explain or to Predict"
 author: Francisco Cardozo
 date: 2024-01-27
-categories: ["Explain", "Prevention", "Predict"]
+categories: ["Prevention Science", "Machine Learning"]
 tags: ["Explain", "Prevention", "Predict"]
 ---
 

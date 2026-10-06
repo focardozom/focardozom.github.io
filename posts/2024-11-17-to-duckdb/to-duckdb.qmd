@@ -3,7 +3,7 @@ title: "How to Create a Bash Script for Easy File Conversion Using DuckDB"
 author: Francisco Cardozo
 format: html
 date: 2024-11-17
-categories: ["Bash", "DuckDB", "Data"]
+categories: ["Bash"]
 tags: ["Bash", "DuckDB", "File Conversion", "Data Engineering"]
 ---
 

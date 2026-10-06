@@ -12,3 +12,14 @@ _freeze/posts/2024-07-06-shiny-trust/
 
 # Generated site libraries
 _freeze/site_libs/
+
+**/*.quarto_ipynb
+
+# R session and RStudio project files
+.Rhistory
+.RData
+.Ruserdata
+*.Rproj
+
+# macOS
+.DS_Store

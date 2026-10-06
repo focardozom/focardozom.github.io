@@ -7,7 +7,7 @@ author:
 filters:
   - shinylive
 date: 2024-07-06
-categories: ["Shiny", "Drug Use", "Bayes"]
+categories: ["R", "Prevention Science"]
 tags: ["Shiny", "Drug Use", "Bayes"]
 ---
 

@@ -1,12 +1,22 @@
 ---
 title: "Blog"
+description-meta: "Blog posts by Francisco Cardozo on prevention science, machine learning, R, and research workflows."
 listing:
   contents: posts
   sort: "date desc"
   type: grid
-  fields: [date, title, categories]
+  fields: [image, date, title, description, categories]
+  categories: true
   date-format: "MMM, YY"
   filter-ui: true
   max-items: 80
   field-links: [categories, date, title]
+  feed:
+    categories: [R]
 ---
+
+<style>
+.listing-item-img-placeholder {
+  display: none;
+}
+</style>
