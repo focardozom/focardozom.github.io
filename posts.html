@@ -2,10 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Blog posts by Francisco Cardozo on prevention science, machine learning, R, and research workflows.">
 
 <title>Blog – Francisco Cardozo</title>
 <style>
@@ -36,6 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./img/favicon.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/cookie-consent/cookie-consent.js"></script>
@@ -46,7 +48,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-50c0d19057f77bfee6e0eb37c52dd38c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -87,9 +89,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-title-sort'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -164,6 +166,12 @@ window.Quarto = {
 };
 </script>
 
+<link rel="alternate" type="application/rss+xml" title="Francisco Cardozo" href="posts.xml" data-external="1"><meta property="og:title" content="Blog – Francisco Cardozo">
+<meta property="og:image" content="https://focardozom.github.io/img/yo.JPEG">
+<meta property="og:site_name" content="Francisco Cardozo">
+<meta name="twitter:title" content="Blog – Francisco Cardozo">
+<meta name="twitter:image" content="https://focardozom.github.io/img/yo.JPEG">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -202,9 +210,10 @@ window.Quarto = {
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools tools-wide">
-    <a href="https://github.com/focardozom" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://mastodon.social/@focardozom@nerdculture.de" rel="me" title="" class="quarto-navigation-tool px-1" aria-label="Mastodon"><i class="bi bi-mastodon"></i></a>
-    <a href="https://www.linkedin.com/in/francisco-cardozo-757050264/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="https://github.com/focardozom" title="" class="quarto-navigation-tool px-1" aria-label="GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://scholar.google.com/citations?user=X5BtC3wAAAAJ" title="" class="quarto-navigation-tool px-1" aria-label="Google Scholar"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://www.linkedin.com/in/fcardozom/" title="LinkedIn" class="quarto-navigation-tool px-1" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+    <a href="./posts.xml" title="" class="quarto-navigation-tool px-1" aria-label="RSS feed"><i class="bi bi-rss"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -213,9 +222,9 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(17)</span></div><div class="category" data-category="QmFzaA==">Bash <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Q2F1c2FsJTIwSW5mZXJlbmNl">Causal Inference <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Q2hlc3M=">Chess <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWFjaGluZSUyMExlYXJuaW5n">Machine Learning <span class="quarto-category-count">(7)</span></div><div class="category" data-category="UHJldmVudGlvbiUyMFNjaWVuY2U=">Prevention Science <span class="quarto-category-count">(7)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(6)</span></div><div class="category" data-category="VGVhY2hpbmc=">Teaching <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -238,6 +247,11 @@ window.Quarto = {
 </header>
 
 
+<style>
+.listing-item-img-placeholder {
+  display: none;
+}
+</style>
 
 
 
@@ -250,23 +264,23 @@ window.Quarto = {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="UHJldmVudGlvbiUyQ1Byb2dyYW1zJTJDRWZmaWNhY3klMkNJbXBsZW1lbnRhdGlvbg==" data-listing-date-sort="Mon Jul 07 2025 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461440" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-categories-sort="Prevention,Programs,Efficacy,Implementation" data-listing-title-sort="Welcome to prevention science meets sci-fi.">
+<div class="g-col-1" data-index="0" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmc=" data-listing-date-sort="Mon Jul 07 2025 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960779" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-categories-sort="Prevention Science,Machine Learning" data-listing-title-sort="Welcome to prevention science meets sci-fi.">
 <a href="./posts/2025-03-19-sci-fi/ps-sci-fi.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Welcome to prevention science meets sci-fi.
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbg=='); return false;">Prevention</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvZ3JhbXM='); return false;">Programs</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RWZmaWNhY3k='); return false;">Efficacy</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wbGVtZW50YXRpb24='); return false;">Implementation</div>
-
+</div>
+<div class="card-text listing-description delink">
+AI is knocking at the door of prevention science, carrying predictions instead of theories and probabilities instead of certainties. It’s exciting, slightly unsettling, and…<em></em>
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -276,23 +290,23 @@ Jul, 25
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="UHJldmVudGlvbiUyQ1Byb2dyYW1zJTJDRXZhbHVhdGlvbiUyQ0ltcGxlbWVudGF0aW9u" data-listing-date-sort="Sat Dec 28 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="738" data-listing-categories-sort="Prevention,Programs,Evaluation,Implementation" data-listing-title-sort="Three Components of a Successful Prevention Program">
+<div class="g-col-1" data-index="1" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2UlMkNDYXVzYWwlMjBJbmZlcmVuY2U=" data-listing-date-sort="Sat Dec 28 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960773" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="738" data-listing-categories-sort="Prevention Science,Causal Inference" data-listing-title-sort="Three Components of a Successful Prevention Program">
 <a href="./posts/2024-12-28-three-components/three-components.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Three Components of a Successful Prevention Program
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbg=='); return false;">Prevention</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJvZ3JhbXM='); return false;">Programs</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2F1c2FsJTIwSW5mZXJlbmNl'); return false;">Causal Inference</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RXZhbHVhdGlvbg=='); return false;">Evaluation</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('SW1wbGVtZW50YXRpb24='); return false;">Implementation</div>
-
+</div>
+<div class="card-text listing-description delink">
+One of the core challenges in prevention science and public health is establishing whether a program causes the outcomes we observe in the field. Are the gains we see (i.e.…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -302,9 +316,10 @@ Dec, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-categories="QmFzaCUyQ0R1Y2tEQiUyQ0RhdGE=" data-listing-date-sort="Sun Nov 17 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461431" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="601" data-listing-categories-sort="Bash,DuckDB,Data" data-listing-title-sort="How to Create a Bash Script for Easy File Conversion Using DuckDB">
+<div class="g-col-1" data-index="2" data-categories="QmFzaA==" data-listing-date-sort="Sun Nov 17 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="601" data-listing-categories-sort="Bash" data-listing-title-sort="How to Create a Bash Script for Easy File Conversion Using DuckDB">
 <a href="./posts/2024-11-17-to-duckdb/to-duckdb.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 How to Create a Bash Script for Easy File Conversion Using DuckDB
@@ -313,10 +328,9 @@ How to Create a Bash Script for Easy File Conversion Using DuckDB
 
 <div class="listing-category" onclick="window.quartoListingCategory('QmFzaA=='); return false;">Bash</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RHVja0RC'); return false;">DuckDB</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YQ=='); return false;">Data</div>
-
+</div>
+<div class="card-text listing-description delink">
+Working with different file formats can be challenging, especially when dealing with large datasets. Here’s a simple but powerful Bash script that leverages DuckDB to…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -326,9 +340,10 @@ Nov, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-categories="QmFzaCUyQ09yZ2FuaXphdGlvbiUyQ0ZpbGVz" data-listing-date-sort="Sat Nov 09 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461430" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="859" data-listing-categories-sort="Bash,Organization,Files" data-listing-title-sort="How to Create a Bash Script to Automatically Organize Your Files">
+<div class="g-col-1" data-index="3" data-categories="QmFzaA==" data-listing-date-sort="Sat Nov 09 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="859" data-listing-categories-sort="Bash" data-listing-title-sort="How to Create a Bash Script to Automatically Organize Your Files">
 <a href="./posts/2024-11-09-organize-this/organize-this.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 How to Create a Bash Script to Automatically Organize Your Files
@@ -337,10 +352,9 @@ How to Create a Bash Script to Automatically Organize Your Files
 
 <div class="listing-category" onclick="window.quartoListingCategory('QmFzaA=='); return false;">Bash</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('T3JnYW5pemF0aW9u'); return false;">Organization</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RmlsZXM='); return false;">Files</div>
-
+</div>
+<div class="card-text listing-description delink">
+Ever found yourself drowning in a sea of unorganized files? Try this simple but powerful Bash function that automatically organizes files into appropriate folders based on…<code></code>
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -350,21 +364,23 @@ Nov, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-categories="U2hpbnklMkNEcnVnJTIwVXNlJTJDQmF5ZXM=" data-listing-date-sort="Sat Jul 06 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461430" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2877" data-listing-categories-sort="Shiny,Drug Use,Bayes" data-listing-title-sort="How much do we trust a student’s answer about drug use?">
+<div class="g-col-1" data-index="4" data-categories="UiUyQ1ByZXZlbnRpb24lMjBTY2llbmNl" data-listing-date-sort="Sat Jul 06 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960772" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="15" data-listing-word-count-sort="2877" data-listing-categories-sort="R,Prevention Science" data-listing-title-sort="How much do we trust a student’s answer about drug use?">
 <a href="./posts/2024-07-06-shiny-trust/Trust-live.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 How much do we trust a student’s answer about drug use?
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('U2hpbnk='); return false;">Shiny</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('RHJ1ZyUyMFVzZQ=='); return false;">Drug Use</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('QmF5ZXM='); return false;">Bayes</div>
-
+</div>
+<div class="card-text listing-description delink">
+Confidence in students’ survey responses is often questioned when researching drug use, as it can be difficult to determine whether students are being truthful about their…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -374,21 +390,21 @@ Jul, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-categories="RE9JJTJDQmFzaCUyQ1JlZmVyZW5jZXM=" data-listing-date-sort="Sat Apr 06 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461429" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538" data-listing-categories-sort="DOI,Bash,References" data-listing-title-sort="How to Create a Bash Script to Extract Bibliographic References from DOIs">
+<div class="g-col-1" data-index="5" data-categories="QmFzaA==" data-listing-date-sort="Sat Apr 06 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960771" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="538" data-listing-categories-sort="Bash" data-listing-title-sort="How to Create a Bash Script to Extract Bibliographic References from DOIs">
 <a href="./posts/2024-04-06-getref/getref.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/2024-04-06-getref/x-image.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 How to Create a Bash Script to Extract Bibliographic References from DOIs
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('RE9J'); return false;">DOI</div>
-
 <div class="listing-category" onclick="window.quartoListingCategory('QmFzaA=='); return false;">Bash</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UmVmZXJlbmNlcw=='); return false;">References</div>
-
+</div>
+<div class="card-text listing-description delink">
+Dealing with references can feel like a real headache. However, recently I came across a fantastic solution by Richard Mclearn. This blog post is all about making your life…<code></code>
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -398,9 +414,10 @@ Apr, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDQ2F1c2FsJTIwSW5mZXJlbmNlJTJDQ2F1c2FsaXR5" data-listing-date-sort="Tue Mar 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461428" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="580" data-listing-categories-sort="Machine Learning,Causal Inference,Causality" data-listing-title-sort="Balancing Data in Machine Learning: When Good Intentions Meet Slippery Slopes">
+<div class="g-col-1" data-index="6" data-categories="TWFjaGluZSUyMExlYXJuaW5nJTJDQ2F1c2FsJTIwSW5mZXJlbmNl" data-listing-date-sort="Tue Mar 12 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960771" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="580" data-listing-categories-sort="Machine Learning,Causal Inference" data-listing-title-sort="Balancing Data in Machine Learning: When Good Intentions Meet Slippery Slopes">
 <a href="./posts/2024-03-12-imbalance/imbalance_ci.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Balancing Data in Machine Learning: When Good Intentions Meet Slippery Slopes
@@ -411,8 +428,9 @@ Balancing Data in Machine Learning: When Good Intentions Meet Slippery Slopes
 
 <div class="listing-category" onclick="window.quartoListingCategory('Q2F1c2FsJTIwSW5mZXJlbmNl'); return false;">Causal Inference</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2F1c2FsaXR5'); return false;">Causality</div>
-
+</div>
+<div class="card-text listing-description delink">
+Have you ever attended a party where the host tries so hard to make everyone happy that they end up achieving the exact opposite? That’s somewhat like what happens when we…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -422,21 +440,21 @@ Mar, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-categories="SGVhbHRoJTJDUHJldmVudGlvbiUyQ1BhbmRlbWlj" data-listing-date-sort="Sat Feb 03 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461428" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="746" data-listing-categories-sort="Health,Prevention,Pandemic" data-listing-title-sort="Health Literacy: A Double-Edged Sword?">
+<div class="g-col-1" data-index="7" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2U=" data-listing-date-sort="Sat Feb 03 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="746" data-listing-categories-sort="Prevention Science" data-listing-title-sort="Health Literacy: A Double-Edged Sword?">
 <a href="./posts/2024-02-03-health_literacy/health_literacy.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Health Literacy: A Double-Edged Sword?
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('SGVhbHRo'); return false;">Health</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbg=='); return false;">Prevention</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UGFuZGVtaWM='); return false;">Pandemic</div>
-
+</div>
+<div class="card-text listing-description delink">
+In prevention science, information is often considered the cornerstone of any public health initiative. For example, the Health Belief Model, one of the most commonly…<span class="citation" data-cites="rosenstockHealthBeliefModel2000"></span>
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -446,21 +464,23 @@ Feb, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="8" data-categories="RXhwbGFpbiUyQ1ByZXZlbnRpb24lMkNQcmVkaWN0" data-listing-date-sort="Sat Jan 27 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461428" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-categories-sort="Explain,Prevention,Predict" data-listing-title-sort="To Explain or to Predict">
+<div class="g-col-1" data-index="8" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2UlMkNNYWNoaW5lJTIwTGVhcm5pbmc=" data-listing-date-sort="Sat Jan 27 2024 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="562" data-listing-categories-sort="Prevention Science,Machine Learning" data-listing-title-sort="To Explain or to Predict">
 <a href="./posts/2024-01-27-explain/explain.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 To Explain or to Predict
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('RXhwbGFpbg=='); return false;">Explain</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbg=='); return false;">Prevention</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJlZGljdA=='); return false;">Predict</div>
-
+</div>
+<div class="card-text listing-description delink">
+There is a current debate regarding the appropriate circumstances to employ machine learning (ML) over traditional statistics for statistical modeling. Some traditionalists…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -470,21 +490,21 @@ Jan, 24
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-categories="TU9TVCUyQ1ByZXZlbnRpb24lMkNvcHRpbWl6YXRpb24=" data-listing-date-sort="Sun Dec 03 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461427" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439" data-listing-categories-sort="MOST,Prevention,optimization" data-listing-title-sort="Balancing Efficiency and Flexibility: The Challenges of Over-Optimization in the Multiphase Optimization Strategy (MOST)">
+<div class="g-col-1" data-index="9" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2U=" data-listing-date-sort="Sun Dec 03 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960770" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="439" data-listing-categories-sort="Prevention Science" data-listing-title-sort="Balancing Efficiency and Flexibility: The Challenges of Over-Optimization in the Multiphase Optimization Strategy (MOST)">
 <a href="./posts/2023-12-03-most/most.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Balancing Efficiency and Flexibility: The Challenges of Over-Optimization in the Multiphase Optimization Strategy (MOST)
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('TU9TVA=='); return false;">MOST</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbg=='); return false;">Prevention</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('b3B0aW1pemF0aW9u'); return false;">optimization</div>
-
+</div>
+<div class="card-text listing-description delink">
+The Multiphase Optimization Strategy (MOST) is an approach to intervention development in prevention science. MOST is structured around three phases: the Screening Phase…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -494,23 +514,23 @@ Dec, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-categories="Q2hlc3MlMkNQeXRob24lMkNsb29wcyUyQ2V4cG9uZW50aWFsJTIwZ3Jvd3Ro" data-listing-date-sort="Wed Aug 09 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461427" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1461" data-listing-categories-sort="Chess,Python,loops,exponential growth" data-listing-title-sort="The Chessboard and the Wise Courtier">
+<div class="g-col-1" data-index="10" data-categories="UHl0aG9uJTJDQ2hlc3M=" data-listing-date-sort="Wed Aug 09 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960769" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1461" data-listing-categories-sort="Python,Chess" data-listing-title-sort="The Chessboard and the Wise Courtier">
 <a href="./posts/2023-08-01-while/while.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/2023-08-01-while/img/img.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 The Chessboard and the Wise Courtier
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2hlc3M='); return false;">Chess</div>
-
 <div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('bG9vcHM='); return false;">loops</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2hlc3M='); return false;">Chess</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('ZXhwb25lbnRpYWwlMjBncm93dGg='); return false;">exponential growth</div>
-
+</div>
+<div class="card-text listing-description delink">
+Once upon a time in ancient India, a wise courtier presented a challenge to his king using a chessboard and some grains of rice. He placed a single grain of rice on the…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -520,21 +540,23 @@ Aug, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="11" data-categories="U2Vuc2l0aXZpdHklMkNUaWR5bW9kZWxzJTJDU3BlY2lmaWNpdHk=" data-listing-date-sort="Sat Jul 22 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461425" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1281" data-listing-categories-sort="Sensitivity,Tidymodels,Specificity" data-listing-title-sort="Computing Sensitivity and Specificity Using collect_metrics">
+<div class="g-col-1" data-index="11" data-categories="UiUyQ01hY2hpbmUlMjBMZWFybmluZw==" data-listing-date-sort="Sat Jul 22 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1281" data-listing-categories-sort="R,Machine Learning" data-listing-title-sort="Computing Sensitivity and Specificity Using collect_metrics">
 <a href="./posts/2023-07-22-collect_metrics/collect_metrics.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/2023-07-22-collect_metrics/collect_metrics_files/figure-html/unnamed-chunk-4-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Computing Sensitivity and Specificity Using collect_metrics
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('U2Vuc2l0aXZpdHk='); return false;">Sensitivity</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VGlkeW1vZGVscw=='); return false;">Tidymodels</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U3BlY2lmaWNpdHk='); return false;">Specificity</div>
-
+</div>
+<div class="card-text listing-description delink">
+(in progress)
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -544,21 +566,23 @@ Jul, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="12" data-categories="U2Vuc2l0aXZpdHklMkNUaWR5bW9kZWxzJTJDU3BlY2lmaWNpdHk=" data-listing-date-sort="Sun Jul 16 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1421" data-listing-categories-sort="Sensitivity,Tidymodels,Specificity" data-listing-title-sort="Computing Sensitivity and Specificity using tidymodels">
+<div class="g-col-1" data-index="12" data-categories="UiUyQ01hY2hpbmUlMjBMZWFybmluZw==" data-listing-date-sort="Sun Jul 16 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1421" data-listing-categories-sort="R,Machine Learning" data-listing-title-sort="Computing Sensitivity and Specificity using tidymodels">
 <a href="./posts/2023-07-15-yarstick/2023-07-15.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/2023-07-15-yarstick/tidymodels.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Computing Sensitivity and Specificity using tidymodels
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('U2Vuc2l0aXZpdHk='); return false;">Sensitivity</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VGlkeW1vZGVscw=='); return false;">Tidymodels</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('U3BlY2lmaWNpdHk='); return false;">Specificity</div>
-
+</div>
+<div class="card-text listing-description delink">
+Sensitivity and specificity are two crucial metrics used to evaluate the performance of binary classification models. In this article, we delve into the process of computing…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -568,17 +592,23 @@ Jul, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="13" data-categories="VGlkeW1vZGVscw==" data-listing-date-sort="Wed May 10 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="420" data-listing-categories-sort="Tidymodels" data-listing-title-sort="An Introduction to the Recipes Package for Data Preprocessing">
+<div class="g-col-1" data-index="13" data-categories="UiUyQ01hY2hpbmUlMjBMZWFybmluZw==" data-listing-date-sort="Wed May 10 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="420" data-listing-categories-sort="R,Machine Learning" data-listing-title-sort="An Introduction to the Recipes Package for Data Preprocessing">
 <a href="./posts/2023-05-10-recipes/recipes.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 An Introduction to the Recipes Package for Data Preprocessing
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VGlkeW1vZGVscw=='); return false;">Tidymodels</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
+<div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
+
+</div>
+<div class="card-text listing-description delink">
+I liked this presentation done by Max Kuhn.
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -588,17 +618,23 @@ May, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="14" data-categories="VGVhY2hpbmc=" data-listing-date-sort="Fri Feb 10 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-categories-sort="Teaching" data-listing-title-sort="Maximizing the Impact of Your R Teaching: Insights from Garrett Grolemund">
+<div class="g-col-1" data-index="14" data-categories="UiUyQ1RlYWNoaW5n" data-listing-date-sort="Fri Feb 10 2023 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="585" data-listing-categories-sort="R,Teaching" data-listing-title-sort="Maximizing the Impact of Your R Teaching: Insights from Garrett Grolemund">
 <a href="./posts/2023-01-10-posit-education/Posit.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Maximizing the Impact of Your R Teaching: Insights from Garrett Grolemund
 </h5>
 <div class="listing-categories">
 
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
 <div class="listing-category" onclick="window.quartoListingCategory('VGVhY2hpbmc='); return false;">Teaching</div>
 
+</div>
+<div class="card-text listing-description delink">
+I recently watched a presentation by Garrett Grolemund, the Director of Learning at Rstudio, on the POSIT Enterprise Community Meetup on YouTube. I wanted to share with you…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -608,21 +644,25 @@ Feb, 23
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="15" data-categories="Q2hlc3MlMkNUcmVlcyUyQ01hY2hpbmUlMjBMZWFybmluZw==" data-listing-date-sort="Thu Dec 01 2022 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1513" data-listing-categories-sort="Chess,Trees,Machine Learning" data-listing-title-sort="Can ELO Predict the Outcome of Chess Games?">
+<div class="g-col-1" data-index="15" data-categories="UiUyQ01hY2hpbmUlMjBMZWFybmluZyUyQ0NoZXNz" data-listing-date-sort="Thu Dec 01 2022 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1513" data-listing-categories-sort="R,Machine Learning,Chess" data-listing-title-sort="Can ELO Predict the Outcome of Chess Games?">
 <a href="./posts/2022-12-01-ChessOlympiad22/chess-olympiad22.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top"><img loading='lazy' src="posts/2022-12-01-ChessOlympiad22/chess-olympiad22_files/figure-html/plots-with-palyers-1.png" style="height: 150px;"  class="thumbnail-image card-img"/></p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Can ELO Predict the Outcome of Chess Games?
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q2hlc3M='); return false;">Chess</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('VHJlZXM='); return false;">Trees</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
 <div class="listing-category" onclick="window.quartoListingCategory('TWFjaGluZSUyMExlYXJuaW5n'); return false;">Machine Learning</div>
 
+<div class="listing-category" onclick="window.quartoListingCategory('Q2hlc3M='); return false;">Chess</div>
+
+</div>
+<div class="card-text listing-description delink">
+The ELO rating system is a method used to calculate the relative skill levels of chess players, based on their game results. A higher ELO rating indicates a higher perceived…
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -632,17 +672,21 @@ Dec, 22
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="16" data-categories="QWxjb2hvbA==" data-listing-date-sort="Sun Nov 27 2022 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791241461424" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245" data-listing-categories-sort="Alcohol" data-listing-title-sort="Trustworthy">
+<div class="g-col-1" data-index="16" data-categories="UHJldmVudGlvbiUyMFNjaWVuY2U=" data-listing-date-sort="Sun Nov 27 2022 00:00:00 GMT+0000 (Coordinated Universal Time)" data-listing-file-modified-sort="1791328960768" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="245" data-listing-categories-sort="Prevention Science" data-listing-title-sort="Trustworthy">
 <a href="./posts/2022-11-27-trustworthy/trustworthy.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="listing-item-img-placeholder card-img-top" style="height: 150px;">&nbsp;</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Trustworthy
 </h5>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('QWxjb2hvbA=='); return false;">Alcohol</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJldmVudGlvbiUyMFNjaWVuY2U='); return false;">Prevention Science</div>
 
+</div>
+<div class="card-text listing-description delink">
+Francisco Cardozo, Pablo Montero-Zamora
 </div>
 <div class="card-attribution card-text-small end">
 <div class="listing-date">
@@ -1068,7 +1112,7 @@ Nov, 22
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/focardozom">
-      <i class="bi bi-github" role="img">
+      <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
     </a>
   </li>  
